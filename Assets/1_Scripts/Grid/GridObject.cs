@@ -1,19 +1,29 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class GridObject : MonoBehaviour
 {
-    [SerializeField]
-    // Start is called before the first frame update
-    void Start()
+    private GridPosition gridPosition;
+    private GridSystem gridSystem;
+    //private List<Unit> unitList;
+
+    public GridObject(GridPosition gridPosition, GridSystem gridSystem)
     {
-        
+        this.gridSystem = gridSystem;
+        this.gridPosition = gridPosition;
     }
 
-    // Update is called once per frame
-    void Update()
+    public override string ToString()
     {
-        
+        //string unitString = "";
+        //foreach (Unit unit in unitList)
+            //unitString += unit + "\n";
+        return gridPosition.ToString(); // + "\n" + unitString;
+    }
+
+    public void AddUnit(Unit unit)
+    {
     }
 }
