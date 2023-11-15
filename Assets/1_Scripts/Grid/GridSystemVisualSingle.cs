@@ -4,15 +4,16 @@ using UnityEngine;
 
 public class GridSystemVisualSingle : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] private SpriteRenderer spriteRenderer;
+    
+    public void Show()
     {
-        
+        spriteRenderer.enabled = true;  
+        //spriteRenderer.material = material;
     }
 
-    // Update is called once per frame
-    void Update()
+    public void Hide()
     {
-        
+        spriteRenderer.enabled = false;
     }
 }
