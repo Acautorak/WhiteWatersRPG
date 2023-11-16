@@ -1,18 +1,18 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class Unit : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    private const int ACTION_POINTS_MAX = 2;
+    
+    public static event EventHandler OnAnyActionPointsChanged;
+    public static event EventHandler OnAnyUnitSpawned;
+    public static event EventHandler OnAnyUnitDead;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    [SerializeField] bool isEnemy;
+
+    private GridPosition gridPosition;
 }

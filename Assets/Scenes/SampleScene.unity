@@ -484,7 +484,7 @@ MonoBehaviour:
   gridDebugObjectPrefab: {fileID: 6615749618533327980, guid: fce1d81b7a5c9f344b979cf85f04751b, type: 3}
   arenaWidth: 10
   arenaHeight: 5
-  cellSize: 5
+  cellSize: 5.5
 --- !u!114 &797296460
 MonoBehaviour:
   m_ObjectHideFlags: 0
