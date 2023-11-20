@@ -14,6 +14,7 @@ public class GridSystemVisualSingle : MonoBehaviour
 
     public void Hide()
     {
-        spriteRenderer.enabled = false;
+        //spriteRenderer.enabled = false;
+        spriteRenderer.enabled = !spriteRenderer.enabled;
     }
 }
