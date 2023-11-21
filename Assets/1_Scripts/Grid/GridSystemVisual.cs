@@ -12,7 +12,7 @@ public class GridSystemVisual : MonoBehaviour
     public struct GridVisualTypeMaterial
     {
         public GridVisualType gridVisualType;
-        public Material material;
+        public Sprite sprite;
     }
     public enum GridVisualType
     {
@@ -103,7 +103,7 @@ public class GridSystemVisual : MonoBehaviour
     {
         foreach (GridPosition gridPosition in gridPositionList)
         {
-            gridSystemVisualSingleArray[gridPosition.x, gridPosition.y].Show();
+            gridSystemVisualSingleArray[gridPosition.x, gridPosition.y].Show(GetGridVisualTypeSprite(gridVisualType));
         }
     }
 
@@ -119,7 +119,7 @@ public class GridSystemVisual : MonoBehaviour
         {
             default:
             case MoveAction moveAction:
-                gridVisualType = GridVisualType.White;
+                gridVisualType = GridVisualType.Blue;
                 break;
 
             case ShootAction shootAction:
@@ -142,13 +142,13 @@ public class GridSystemVisual : MonoBehaviour
         UpdateGridVisual();
     }
 
-    private Material GetGridVisualTypeMaterial(GridVisualType gridVisualType)
+    private Sprite GetGridVisualTypeSprite(GridVisualType gridVisualType)
     {
         foreach (GridVisualTypeMaterial gridVisualTypeMaterial in gridVisualTypeMaterialList)
         {
             if (gridVisualTypeMaterial.gridVisualType == gridVisualType)
             {
-                return gridVisualTypeMaterial.material;
+                return gridVisualTypeMaterial.sprite;
             }
         }
 

@@ -52,10 +52,10 @@ public class UnitActionSystem : MonoBehaviour
             return;
         }
 
-/*         if (EventSystem.current.IsPointerOverGameObject())
+        if (EventSystem.current.IsPointerOverGameObject())
         {
             return;
-        } */
+        }
 
         if (TryHandleUnitSelecetion())
         {
@@ -92,12 +92,13 @@ public class UnitActionSystem : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
-
-
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            if (Physics.Raycast(ray, out RaycastHit raycastHit, float.MaxValue, unitLayerMask))
+            RaycastHit2D hit = Physics2D.Raycast(ray.origin, ray.direction, float.MaxValue, unitLayerMask);
+            //if (Physics.Raycast(ray, out RaycastHit raycastHit, float.MaxValue, unitLayerMask))
+            if (hit.collider != null)
             {
-                if (raycastHit.transform.TryGetComponent<Unit>(out Unit unit))
+                Debug.LogWarning("udario si na levi klik ");
+                if (hit.transform.TryGetComponent<Unit>(out Unit unit))
                 {
                     if (unit == selectedUnit)
                     {
@@ -108,10 +109,11 @@ public class UnitActionSystem : MonoBehaviour
                     if (unit.IsEnemy())
                     {
                         // Clicked on enemy
+                        Debug.LogError("udario si enemya");
                         return false;
                     }
 
-                    //SetSelectedUnit(unit);
+                    SetSelectedUnit(unit);
                     return true;
                 }
             }

@@ -14,9 +14,9 @@ public class MousePosition : MonoBehaviour
 
     private void Update()
     {
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        /* Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         Physics.Raycast(ray, out RaycastHit raycastHit, float.MaxValue, mouseLayerMask);
-        if (Input.GetMouseButtonDown(0)) HandleLeftMouseClick();
+        if (Input.GetMouseButtonDown(0)) HandleLeftMouseClick(); */
 
 
     }

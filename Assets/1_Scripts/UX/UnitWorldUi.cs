@@ -7,15 +7,15 @@ using UnityEngine.UI;
 
 public class UnitWorldUi : MonoBehaviour
 {
-     [SerializeField] private TextMeshProUGUI actionPointsText;
+    [SerializeField] private TextMeshProUGUI actionPointsText;
     [SerializeField] private Unit unit;
     [SerializeField] private Image healthBarImage;
-    [SerializeField] private HealthSystem healthSystem; 
+    [SerializeField] private HealthSystem healthSystem;
 
     private void Start()
     {
         Unit.OnAnyActionPointsChanged += Unit_OnAnyActionPointsChanged;
-        healthSystem.OnDamaged +=  HealthSystem_OnDamaged;
+        healthSystem.OnDamaged += HealthSystem_OnDamaged;
         UpdateActionPointsText();
         UpdateHealthBar();
     }
