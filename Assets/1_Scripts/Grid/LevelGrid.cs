@@ -8,8 +8,10 @@ public class LevelGrid : MonoBehaviour
     public static LevelGrid Instance { get; private set; }
 
     public event EventHandler OnAnyUnitMovedGridPosition;
+
     [SerializeField] private Transform gridDebugObjectPrefab;
-    [SerializeField] private int arenaWidth, arenaHeight;
+
+    [SerializeField] private int width, height;
     [SerializeField] private float cellSize;
     private GridSystem gridSystem;
 
@@ -17,13 +19,13 @@ public class LevelGrid : MonoBehaviour
     {
         if (Instance != null)
         {
-            Debug.LogError("Singleton GridSystem puko");
+            Debug.LogError("Singleton GridSystem " + transform + " - " + Instance);
             Destroy(gameObject);
             return;
         }
         Instance = this;
 
-        gridSystem = new GridSystem(arenaWidth, arenaHeight, cellSize);
+        gridSystem = new GridSystem(width, height, cellSize);
         //gridSystem.CreateDebugObjects(gridDebugObjectPrefab);
     }
 
@@ -53,12 +55,16 @@ public class LevelGrid : MonoBehaviour
         OnAnyUnitMovedGridPosition?.Invoke(this, EventArgs.Empty);
     }
 
+
     // passthrough nekog parametra u dublji sistem bez exposovanja cele klase
-    public GridPosition GetGridPosition(Vector2 worldPostion) => gridSystem.GetGridPosition(worldPostion);
-    public Vector2 GetWorldPostion(GridPosition gridPosition) => gridSystem.GetWorldPosition(gridPosition);
+    public GridPosition GetGridPosition(Vector3 worldPosition) => gridSystem.GetGridPosition(worldPosition);
+
+    public Vector2 GetWorldPosition(GridPosition gridPosition) => gridSystem.GetWorldPosition(gridPosition);
+
     public bool IsValidGridPosition(GridPosition gridPosition) => gridSystem.IsValidGridPosition(gridPosition);
 
     public int GetWidth() => gridSystem.GetWidth();
+
     public int GetHeight() => gridSystem.GetHeight();
 
     public bool HasAnyUnitOnGridPosition(GridPosition gridPosition)

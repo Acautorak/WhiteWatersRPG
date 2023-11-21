@@ -19,7 +19,7 @@ public class UnitActionSystem : MonoBehaviour
     [SerializeField] private Unit selectedUnit;
     [SerializeField] private LayerMask unitLayerMask;
 
-    private BaseAction selectedAction;
+    [SerializeField] private BaseAction selectedAction;
 
     private bool isBusy;
 
@@ -47,15 +47,15 @@ public class UnitActionSystem : MonoBehaviour
             return;
         }
 
-        if(!TurnSystem.Instance.IsPlayerTurn())
+        if (!TurnSystem.Instance.IsPlayerTurn())
         {
             return;
         }
 
-        if (EventSystem.current.IsPointerOverGameObject())
+/*         if (EventSystem.current.IsPointerOverGameObject())
         {
             return;
-        }
+        } */
 
         if (TryHandleUnitSelecetion())
         {
@@ -111,7 +111,7 @@ public class UnitActionSystem : MonoBehaviour
                         return false;
                     }
 
-                    SetSelectedUnit(unit);
+                    //SetSelectedUnit(unit);
                     return true;
                 }
             }
