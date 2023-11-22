@@ -15,7 +15,7 @@ public class ShootAction : BaseAction
     }
 
     private State state;
-    private int maxShootDistance = 7;
+    private int maxShootDistance = 2;
     private float stateTimer;
     private Unit targetUnit;
     private bool canShootBullet;

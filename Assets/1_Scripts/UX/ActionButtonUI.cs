@@ -12,7 +12,7 @@ public class ActionButtonUI : MonoBehaviour
 
     private BaseAction baseAction;
 
-    public void SetActionButton (BaseAction baseAction)
+    public void SetActionButton(BaseAction baseAction)
     {
         this.baseAction = baseAction;
         textMeshPro.text = baseAction.GetActionName().ToUpper();
@@ -27,5 +27,10 @@ public class ActionButtonUI : MonoBehaviour
     {
         BaseAction selectedBaseAction = UnitActionSystem.Instance.GetSelectedAction();
         selectedGameObject.SetActive(selectedBaseAction == baseAction);
+    }
+
+    public void DestroyThisButton()
+    {
+        Destroy(gameObject);
     }
 }

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Runtime.InteropServices.WindowsRuntime;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UIElements;
 
 public class Unit : MonoBehaviour
 {
@@ -36,6 +37,7 @@ public class Unit : MonoBehaviour
     {
         gridPosition = LevelGrid.Instance.GetGridPosition(transform.position);
         LevelGrid.Instance.AddUnitAtGridPosition(gridPosition, this);
+        FixateUnitAtGridPosition();
 
         TurnSystem.Instance.OnTurnChanged += TurnSystem_OnTurnChanged;
         healthSystem.OnDead += HealthSystem_OnDead;
@@ -67,6 +69,7 @@ public class Unit : MonoBehaviour
 
     public GridPosition GetGridPosition()
     {
+        Debug.LogError(gridPosition);
         return gridPosition;
     }
 
@@ -148,5 +151,11 @@ public class Unit : MonoBehaviour
     {
         return healthSystem.GetHealthNormalized();
     }
+
+    public void FixateUnitAtGridPosition()
+    {
+        transform.position = LevelGrid.Instance.GetWorldPosition(gridPosition);
+    }
+
 
 }

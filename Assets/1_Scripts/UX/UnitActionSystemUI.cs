@@ -36,7 +36,7 @@ public class UnitActionSystemUI : MonoBehaviour
     {
         foreach (Transform buttonTransform in actionButtonContainerTransform)
         {
-            Destroy(buttonTransform);
+            buttonTransform.GetComponent<ActionButtonUI>().DestroyThisButton();
         }
 
         actionButtonUIList.Clear();

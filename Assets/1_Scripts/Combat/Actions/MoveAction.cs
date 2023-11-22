@@ -11,7 +11,7 @@ public class MoveAction : BaseAction
 
     private Vector3 targetPosition;
 
-    [SerializeField] private int maxMoveDistance = 4;
+    [SerializeField] private int maxMoveDistance = 1;
 
 
     protected override void Awake()
@@ -53,7 +53,7 @@ public class MoveAction : BaseAction
     public override void TakeAction(GridPosition gridPosition, Action onActionComplete)
     {
         ActionStart(onActionComplete);
-        this.targetPosition = LevelGrid.Instance.GetWorldPosition(gridPosition);
+        targetPosition = LevelGrid.Instance.GetWorldPosition(gridPosition);
 
         OnStartMoving?.Invoke(this, EventArgs.Empty);
     }
@@ -66,9 +66,9 @@ public class MoveAction : BaseAction
 
         for (int x = -maxMoveDistance; x <= maxMoveDistance; x++)
         {
-            for (int z = -maxMoveDistance; z <= maxMoveDistance; z++)
+            for (int y = -maxMoveDistance; y <= maxMoveDistance; y++)
             {
-                GridPosition offsetGridPosition = new GridPosition(x, z);
+                GridPosition offsetGridPosition = new GridPosition(x, y);
                 GridPosition testGridPosition = unitGridPosition + offsetGridPosition;
 
                 if (!LevelGrid.Instance.IsValidGridPosition(testGridPosition))
@@ -89,6 +89,7 @@ public class MoveAction : BaseAction
                 }
 
                 validGridPositionList.Add(testGridPosition);
+//                Debug.LogWarning(testGridPosition.ToString());
             }
         }
 
