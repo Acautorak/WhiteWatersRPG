@@ -57,7 +57,7 @@ public class LevelGrid : MonoBehaviour
 
 
     // passthrough nekog parametra u dublji sistem bez exposovanja cele klase
-    public GridPosition GetGridPosition(Vector3 worldPosition) => gridSystem.GetGridPosition(worldPosition);
+    public GridPosition GetGridPosition(Vector2 worldPosition) => gridSystem.GetGridPosition(worldPosition);
 
     public Vector2 GetWorldPosition(GridPosition gridPosition) => gridSystem.GetWorldPosition(gridPosition);
 

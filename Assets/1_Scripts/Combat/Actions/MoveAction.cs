@@ -1,7 +1,11 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Numerics;
 using UnityEngine;
+using Quaternion = UnityEngine.Quaternion;
+using Vector2 = UnityEngine.Vector2;
+using Vector3 = UnityEngine.Vector3;
 
 public class MoveAction : BaseAction
 {
@@ -9,7 +13,8 @@ public class MoveAction : BaseAction
     public event EventHandler OnStopMoving;
 
 
-    private Vector3 targetPosition;
+    private Vector2 targetPosition;
+    private Quaternion originalRotation;
 
     [SerializeField] private int maxMoveDistance = 1;
 
@@ -20,6 +25,11 @@ public class MoveAction : BaseAction
         targetPosition = transform.position;
     }
 
+    private void Start()
+    {
+        originalRotation = transform.rotation;
+    }
+
     private void Update()
     {
         if (!isActive)
@@ -28,13 +38,17 @@ public class MoveAction : BaseAction
         }
 
         float stoppingDistance = .1f;
-        Vector3 moveDirection = (targetPosition - transform.position).normalized;
 
-        if (Vector3.Distance(targetPosition, transform.position) > stoppingDistance)
+        Vector2 moveDirection = (targetPosition - (Vector2)transform.position).normalized;
+        float angle = Mathf.Atan2(moveDirection.y, moveDirection.x) * Mathf.Rad2Deg;
+        transform.rotation = Quaternion.AngleAxis(angle, Vector3.back);
+
+
+        if (Vector2.Distance(targetPosition, transform.position) > stoppingDistance)
         {
 
-            float moveSpeed = 4f;
-            transform.position += moveDirection * moveSpeed * Time.deltaTime;
+            float moveSpeed = 5f;
+            transform.position += new Vector3(moveSpeed * Time.deltaTime * moveDirection.x, moveSpeed * Time.deltaTime * moveDirection.y, 0);
 
 
         }
@@ -56,7 +70,6 @@ public class MoveAction : BaseAction
         targetPosition = LevelGrid.Instance.GetWorldPosition(gridPosition);
 
         OnStartMoving?.Invoke(this, EventArgs.Empty);
-        Debug.LogError("krenulo je TAKEACTIOn");
     }
 
     public override List<GridPosition> GetValidActionGridPositionList()
@@ -90,7 +103,7 @@ public class MoveAction : BaseAction
                 }
 
                 validGridPositionList.Add(testGridPosition);
-//                Debug.LogWarning(testGridPosition.ToString());
+                //                Debug.LogWarning(testGridPosition.ToString());
             }
         }
 

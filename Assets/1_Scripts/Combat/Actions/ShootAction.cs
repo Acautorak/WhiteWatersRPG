@@ -15,16 +15,22 @@ public class ShootAction : BaseAction
     }
 
     private State state;
-    private int maxShootDistance = 2;
+    private int maxShootDistance = 3;
     private float stateTimer;
     private Unit targetUnit;
     private bool canShootBullet;
+    private Quaternion originalRotation;
 
     private enum State
     {
         Aiming,
         Shooting,
         CoolOff,
+    }
+
+    private void Start()
+    {
+        originalRotation = transform.rotation;
     }
 
     private void Update()
@@ -42,7 +48,7 @@ public class ShootAction : BaseAction
             case State.Aiming:
                 Vector3 aimDir = (targetUnit.GetWorldPosition() - unit.GetWorldPosition()).normalized;
                 float rotateSpeed = 10f;
-                transform.forward = Vector3.Lerp(transform.forward, aimDir, rotateSpeed * Time.deltaTime);
+                transform.up = Vector2.Lerp(transform.up, aimDir, rotateSpeed * Time.deltaTime);
                 break;
 
             case State.Shooting:
@@ -55,7 +61,7 @@ public class ShootAction : BaseAction
                 break;
 
             case State.CoolOff:
-
+                transform.rotation = originalRotation;
                 break;
         }
 
@@ -96,7 +102,7 @@ public class ShootAction : BaseAction
             targetUnit = targetUnit,
             shootingUnit = unit
         });
-        targetUnit.Damage(10);
+        targetUnit.Damage(40);
     }
 
     public override string GetActionName()

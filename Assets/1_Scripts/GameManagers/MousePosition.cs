@@ -25,6 +25,7 @@ public class MousePosition : MonoBehaviour
     {
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         Physics.Raycast(ray, out RaycastHit raycastHit, float.MaxValue, Instance.mouseLayerMask);
+        Debug.LogError(raycastHit.point);
         return raycastHit.point;
     }
 
@@ -39,5 +40,19 @@ public class MousePosition : MonoBehaviour
             hit.collider.GetComponent<GridSystemVisualSingle>().Hide();
 
         }
+    }
+
+    public static Vector2 GetMouseWorldPosition2D()
+    {
+        // Get the mouse position in screen coordinates
+        Vector3 mousePosition = Input.mousePosition;
+
+        // Set the Z-coordinate to the distance from the camera to the game world
+        mousePosition.z = -Camera.main.transform.position.z;
+
+        // Convert the mouse position from screen to world coordinates
+        Vector2 worldPosition = Camera.main.ScreenToWorldPoint(mousePosition);
+
+        return worldPosition;
     }
 }
