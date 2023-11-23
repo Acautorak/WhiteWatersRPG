@@ -78,16 +78,16 @@ public class GridSystemVisual : MonoBehaviour
         List<GridPosition> gridPositionList = new List<GridPosition>();
         for (int x = -range; x <= range; x++)
         {
-            for (int z = -range; z <= range; z++)
+            for (int y = -range; y <= range; y++)
             {
-                GridPosition testGridPosition = gridPosition + new GridPosition(x, z);
+                GridPosition testGridPosition = gridPosition + new GridPosition(x, y);
 
                 if (!LevelGrid.Instance.IsValidGridPosition(testGridPosition))
                 {
                     continue;
                 }
 
-                int testDistance = Mathf.Abs(x) + Mathf.Abs(z);
+                int testDistance = Mathf.Abs(x) + Mathf.Abs(y);
                 if (testDistance > range)
                 {
                     continue;
@@ -128,8 +128,8 @@ public class GridSystemVisual : MonoBehaviour
                 ShowGridPositionRange(selectedUnit.GetGridPosition(), shootAction.GetMaxShootDistance(), GridVisualType.RedSoft);
                 break;
         }
-        if (selectedAction != null) ShowGridPositionList(selectedAction.GetValidActionGridPositionList(), gridVisualType);
-        ShowAllGridPositions();
+        ShowGridPositionList(selectedAction.GetValidActionGridPositionList(), gridVisualType);
+        //ShowAllGridPositions();
     }
 
     private void UnitActionSystem_OnSelectedActionChanged(object sender, EventArgs e)

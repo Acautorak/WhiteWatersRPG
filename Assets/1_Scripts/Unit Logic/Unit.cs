@@ -69,7 +69,6 @@ public class Unit : MonoBehaviour
 
     public GridPosition GetGridPosition()
     {
-        Debug.LogError(gridPosition);
         return gridPosition;
     }
 

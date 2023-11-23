@@ -97,7 +97,6 @@ public class UnitActionSystem : MonoBehaviour
             //if (Physics.Raycast(ray, out RaycastHit raycastHit, float.MaxValue, unitLayerMask))
             if (hit.collider != null)
             {
-                Debug.LogWarning("udario si na levi klik ");
                 if (hit.transform.TryGetComponent<Unit>(out Unit unit))
                 {
                     if (unit == selectedUnit)
@@ -109,7 +108,6 @@ public class UnitActionSystem : MonoBehaviour
                     if (unit.IsEnemy())
                     {
                         // Clicked on enemy
-                        Debug.LogError("udario si enemya");
                         return false;
                     }
 
