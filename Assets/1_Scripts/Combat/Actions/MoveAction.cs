@@ -115,7 +115,7 @@ public class MoveAction : BaseAction
         return "Move";
     }
 
-    /* public override EnemyAiAction GetEnemyAiAction(GridPosition gridPosition)
+    public override EnemyAiAction GetEnemyAiAction(GridPosition gridPosition)
     {
         int targetCountAtGridPosition = unit.GetShootAction().GetTargetCountAtPosition(gridPosition);
         return new EnemyAiAction
@@ -123,5 +123,5 @@ public class MoveAction : BaseAction
             gridPosition = gridPosition,
             actionValue = targetCountAtGridPosition * 10,
         };
-    } */
+    }
 }

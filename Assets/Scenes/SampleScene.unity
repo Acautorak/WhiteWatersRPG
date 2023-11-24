@@ -1071,6 +1071,7 @@ GameObject:
   - component: {fileID: 797296461}
   - component: {fileID: 797296465}
   - component: {fileID: 797296464}
+  - component: {fileID: 797296466}
   m_Layer: 0
   m_Name: GameManagers
   m_TagString: Untagged
@@ -1157,11 +1158,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f9ac5f387001ea469f05c3a5e53ad21, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selectedUnit: {fileID: 0}
+  selectedUnit: {fileID: 1267370409}
   unitLayerMask:
     serializedVersion: 2
     m_Bits: 128
-  selectedAction: {fileID: 0}
+  selectedAction: {fileID: 1267370406}
 --- !u!114 &797296463
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1204,6 +1205,18 @@ MonoBehaviour:
   endTurnButton: {fileID: 806609733}
   turnNumberText: {fileID: 2104849443}
   enemyTurnVisualGameObject: {fileID: 1414395397}
+--- !u!114 &797296466
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 797296457}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 754a496dd2aea694795ba71354a2209d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &806609731
 GameObject:
   m_ObjectHideFlags: 0
@@ -2329,6 +2342,7 @@ GameObject:
   - component: {fileID: 1575241999}
   - component: {fileID: 1575241998}
   - component: {fileID: 1575241997}
+  - component: {fileID: 1575242003}
   m_Layer: 7
   m_Name: Enemy
   m_TagString: Untagged
@@ -2364,7 +2378,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7ba699d2c3e6e14a89dae64d517428b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxMoveDistance: 4
+  maxMoveDistance: 2
 --- !u!114 &1575241999
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2426,7 +2440,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1575241996}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 11.8, y: 21.3, z: 0}
+  m_LocalPosition: {x: 31, y: 57, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2436,6 +2450,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1575242003
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1575241996}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3de0e84aa5731e0429b45063af609b40, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1723160853
 GameObject:
   m_ObjectHideFlags: 0

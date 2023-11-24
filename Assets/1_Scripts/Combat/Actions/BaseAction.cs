@@ -55,7 +55,7 @@ public abstract class BaseAction : MonoBehaviour
         return unit;
     }
 
-    /* public EnemyAiAction GetBestEnemyAiAction()
+     public EnemyAiAction GetBestEnemyAiAction()
     {
         List<EnemyAiAction> enemyAiActionList = new List<EnemyAiAction>();
 
@@ -79,7 +79,7 @@ public abstract class BaseAction : MonoBehaviour
         } 
     }
 
-    public abstract EnemyAiAction GetEnemyAiAction(GridPosition gridPosition); */
+    public abstract EnemyAiAction GetEnemyAiAction(GridPosition gridPosition); 
 
     
 }

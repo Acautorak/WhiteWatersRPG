@@ -187,7 +187,7 @@ public class ShootAction : BaseAction
         return maxShootDistance;
     }
 
-    /* public override EnemyAiAction GetEnemyAiAction(GridPosition gridPosition)
+     public override EnemyAiAction GetEnemyAiAction(GridPosition gridPosition)
     {
         Unit targetUnit = LevelGrid.Instance.GetUnitAtGridPosition(gridPosition);
 
@@ -196,7 +196,7 @@ public class ShootAction : BaseAction
             gridPosition = gridPosition,
             actionValue = 100 + Mathf.RoundToInt((1-targetUnit.GetHealthNormalized()) * 100f),
         };
-    } */
+    }
 
 public int GetTargetCountAtPosition(GridPosition gridPosition)
 {
