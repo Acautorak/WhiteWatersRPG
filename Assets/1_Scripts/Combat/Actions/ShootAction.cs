@@ -63,7 +63,7 @@ public class ShootAction : BaseAction
 
             case State.CoolOff:
                 transform.rotation = Quaternion.RotateTowards(transform.rotation, originalRotation, 5*rotateSpeed * Time.deltaTime);
-                //transform.rotation = originalRotation;
+                //transform.rotation = originalRotation; d
                 break;
         }
 
