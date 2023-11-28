@@ -15,7 +15,9 @@ public class ActionButtonUI : MonoBehaviour
     public void SetActionButton(BaseAction baseAction)
     {
         this.baseAction = baseAction;
+
         textMeshPro.text = baseAction.GetActionName().ToUpper();
+        button.image.sprite = baseAction.GetActionImage();
 
         button.onClick.AddListener(() =>
         {

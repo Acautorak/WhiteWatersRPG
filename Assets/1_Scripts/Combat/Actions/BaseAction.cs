@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.UI;
 using UnityEngine;
 
 public abstract class BaseAction : MonoBehaviour
@@ -10,6 +11,7 @@ public abstract class BaseAction : MonoBehaviour
     protected Unit unit;
     protected bool isActive;
     protected Action onActionComplete;
+    [SerializeField] private Sprite image;
 
     protected virtual void Awake()
     {
@@ -53,6 +55,11 @@ public abstract class BaseAction : MonoBehaviour
     public Unit GetUnit()
     {
         return unit;
+    }
+
+    public Sprite GetActionImage()
+    {
+        return image;
     }
 
      public EnemyAiAction GetBestEnemyAiAction()
