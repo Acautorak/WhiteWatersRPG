@@ -13,7 +13,7 @@ public class LevelGrid : MonoBehaviour
 
     [SerializeField] private int width, height;
     public float cellSize;
-    private GridSystem gridSystem;
+    private GridSystem<GridObject> gridSystem;
 
     private void Awake()
     {
@@ -25,7 +25,8 @@ public class LevelGrid : MonoBehaviour
         }
         Instance = this;
 
-        gridSystem = new GridSystem(width, height, cellSize);
+        gridSystem = new GridSystem<GridObject>(width, height, cellSize,
+                        (GridSystem<GridObject> g, GridPosition gridPosition) => new GridObject(g, gridPosition));
         //gridSystem.CreateDebugObjects(gridDebugObjectPrefab);
     }
 
@@ -66,6 +67,7 @@ public class LevelGrid : MonoBehaviour
     public int GetWidth() => gridSystem.GetWidth();
 
     public int GetHeight() => gridSystem.GetHeight();
+    public float GetCellSize() => gridSystem.GetCellSize();
 
     public bool HasAnyUnitOnGridPosition(GridPosition gridPosition)
     {

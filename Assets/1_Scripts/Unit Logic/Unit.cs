@@ -18,8 +18,6 @@ public class Unit : MonoBehaviour
     [SerializeField] private bool isEnemy;
 
     private GridPosition gridPosition;
-    private MoveAction moveAction;
-    private ShootAction shootAction;
     private HealthSystem healthSystem;
 
     private BaseAction[] baseActionArray;
@@ -28,9 +26,7 @@ public class Unit : MonoBehaviour
     private void Awake()
     {
         healthSystem = GetComponent<HealthSystem>();
-        moveAction = GetComponent<MoveAction>();
         baseActionArray = GetComponents<BaseAction>();
-        shootAction = GetComponent<ShootAction>();
     }
 
     private void Start()
@@ -57,15 +53,18 @@ public class Unit : MonoBehaviour
         }
     }
 
-    public MoveAction GetMoveAction()
+    public T GetAction<T>() where T : BaseAction
     {
-        return moveAction;
+        foreach (BaseAction baseAction in baseActionArray)
+        {
+            if (baseAction is T)
+            {
+                return (T)baseAction;
+            }
+        }
+        return null;
     }
 
-    public ShootAction GetShootAction()
-    {
-        return shootAction;
-    }
 
     public GridPosition GetGridPosition()
     {
