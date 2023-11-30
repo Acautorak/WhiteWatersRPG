@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Testing : MonoBehaviour
 {
-    // Start is called before the first frame update
+    // Start is called before the first frame update design day
     void Start()
     {
 
