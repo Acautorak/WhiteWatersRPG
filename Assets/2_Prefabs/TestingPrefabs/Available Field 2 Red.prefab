@@ -56,6 +56,10 @@ PrefabInstance:
       value: Available Field 2 Red
       objectReference: {fileID: 0}
     - target: {fileID: 7390165421336561413, guid: 2deafa74544026046a1bea59b2f6c83e, type: 3}
+      propertyPath: m_Color.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7390165421336561413, guid: 2deafa74544026046a1bea59b2f6c83e, type: 3}
       propertyPath: m_Color.b
       value: 0
       objectReference: {fileID: 0}

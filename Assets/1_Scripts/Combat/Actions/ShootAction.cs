@@ -14,6 +14,7 @@ public class ShootAction : BaseAction
         public Unit shootingUnit;
     }
 
+    [SerializeField] private LayerMask obstaclesLayerMask;
     private State state;
     private int maxShootDistance = 3;
     private float stateTimer;
@@ -62,7 +63,7 @@ public class ShootAction : BaseAction
                 break;
 
             case State.CoolOff:
-                transform.rotation = Quaternion.RotateTowards(transform.rotation, originalRotation, 5*rotateSpeed * Time.deltaTime);
+                transform.rotation = Quaternion.RotateTowards(transform.rotation, originalRotation, 5 * rotateSpeed * Time.deltaTime);
                 //transform.rotation = originalRotation; d
                 break;
         }
@@ -126,9 +127,9 @@ public class ShootAction : BaseAction
 
         for (int x = -maxShootDistance; x <= maxShootDistance; x++)
         {
-            for (int z = -maxShootDistance; z <= maxShootDistance; z++)
+            for (int y = -maxShootDistance; y <= maxShootDistance; y++)
             {
-                GridPosition offsetGridPosition = new GridPosition(x, z);
+                GridPosition offsetGridPosition = new GridPosition(x, y);
                 GridPosition testGridPosition = unitGridPosition + offsetGridPosition;
 
 
@@ -138,7 +139,7 @@ public class ShootAction : BaseAction
                     continue;
                 }
 
-                int testDistance = Mathf.Abs(x) + Mathf.Abs(z);
+                int testDistance = Mathf.Abs(x) + Mathf.Abs(y);
                 if (testDistance > maxShootDistance)
                 {
                     continue;
@@ -156,6 +157,16 @@ public class ShootAction : BaseAction
                 if (targetUnit.IsEnemy() == unit.IsEnemy())
                 {
                     // both units on same team
+                    continue;
+                }
+
+                Vector2 unitWorldPosition = LevelGrid.Instance.GetWorldPosition(unitGridPosition);
+                Vector2 shootDir = (targetUnit.GetWorldPosition() - (Vector3)unitWorldPosition).normalized;
+
+
+                if (Physics2D.Raycast(unitWorldPosition, shootDir, Vector2.Distance(targetUnit.GetWorldPosition(), unitWorldPosition), obstaclesLayerMask))
+                {
+                    // Blocked By an obstacle
                     continue;
                 }
 

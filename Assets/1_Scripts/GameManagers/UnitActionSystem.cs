@@ -36,7 +36,13 @@ public class UnitActionSystem : MonoBehaviour
 
     private void Start()
     {
-        SetSelectedUnit(selectedUnit);
+        //SetSelectedUnit(UnitManager.Instance.GetFriendlyUnitList()[1]);
+    }
+
+    private IEnumerator LateStart()
+    {
+        SetSelectedUnit(UnitManager.Instance.GetFriendlyUnitList()[0]);
+        yield return new WaitForEndOfFrame();
     }
 
     private void Update()
