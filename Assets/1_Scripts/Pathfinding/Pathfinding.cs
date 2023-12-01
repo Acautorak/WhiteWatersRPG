@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Pathfinding : MonoBehaviour
 {
-    public static Pathfinding Instance {get; private set;}
+    public static Pathfinding Instance { get; private set; }
     private const int MOVE_STRAIGHT_COST = 10;
     private const int MOVE_DIAGONAL_COST = 14;
 
@@ -14,19 +14,40 @@ public class Pathfinding : MonoBehaviour
     private float cellSize;
     private GridSystem<PathNode> gridSystem;
 
+    [SerializeField] private LayerMask obstaclesLayerMask;
+
     private void Awake()
     {
-        if(Instance != null)
+        if (Instance != null)
         {
             Debug.LogError(" Puko ti je pathfinding Singleton");
             Destroy(gameObject);
             return;
         }
         Instance = this;
-        width = LevelGrid.Instance.GetWidth();
-        height = LevelGrid.Instance.GetHeight();
+    }
+
+    public void Setup(int width, int height, float cellSize)
+    {
+        this.width = width;
+        this.height = height;
+        this.cellSize = cellSize;
         gridSystem = new GridSystem<PathNode>(width, height,
-         LevelGrid.Instance.GetCellSize(), (GridSystem<PathNode> gameObject, GridPosition gridPosition) => new PathNode(gridPosition));
+         cellSize, (GridSystem<PathNode> gameObject, GridPosition gridPosition) => new PathNode(gridPosition));
+
+        for (int x = 0; x < width; x++)
+        {
+            for (int y = 0; y < height; y++)
+            {
+                GridPosition gridPosition = new GridPosition(x, y);
+                Vector2 worldPosition = LevelGrid.Instance.GetWorldPosition(gridPosition);
+                if(Physics2D.OverlapBox(worldPosition, new Vector2(cellSize, cellSize), 0f, obstaclesLayerMask))
+                 {
+                    GetNode(x, y).SetIsWalkable(false);
+                 }
+            }
+        }
+// Physics.Raycast(worldPosition + (Vector2)Vector3.down * offsetDistance, Vector3.up, offsetDistance * 2f, obstaclesLayerMask)) offsetDistance =5f;
     }
 
     public List<GridPosition> FindPath(GridPosition startGridPostion, GridPosition endGridPosition)
@@ -72,6 +93,12 @@ public class Pathfinding : MonoBehaviour
             {
                 if (closedList.Contains(neighbourNode))
                 {
+                    continue;
+                }
+
+                if (!neighbourNode.IsWalkable())
+                {
+                    closedList.Add(neighbourNode);
                     continue;
                 }
 
@@ -188,7 +215,7 @@ public class Pathfinding : MonoBehaviour
         List<PathNode> pathNodeList = new List<PathNode>();
         pathNodeList.Add(endNode);
         PathNode currentNode = endNode;
-        while(currentNode.GetCameFromPathNode() != null)
+        while (currentNode.GetCameFromPathNode() != null)
         {
             pathNodeList.Add(currentNode.GetCameFromPathNode());
             currentNode = currentNode.GetCameFromPathNode();
@@ -197,7 +224,7 @@ public class Pathfinding : MonoBehaviour
         pathNodeList.Reverse();
 
         List<GridPosition> gridPositionList = new List<GridPosition>();
-        foreach(PathNode pathNode in pathNodeList)
+        foreach (PathNode pathNode in pathNodeList)
         {
             gridPositionList.Add(pathNode.GetGridPosition());
         }
