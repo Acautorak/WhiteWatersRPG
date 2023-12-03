@@ -360,7 +360,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 119546026}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 25, y: 28, z: 0}
+  m_LocalPosition: {x: 25, y: 33, z: 0}
   m_LocalScale: {x: 5, y: 5, z: 5}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -1385,7 +1385,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gridDebugObjectPrefab: {fileID: 6615749618533327980, guid: fce1d81b7a5c9f344b979cf85f04751b, type: 3}
   width: 10
-  height: 8
+  height: 10
   cellSize: 5.5
 --- !u!114 &797296460
 MonoBehaviour:
@@ -1435,11 +1435,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f9ac5f387001ea469f05c3a5e53ad21, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selectedUnit: {fileID: 0}
+  selectedUnit: {fileID: 2131093730}
   unitLayerMask:
     serializedVersion: 2
     m_Bits: 128
-  selectedAction: {fileID: 0}
+  selectedAction: {fileID: 2131093733}
 --- !u!114 &797296463
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2130,7 +2130,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   image: {fileID: 21300000, guid: aefb57af6896b9f46a375c6ae8456b14, type: 3}
-  maxMoveDistance: 2
+  maxMoveDistance: 6
 --- !u!114 &1267370407
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2192,7 +2192,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1267370404}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 22, y: 22, z: 0}
+  m_LocalPosition: {x: 0, y: 22, z: 0}
   m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -2821,7 +2821,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1575241996}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 33, y: 22, z: 0}
+  m_LocalPosition: {x: 44, y: 33, z: 0}
   m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -2847,6 +2847,7 @@ MonoBehaviour:
   obstaclesLayerMask:
     serializedVersion: 2
     m_Bits: 256
+  maxShootDistance: 3
 --- !u!1 &1619915762
 GameObject:
   m_ObjectHideFlags: 0
@@ -3998,7 +3999,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2131093728}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 16.5, y: 11, z: 0}
+  m_LocalPosition: {x: 5.5, y: 22, z: 0}
   m_LocalScale: {x: 0.8, y: 0.8, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -4035,7 +4036,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   image: {fileID: 21300000, guid: aefb57af6896b9f46a375c6ae8456b14, type: 3}
-  maxMoveDistance: 3
+  maxMoveDistance: 7
 --- !u!114 &2131093734
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4068,6 +4069,7 @@ MonoBehaviour:
   obstaclesLayerMask:
     serializedVersion: 2
     m_Bits: 256
+  maxShootDistance: 3
 --- !u!1001 &7052465066479945565
 PrefabInstance:
   m_ObjectHideFlags: 0
