@@ -36,13 +36,6 @@ public class UnitActionSystem : MonoBehaviour
 
     private void Start()
     {
-        //SetSelectedUnit(UnitManager.Instance.GetFriendlyUnitList()[1]);
-    }
-
-    private IEnumerator LateStart()
-    {
-        SetSelectedUnit(UnitManager.Instance.GetFriendlyUnitList()[0]);
-        yield return new WaitForEndOfFrame();
     }
 
     private void Update()
@@ -76,6 +69,7 @@ public class UnitActionSystem : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             GridPosition mouseGridPosition = LevelGrid.Instance.GetGridPosition(MousePosition.GetMouseWorldPosition2D());
+            Debug.LogError(mouseGridPosition);
             if (!selectedAction.IsValidActionGridPosition(mouseGridPosition))
             {
                 return;

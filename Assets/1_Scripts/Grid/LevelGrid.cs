@@ -60,6 +60,12 @@ public class LevelGrid : MonoBehaviour
 
         OnAnyUnitMovedGridPosition?.Invoke(this, EventArgs.Empty);
     }
+    /* // new OnAnyUnitMovedGridPositionEventArgs
+        {
+            unit = unit,
+            fromGridPosition = fromGridPosition,
+            toGridPosition = toGridPosition
+        }); */
 
 
     // passthrough nekog parametra u dublji sistem bez exposovanja cele klase

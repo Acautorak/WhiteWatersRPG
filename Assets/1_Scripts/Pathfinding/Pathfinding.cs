@@ -41,10 +41,10 @@ public class Pathfinding : MonoBehaviour
             {
                 GridPosition gridPosition = new GridPosition(x, y);
                 Vector2 worldPosition = LevelGrid.Instance.GetWorldPosition(gridPosition);
-                if(Physics2D.OverlapCircle(worldPosition, cellSize/20, obstaclesLayerMask))
-                 {
+                if (Physics2D.OverlapCircle(worldPosition, cellSize / 20, obstaclesLayerMask))
+                {
                     GetNode(x, y).SetIsWalkable(false);
-                 }
+                }
             }
         }
         // Physics.Raycast(worldPosition + (Vector2)Vector3.down * offsetDistance, Vector3.up, offsetDistance * 2f, obstaclesLayerMask)) offsetDistance =5f;
@@ -110,7 +110,7 @@ public class Pathfinding : MonoBehaviour
                 {
                     neighbourNode.SetCameFromPathNode(currentNode);
                     neighbourNode.SetGCost(tentativeGCost);
-                    neighbourNode.SetHCost(CalculateDistance(neighbourNode.GetGridPosition(), endNode.GetGridPosition()));
+                    neighbourNode.SetHCost(CalculateDistance(neighbourNode.GetGridPosition(), endGridPosition));
                     neighbourNode.CalculateFCost();
 
                     if (!openList.Contains(neighbourNode))
@@ -129,7 +129,6 @@ public class Pathfinding : MonoBehaviour
     public int CalculateDistance(GridPosition a, GridPosition b)
     {
         GridPosition gridPositionDistance = a - b;
-        int distance = Mathf.Abs(gridPositionDistance.x) + Mathf.Abs(gridPositionDistance.y);
         int xDistance = Mathf.Abs(gridPositionDistance.x);
         int yDistance = Mathf.Abs(gridPositionDistance.y);
         int remaining = Mathf.Abs(xDistance - yDistance);
@@ -233,6 +232,11 @@ public class Pathfinding : MonoBehaviour
 
         return gridPositionList;
     }
+    public void SetIsWalkableGridPosition(GridPosition gridPosition, bool isWalkable)
+    {
+        gridSystem.GetGridObject(gridPosition).SetIsWalkable(isWalkable);
+    }
+
 
     public bool IsWalkableGridPosition(GridPosition gridPosition)
     {
