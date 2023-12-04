@@ -24,7 +24,6 @@ public class GridSystem<TGridObject>
             {
                 GridPosition gridPosition = new GridPosition(x, y);
                 gridObjectArray[x, y] = createGridObject(this, gridPosition);
-                Debug.LogWarning("napravio sam: " + gridObjectArray[x,y] + " " + gridObjectArray[x,y].GetType().ToString());
             }
         }
     }
