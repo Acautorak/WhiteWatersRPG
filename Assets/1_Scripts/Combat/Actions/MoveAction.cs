@@ -1,7 +1,6 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Numerics;
 using UnityEngine;
 using Quaternion = UnityEngine.Quaternion;
 using Vector2 = UnityEngine.Vector2;
@@ -76,9 +75,8 @@ public class MoveAction : BaseAction
             targetPositionList.Add(LevelGrid.Instance.GetWorldPosition(pathGridPosition));
         }
 
-        ActionStart(onActionComplete);
-
         OnStartMoving?.Invoke(this, EventArgs.Empty);
+        ActionStart(onActionComplete);
     }
 
     public override List<GridPosition> GetValidActionGridPositionList()
@@ -105,17 +103,16 @@ public class MoveAction : BaseAction
                     continue;
                 }
 
-                if (!Pathfinding.Instance.IsWalkableGridPosition(testGridPosition))
-                {
-                    continue;
-                }
-                
                 if (LevelGrid.Instance.HasAnyUnitOnGridPosition(testGridPosition))
                 {
                     // Grid pos already has unit
                     continue;
                 }
 
+                if (!Pathfinding.Instance.IsWalkableGridPosition(testGridPosition))
+                {
+                    continue;
+                }
 
                 if (!Pathfinding.Instance.HasPath(unitGridPosition, testGridPosition))
                 {

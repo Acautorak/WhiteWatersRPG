@@ -32,8 +32,9 @@ public class Pathfinding : MonoBehaviour
         this.width = width;
         this.height = height;
         this.cellSize = cellSize;
-        gridSystem = new GridSystem<PathNode>(width, height,
-         cellSize, (GridSystem<PathNode> gameObject, GridPosition gridPosition) => new PathNode(gridPosition));
+        gridSystem = new GridSystem<PathNode>(width, height, cellSize,
+            (GridSystem<PathNode> g, GridPosition gridPosition) => new PathNode(gridPosition));
+
 
         for (int x = 0; x < width; x++)
         {
@@ -161,55 +162,51 @@ public class Pathfinding : MonoBehaviour
 
         if (gridPosition.x - 1 >= 0)
         {
-            //left
+            // Left
             neighbourList.Add(GetNode(gridPosition.x - 1, gridPosition.y + 0));
-
             if (gridPosition.y - 1 >= 0)
             {
-                //left down
+                // Left Down
                 neighbourList.Add(GetNode(gridPosition.x - 1, gridPosition.y - 1));
             }
 
-            if (gridPosition.y + 1 < height)
+            if (gridPosition.y + 1 < gridSystem.GetHeight())
             {
-                //left up
+                // Left Up
                 neighbourList.Add(GetNode(gridPosition.x - 1, gridPosition.y + 1));
             }
         }
 
-        if (gridPosition.x + 1 <= width)
+        if (gridPosition.x + 1 < gridSystem.GetWidth())
         {
-            //Right
+            // Right
             neighbourList.Add(GetNode(gridPosition.x + 1, gridPosition.y + 0));
-
             if (gridPosition.y - 1 >= 0)
             {
-                //right down
+                // Right Down
                 neighbourList.Add(GetNode(gridPosition.x + 1, gridPosition.y - 1));
             }
-
-            if (gridPosition.y + 1 < height)
+            if (gridPosition.y + 1 < gridSystem.GetHeight())
             {
-                //right up
+                // Right Up
                 neighbourList.Add(GetNode(gridPosition.x + 1, gridPosition.y + 1));
             }
         }
 
         if (gridPosition.y - 1 >= 0)
         {
-            //Down
+            // Down
             neighbourList.Add(GetNode(gridPosition.x + 0, gridPosition.y - 1));
         }
-
-        if (gridPosition.y + 1 < height)
+        if (gridPosition.y + 1 < gridSystem.GetHeight())
         {
-            //Up
+            // Up
             neighbourList.Add(GetNode(gridPosition.x + 0, gridPosition.y + 1));
         }
 
-
         return neighbourList;
     }
+
 
     private List<GridPosition> CalculatePath(PathNode endNode)
     {
