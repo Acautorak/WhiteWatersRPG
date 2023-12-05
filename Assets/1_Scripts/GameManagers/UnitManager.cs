@@ -5,28 +5,30 @@ using UnityEngine;
 
 public class UnitManager : MonoBehaviour
 {
+
     public static UnitManager Instance { get; private set; }
+
+
     private List<Unit> unitList;
-    private List<Unit> friendyUnitList;
+    private List<Unit> friendlyUnitList;
     private List<Unit> enemyUnitList;
 
 
     private void Awake()
     {
-
         if (Instance != null)
         {
-            Debug.LogError("ne radi singlton " + transform + " " + Instance);
+            Debug.LogError("There's more than one UnitManager! " + transform + " - " + Instance);
             Destroy(gameObject);
             return;
         }
         Instance = this;
 
         unitList = new List<Unit>();
-        friendyUnitList = new List<Unit>();
+        friendlyUnitList = new List<Unit>();
         enemyUnitList = new List<Unit>();
-
     }
+
     private void Start()
     {
         Unit.OnAnyUnitSpawned += Unit_OnAnyUnitSpawned;
@@ -36,21 +38,23 @@ public class UnitManager : MonoBehaviour
     private void Unit_OnAnyUnitSpawned(object sender, EventArgs e)
     {
         Unit unit = sender as Unit;
+        Debug.LogWarning("Doso mi je" + unit.gameObject.ToString());
+
         unitList.Add(unit);
 
         if (unit.IsEnemy())
         {
             enemyUnitList.Add(unit);
-        }
-        else
+        } else
         {
-            friendyUnitList.Add(unit);
+            friendlyUnitList.Add(unit);
         }
     }
 
     private void Unit_OnAnyUnitDead(object sender, EventArgs e)
     {
         Unit unit = sender as Unit;
+
         unitList.Remove(unit);
 
         if (unit.IsEnemy())
@@ -59,7 +63,7 @@ public class UnitManager : MonoBehaviour
         }
         else
         {
-            friendyUnitList.Remove(unit);
+            friendlyUnitList.Remove(unit);
         }
     }
 
@@ -67,13 +71,16 @@ public class UnitManager : MonoBehaviour
     {
         return unitList;
     }
+
     public List<Unit> GetFriendlyUnitList()
     {
-        return friendyUnitList;
+        return friendlyUnitList;
     }
 
     public List<Unit> GetEnemyUnitList()
     {
         return enemyUnitList;
     }
+
 }
+

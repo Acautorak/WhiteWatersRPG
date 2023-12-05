@@ -62,9 +62,10 @@ public abstract class BaseAction : MonoBehaviour
         return image;
     }
 
-     public EnemyAiAction GetBestEnemyAiAction()
+    public EnemyAiAction GetBestEnemyAiAction()
     {
         List<EnemyAiAction> enemyAiActionList = new List<EnemyAiAction>();
+        List<EnemyAiAction> bestEnemyAiActionList = new List<EnemyAiAction>();
 
         List<GridPosition> validActionGridPositionList = GetValidActionGridPositionList();
 
@@ -74,19 +75,31 @@ public abstract class BaseAction : MonoBehaviour
             enemyAiActionList.Add(enemyAiAction);
         }
 
-        if(enemyAiActionList.Count > 0)
+        if (enemyAiActionList.Count > 0)
         {
-        enemyAiActionList.Sort((EnemyAiAction a, EnemyAiAction b) => b.actionValue - a.actionValue);
-        return enemyAiActionList[0];
+            enemyAiActionList.Sort((EnemyAiAction a, EnemyAiAction b) => b.actionValue - a.actionValue);
+            // return bestenemyAction[0]
+            foreach(EnemyAiAction enemyAiAction in enemyAiActionList)
+            {
+                if(enemyAiAction.actionValue == enemyAiActionList[0].actionValue)
+                {
+                    bestEnemyAiActionList.Add(enemyAiAction);
+                }
+            }
+            if (bestEnemyAiActionList.Count > 0)
+            {
+                return bestEnemyAiActionList[UnityEngine.Random.Range(0, bestEnemyAiActionList.Count - 1)];
+            }
+            else return null;
         }
         else
         {
             // No possible action 
             return null;
-        } 
+        }
     }
 
-    public abstract EnemyAiAction GetEnemyAiAction(GridPosition gridPosition); 
+    public abstract EnemyAiAction GetEnemyAiAction(GridPosition gridPosition);
 
-    
+
 }

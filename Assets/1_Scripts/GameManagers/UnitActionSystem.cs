@@ -36,6 +36,8 @@ public class UnitActionSystem : MonoBehaviour
 
     private void Start()
     {
+        SetSelectedUnit(selectedUnit);
+        TurnSystem.Instance.OnTurnChanged += TurnSystem_OnTurnChanged;
     }
 
     private void Update()
@@ -69,7 +71,6 @@ public class UnitActionSystem : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             GridPosition mouseGridPosition = LevelGrid.Instance.GetGridPosition(MousePosition.GetMouseWorldPosition2D());
-            Debug.LogError(mouseGridPosition);
             if (!selectedAction.IsValidActionGridPosition(mouseGridPosition))
             {
                 return;
@@ -151,5 +152,19 @@ public class UnitActionSystem : MonoBehaviour
     public BaseAction GetSelectedAction()
     {
         return selectedAction;
+    }
+
+    private void TurnSystem_OnTurnChanged(object sender, EventArgs e)
+    {
+        if(selectedUnit.GetHealthNormalized() <=0)
+        {
+            List<Unit> friendlyUnitList = UnitManager.Instance.GetFriendlyUnitList();
+
+            if(friendlyUnitList.Count >0)
+            {
+                SetSelectedUnit(friendlyUnitList[0]);
+            }
+            else Debug.LogWarning("Game Over");
+        }
     }
 }
