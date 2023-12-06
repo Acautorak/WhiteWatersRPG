@@ -38,8 +38,6 @@ public class UnitManager : MonoBehaviour
     private void Unit_OnAnyUnitSpawned(object sender, EventArgs e)
     {
         Unit unit = sender as Unit;
-        Debug.LogWarning("Doso mi je" + unit.gameObject.ToString());
-
         unitList.Add(unit);
 
         if (unit.IsEnemy())

@@ -23,6 +23,7 @@ public class ActionButtonUI : MonoBehaviour
         {
             UnitActionSystem.Instance.SetSelectedAction(baseAction);
         });
+//        button.onClick.AddListener(() => ButtonClickSound.Instance.PlayClickSound());
     }
 
     public void UpdateSelectedVisual()
