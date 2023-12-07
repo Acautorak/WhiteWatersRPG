@@ -49,9 +49,9 @@ Material:
     m_Floats:
     - _QueueControl: 0
     - _QueueOffset: 0
-    - _VoronoiAgitation: 0.2
-    - _VoronoiPower: 4
-    - _VoronoiScale: 3
+    - _VoronoiAgitation: 0.01
+    - _VoronoiPower: 5.21
+    - _VoronoiScale: 0.91
     m_Colors:
     - _BaseColor: {r: 0.03137255, g: 0.17254902, b: 0.24313726, a: 0.21176471}
     - _VoronoiColor: {r: 0.21960784, g: 2, b: 1.2627451, a: 1}
