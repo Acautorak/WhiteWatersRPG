@@ -20,7 +20,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: WaterShaderMaterial
+  m_Name: WaterShaderMaterial 1
   m_Shader: {fileID: -6465566751694194690, guid: 2c443f89dc7761544b470fda1213f50e, type: 3}
   m_ValidKeywords: []
   m_InvalidKeywords: []
@@ -49,12 +49,12 @@ Material:
     m_Floats:
     - _QueueControl: 0
     - _QueueOffset: 0
-    - _VoronoiAgitation: 0.5
-    - _VoronoiPower: 40
-    - _VoronoiScale: 14
+    - _VoronoiAgitation: 0.01
+    - _VoronoiPower: 5.21
+    - _VoronoiScale: 0.91
     m_Colors:
-    - _BaseColor: {r: 0.03137255, g: 0.17254902, b: 0.24313726, a: 0.21176471}
-    - _VoronoiColor: {r: 0.00797436, g: 0.00797436, b: 0.03773582, a: 1}
-    - _VoronoiSpeed: {r: 0, g: 0.002, b: 0, a: 0}
+    - _BaseColor: {r: 0.007689568, g: 0.040299065, b: 0.05660379, a: 0.21176471}
+    - _VoronoiColor: {r: 0.02617801, g: 0.34031415, b: 0.21465969, a: 1}
+    - _VoronoiSpeed: {r: 0, g: 0.04, b: 0, a: 0}
     - _VoronoiTiling: {r: 0.3, g: 0.7, b: 0, a: 0}
   m_BuildTextureStacks: []
