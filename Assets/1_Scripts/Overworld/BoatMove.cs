@@ -6,7 +6,7 @@ public class BoatMove : MonoBehaviour
 {
     [SerializeField] private Transform[] path0, path1, path2;
     [SerializeField] private int pathIndex = 0;
-    [SerializeField] private float moveTime = 2f, rotationTime = 5f;
+    [SerializeField] private float rotationTime = 5f;
     [SerializeField] private GameObject boat;
 
     private void Start()
