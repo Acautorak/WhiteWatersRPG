@@ -128,8 +128,8 @@ public class GridSystemVisual : MonoBehaviour
                 ShowGridPositionRange(selectedUnit.GetGridPosition(), shootAction.GetMaxShootDistance(), GridVisualType.RedSoft);
                 break;
         }
-        ShowGridPositionList(selectedAction.GetValidActionGridPositionList(), gridVisualType);
         //ShowAllGridPositions();
+        ShowGridPositionList(selectedAction.GetValidActionGridPositionList(), gridVisualType);
     }
 
     private void UnitActionSystem_OnSelectedActionChanged(object sender, EventArgs e)

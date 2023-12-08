@@ -32,6 +32,7 @@ public class BoatMove : MonoBehaviour
         {
             pathIndex = 0;
             Debug.LogWarning("dosli smo do kraja");
+            ShowDialog();
         }
     }
 
@@ -39,5 +40,10 @@ public class BoatMove : MonoBehaviour
     {
         Vector2 direction = (targetPosition - (Vector2)boat.transform.position).normalized;
         return Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg - 90;
+    }
+
+    public void ShowDialog()
+    {
+        
     }
 }
