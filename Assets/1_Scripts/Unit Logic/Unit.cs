@@ -18,6 +18,8 @@ public class Unit : MonoBehaviour
     [SerializeField] private bool isEnemy;
     [SerializeField] private bool canTakeTurn = false;
 
+    private UnitAnimator unitAnimator;
+
     private GridPosition gridPosition;
     private HealthSystem healthSystem;
 
@@ -28,6 +30,7 @@ public class Unit : MonoBehaviour
     {
         healthSystem = GetComponent<HealthSystem>();
         baseActionArray = GetComponents<BaseAction>();
+        unitAnimator = GetComponent<UnitAnimator>();
     }
 
     private void Start()
@@ -156,5 +159,9 @@ public class Unit : MonoBehaviour
         transform.position = LevelGrid.Instance.GetWorldPosition(gridPosition);
     }
 
+    public void PlayBlood()
+    {
+        unitAnimator.PlayBlood();
+    }
 
 }

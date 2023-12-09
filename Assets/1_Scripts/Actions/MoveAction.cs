@@ -45,6 +45,7 @@ public class MoveAction : BaseAction
         {
 
             float moveSpeed = 5f;
+            
             transform.position += new Vector3(moveSpeed * Time.deltaTime * moveDirection.x, moveSpeed * Time.deltaTime * moveDirection.y, 0);
 
 

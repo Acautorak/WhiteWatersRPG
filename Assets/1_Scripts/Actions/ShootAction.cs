@@ -64,7 +64,10 @@ public class ShootAction : BaseAction
                 break;
 
             case State.CoolOff:
-                transform.rotation = Quaternion.RotateTowards(transform.rotation, originalRotation, 5 * rotateSpeed * Time.deltaTime);
+                float rotationTime = 0.3f;
+                LeanTween.rotate(gameObject, originalRotation.eulerAngles, rotationTime)
+                    .setEase(LeanTweenType.easeOutQuad);
+                //transform.rotation = Quaternion.RotateTowards(transform.rotation, originalRotation, 5 * rotateSpeed * Time.deltaTime);
                 //transform.rotation = originalRotation; dd
                 break;
         }
