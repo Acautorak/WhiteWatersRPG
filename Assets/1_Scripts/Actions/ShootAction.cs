@@ -22,6 +22,7 @@ public class ShootAction : BaseAction
     private bool canShootBullet;
     private Quaternion originalRotation;
     float rotateSpeed = 10f;
+    [SerializeField] int damage;
 
     private enum State
     {
@@ -105,7 +106,7 @@ public class ShootAction : BaseAction
             targetUnit = targetUnit,
             shootingUnit = unit
         });
-        targetUnit.Damage(40);
+        targetUnit.Damage(damage);
     }
 
     public override string GetActionName()

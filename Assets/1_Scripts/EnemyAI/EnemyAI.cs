@@ -79,6 +79,8 @@ public class EnemyAI : MonoBehaviour
             if (TryTakeEnemyAIAction(enemyUnit, onEnemyAIActionComplete))
             {
                 return true;
+                
+
             }
         }
 

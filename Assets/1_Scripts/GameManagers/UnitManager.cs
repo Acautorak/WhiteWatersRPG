@@ -1,6 +1,8 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class UnitManager : MonoBehaviour
@@ -12,6 +14,9 @@ public class UnitManager : MonoBehaviour
     private List<Unit> unitList;
     private List<Unit> friendlyUnitList;
     private List<Unit> enemyUnitList;
+
+
+    public List<Unit> turnOrderList;
 
 
     private void Awake()
@@ -27,12 +32,22 @@ public class UnitManager : MonoBehaviour
         unitList = new List<Unit>();
         friendlyUnitList = new List<Unit>();
         enemyUnitList = new List<Unit>();
+
+        turnOrderList = new List<Unit>();
     }
 
     private void Start()
     {
         Unit.OnAnyUnitSpawned += Unit_OnAnyUnitSpawned;
         Unit.OnAnyUnitDead += Unit_OnAnyUnitDead;
+        StartCoroutine("AddAllUnitsToHashMap");
+    }
+
+    private IEnumerator AddAllUnitsToHashMap()
+    {
+        AddUnitsToHashMap();
+        yield return new WaitForSeconds(1);
+
     }
 
     private void Unit_OnAnyUnitSpawned(object sender, EventArgs e)
@@ -43,9 +58,11 @@ public class UnitManager : MonoBehaviour
         if (unit.IsEnemy())
         {
             enemyUnitList.Add(unit);
-        } else
+        }
+        else
         {
             friendlyUnitList.Add(unit);
+
         }
     }
 
@@ -78,6 +95,27 @@ public class UnitManager : MonoBehaviour
     public List<Unit> GetEnemyUnitList()
     {
         return enemyUnitList;
+    }
+
+
+    public void AddUnitsToHashMap()
+    {
+        for (int i = 0; i < Math.Max(friendlyUnitList.Count, enemyUnitList.Count); i++)
+        {
+            if (friendlyUnitList[i] != null)
+            {
+                turnOrderList.Add(friendlyUnitList[i]);
+                Debug.LogError("dodao sam friendly: " + friendlyUnitList[i].gameObject.name);
+            }
+
+            if (enemyUnitList[i] != null)
+            {
+                turnOrderList.Add(enemyUnitList[i]);
+                Debug.LogWarning("dodao sam enemy: " + enemyUnitList[i].gameObject.name);
+
+            }
+
+        }
     }
 
 }
