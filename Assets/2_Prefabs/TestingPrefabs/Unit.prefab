@@ -33,7 +33,7 @@ Transform:
   m_GameObject: {fileID: 9182552608679820319}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 5.5, y: 22, z: 0}
-  m_LocalScale: {x: 0.8, y: 0.8, z: 1}
+  m_LocalScale: {x: 0.95, y: 0.95, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 9182552608724524504}
@@ -56,7 +56,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isEnemy: 0
-  canTakeTurn: 0
+  unitStats: {fileID: 0}
 --- !u!61 &9182552608679820318
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -170,6 +170,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93d95b5cf58bfce48aa7987ded16f961, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  armor: 0
+  spellArmor: 0
+  elementalResistance: 0
+  strength: 0
+  inteligence: 0
+  agility: 0
+  perception: 0
+  initiative: 0
+  hitchance: 0.8
+  critChance: 0.05
+  dodgeChance: 0.05
 --- !u!1 &9182552608724524505
 GameObject:
   m_ObjectHideFlags: 0

@@ -836,6 +836,7 @@ GameObject:
   - component: {fileID: 264337776}
   - component: {fileID: 264337775}
   - component: {fileID: 264337782}
+  - component: {fileID: 264337783}
   m_Layer: 7
   m_Name: Unit (3)
   m_TagString: Untagged
@@ -944,7 +945,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isEnemy: 0
-  canTakeTurn: 0
+  unitStats: {fileID: 0}
 --- !u!4 &264337781
 Transform:
   m_ObjectHideFlags: 0
@@ -977,6 +978,29 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bloodVFX: {fileID: 1720643484}
+--- !u!114 &264337783
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 264337774}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93d95b5cf58bfce48aa7987ded16f961, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  armor: 0
+  spellArmor: 0
+  elementalResistance: 0
+  strength: 0
+  inteligence: 0
+  agility: 0
+  perception: 0
+  initiative: 4
+  hitchance: 0.8
+  critChance: 0.05
+  dodgeChance: 0.05
 --- !u!1 &330168712
 GameObject:
   m_ObjectHideFlags: 0
@@ -2203,7 +2227,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6e764b34ecc4b94db594939ddaa3063, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  turnOrderList: []
 --- !u!114 &797296464
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2778,6 +2801,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 704619593655039621, guid: 4fdfa1a0baf7ef44c9e6919f179d5017, type: 3}
+      propertyPath: initiative
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 7370563600594664962, guid: 4fdfa1a0baf7ef44c9e6919f179d5017, type: 3}
       propertyPath: m_RootOrder
       value: 13
@@ -3939,6 +3966,7 @@ GameObject:
   - component: {fileID: 1652940387}
   - component: {fileID: 1652940386}
   - component: {fileID: 1652940393}
+  - component: {fileID: 1652940394}
   m_Layer: 7
   m_Name: Unit (1)
   m_TagString: Untagged
@@ -4047,7 +4075,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isEnemy: 0
-  canTakeTurn: 0
+  unitStats: {fileID: 0}
 --- !u!4 &1652940392
 Transform:
   m_ObjectHideFlags: 0
@@ -4080,6 +4108,29 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bloodVFX: {fileID: 15928000}
+--- !u!114 &1652940394
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1652940385}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93d95b5cf58bfce48aa7987ded16f961, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  armor: 0
+  spellArmor: 0
+  elementalResistance: 0
+  strength: 0
+  inteligence: 0
+  agility: 0
+  perception: 0
+  initiative: 2
+  hitchance: 0.8
+  critChance: 0.05
+  dodgeChance: 0.05
 --- !u!1 &1659028102
 GameObject:
   m_ObjectHideFlags: 0
@@ -4236,6 +4287,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 704619593655039621, guid: 4fdfa1a0baf7ef44c9e6919f179d5017, type: 3}
+      propertyPath: initiative
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 7370563600296070031, guid: 4fdfa1a0baf7ef44c9e6919f179d5017, type: 3}
       propertyPath: m_Camera
       value: 
@@ -4315,6 +4370,7 @@ GameObject:
   - component: {fileID: 1737445800}
   - component: {fileID: 1737445799}
   - component: {fileID: 1737445806}
+  - component: {fileID: 1737445807}
   m_Layer: 7
   m_Name: Unit (2)
   m_TagString: Untagged
@@ -4423,7 +4479,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isEnemy: 0
-  canTakeTurn: 0
+  unitStats: {fileID: 0}
 --- !u!4 &1737445805
 Transform:
   m_ObjectHideFlags: 0
@@ -4456,6 +4512,29 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bloodVFX: {fileID: 1134592398}
+--- !u!114 &1737445807
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1737445798}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93d95b5cf58bfce48aa7987ded16f961, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  armor: 0
+  spellArmor: 0
+  elementalResistance: 0
+  strength: 0
+  inteligence: 0
+  agility: 0
+  perception: 0
+  initiative: 3
+  hitchance: 0.8
+  critChance: 0.05
+  dodgeChance: 0.05
 --- !u!1 &1739587465
 GameObject:
   m_ObjectHideFlags: 0
@@ -4718,6 +4797,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 704619593655039621, guid: 4fdfa1a0baf7ef44c9e6919f179d5017, type: 3}
+      propertyPath: initiative
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 7370563600296070031, guid: 4fdfa1a0baf7ef44c9e6919f179d5017, type: 3}
       propertyPath: m_Camera
       value: 
@@ -5255,6 +5338,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 704619593655039621, guid: 4fdfa1a0baf7ef44c9e6919f179d5017, type: 3}
+      propertyPath: initiative
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7370563600296070031, guid: 4fdfa1a0baf7ef44c9e6919f179d5017, type: 3}
       propertyPath: m_Camera
       value: 
@@ -5320,9 +5407,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4164640197842604115, guid: aa3a2e324e16dff4287718776ad8862c, type: 3}
+      propertyPath: initiative
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 9182552608679820316, guid: aa3a2e324e16dff4287718776ad8862c, type: 3}
       propertyPath: m_RootOrder
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 9182552608679820316, guid: aa3a2e324e16dff4287718776ad8862c, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 9182552608679820316, guid: aa3a2e324e16dff4287718776ad8862c, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.8
       objectReference: {fileID: 0}
     - target: {fileID: 9182552608679820316, guid: aa3a2e324e16dff4287718776ad8862c, type: 3}
       propertyPath: m_LocalPosition.x

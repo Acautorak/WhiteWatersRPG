@@ -17,6 +17,7 @@ public class UnitAnimator : MonoBehaviour
     private void Start()
     {
         healthSystem.OnDamaged += HealthSystem_OnDamaged;
+        healthSystem.OnDead += HealthSystem_OnDead;
     }
 
     public void PlayBlood()
@@ -66,5 +67,25 @@ public class UnitAnimator : MonoBehaviour
                 LeanTween.scale(gameObject, originalScale, animationDuration)
                     .setEase(LeanTweenType.easeInQuad);
             });
+    }
+
+    private void HealthSystem_OnDead(object sender, EventArgs e)
+    {
+        PlayBlood();
+        Debug.LogWarning("treba da umre");
+        StartCoroutine("DieAfter");
+
+    }
+
+    private IEnumerator DieAfter()
+    {
+        yield return new WaitForSeconds(2);
+        Destroy(gameObject);
+    }
+
+    private void OnDestroy()
+    {
+        Debug.LogError("ZAUSTAVLJAM KORUTINE");
+        StopAllCoroutines();
     }
 }

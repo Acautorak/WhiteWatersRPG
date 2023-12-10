@@ -10,12 +10,13 @@ public class UnitStats : MonoBehaviour
     public int elementalResistance;
     [Space(5)]
 
-    [Header("Defence")]
+    [Header("Core stats")]
 
     public int strength;
     public int inteligence;
     public int agility;
     public int perception;
+    public int initiative;
     [Space(5)]
 
     [Header("---%---")]

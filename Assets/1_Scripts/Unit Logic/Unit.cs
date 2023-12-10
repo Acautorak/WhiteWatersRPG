@@ -16,7 +16,7 @@ public class Unit : MonoBehaviour
 
 
     [SerializeField] private bool isEnemy;
-    [SerializeField] private bool canTakeTurn = false;
+    //[SerializeField] private bool canTakeTurn = false;
 
     private UnitAnimator unitAnimator;
 
@@ -25,12 +25,14 @@ public class Unit : MonoBehaviour
 
     private BaseAction[] baseActionArray;
     private int actionPoints = ACTION_POINTS_MAX;
+    public UnitStats unitStats;
 
     private void Awake()
     {
         healthSystem = GetComponent<HealthSystem>();
         baseActionArray = GetComponents<BaseAction>();
         unitAnimator = GetComponent<UnitAnimator>();
+        unitStats = GetComponent<UnitStats>();
     }
 
     private void Start()
@@ -135,7 +137,6 @@ public class Unit : MonoBehaviour
     private void HealthSystem_OnDead(object sender, EventArgs e)
     {
         LevelGrid.Instance.RemoveUnitAtGridPosition(gridPosition, this);
-        Destroy(gameObject);
         OnAnyUnitDead?.Invoke(this, EventArgs.Empty);
     }
 
