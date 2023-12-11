@@ -7,16 +7,27 @@ using UnityEngine.VFX;
 public class UnitAnimator : MonoBehaviour
 {
     [SerializeField] private VisualEffect bloodVFX;
+    [SerializeField] private Transform bulletProjectilePrefab;
+    [SerializeField] private Transform bulletOriginTransform;
+
+    private Animator animator;
+    private Unit thisUnit;
     private HealthSystem healthSystem;
 
     private void Awake()
     {
         healthSystem = GetComponent<HealthSystem>();
+        thisUnit = GetComponent<Unit>();
 
-        if(TryGetComponent<MoveAction>(out MoveAction moveAction))
+        if (TryGetComponent<MoveAction>(out MoveAction moveAction))
         {
             moveAction.OnStartMoving += MoveAction_OnStartMoving;
-            moveAction.OnStopMoving +=MoveACtion_OnStopMoving;
+            moveAction.OnStopMoving += MoveAction_OnStopMoving;
+        }
+
+        if (TryGetComponent<ShootAction>(out ShootAction shootAction))
+        {
+            shootAction.OnShoot += ShootAction_OnShot;
         }
     }
 
@@ -25,6 +36,7 @@ public class UnitAnimator : MonoBehaviour
         healthSystem.OnDamaged += HealthSystem_OnDamaged;
         healthSystem.OnDead += HealthSystem_OnDead;
     }
+
 
     public void PlayBlood()
     {
@@ -59,7 +71,7 @@ public class UnitAnimator : MonoBehaviour
     public void ShrinkAndReturnAnimation()
     {
 
-        float shrinkScaleAmount = 0.95f;
+        float shrinkScaleAmount = 1.1f;
         float animationDuration = 0.5f;
         // Store the original scale
         Vector3 originalScale = transform.localScale;
@@ -100,8 +112,26 @@ public class UnitAnimator : MonoBehaviour
 
     }
 
-    private void MoveACtion_OnStopMoving(object sender, EventArgs e)
+    private void MoveAction_OnStopMoving(object sender, EventArgs e)
     {
-        
+
     }
+
+    private void ShootAction_OnShot(object sender, ShootAction.OnShootEventArgs e)
+    {
+        Transform bulletProjectileTransform = Instantiate(bulletProjectilePrefab, bulletOriginTransform.position, Quaternion.identity);
+        BulletProjectile bulletProjectile = bulletProjectileTransform.GetComponent<BulletProjectile>();
+        bulletProjectile.Setup(e.targetUnit.GetWorldPosition());
+    }
+
+    public void SetIdleAnimator()
+    {
+        animator.SetBool("isSelected", true);
+    }
+
+    public void HideIdleAnimator()
+    {
+        animator.SetBool("isSelected", false);
+    }
+
 }

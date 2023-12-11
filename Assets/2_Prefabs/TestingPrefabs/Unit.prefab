@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1333225588795203481
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8029292321584005026}
+  m_Layer: 7
+  m_Name: BulletOrigin
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8029292321584005026
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1333225588795203481}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.25, y: 3.125, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 9182552608679820316}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &9182552608679820319
 GameObject:
   m_ObjectHideFlags: 0
@@ -16,6 +47,7 @@ GameObject:
   - component: {fileID: 9182552608679820313}
   - component: {fileID: 9182552608679820312}
   - component: {fileID: 9182552608679820311}
+  - component: {fileID: 6766970425536197545}
   - component: {fileID: 4164640197842604115}
   m_Layer: 7
   m_Name: Unit
@@ -40,6 +72,7 @@ Transform:
   - {fileID: 9182552608860921833}
   - {fileID: 9182552609054182889}
   - {fileID: 8206865581638606412}
+  - {fileID: 8029292321584005026}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -158,6 +191,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bloodVFX: {fileID: 6139524176600456839}
+  bulletProjectilePrefab: {fileID: 5563327662557821448, guid: e411410b4425cc944898b87c16b8a6dc, type: 3}
+  bulletOriginTransform: {fileID: 8029292321584005026}
+--- !u!114 &6766970425536197545
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9182552608679820319}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62b2d1a55a84e5549b5c08dd19e3cb3b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  image: {fileID: 21300000, guid: 293e0ebfe7f72bd42a412ee68c809230, type: 3}
+  grenadeProjectilePrefab: {fileID: 7736647504481243085, guid: 066ae8930bf8bcd49a42179828a08a2f, type: 3}
 --- !u!114 &4164640197842604115
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -339,8 +388,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 120808b5c66d02b4b914ae5e6dbc4f0d, type: 3}
-  m_Color: {r: 0.20055962, g: 0.84705883, b: 1, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 446b27aa298fb264986f7e64429767a6, type: 3}
+  m_Color: {r: 1, g: 0.89842427, b: 0.29622638, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -635,8 +684,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -2.03}
-  m_SizeDelta: {x: 5, y: 1}
+  m_AnchoredPosition: {x: 0, y: -2.3425}
+  m_SizeDelta: {x: 5, y: 0.4216}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &9182552609603426455
 CanvasRenderer:

@@ -165,4 +165,14 @@ public class Unit : MonoBehaviour
         unitAnimator.PlayBlood();
     }
 
+    public void SetIdleAnimator()
+    {
+        unitAnimator.SetIdleAnimator();
+    }
+
+    public void HideIdleAnimator()
+    {
+        unitAnimator.HideIdleAnimator();
+    }
+
 }
