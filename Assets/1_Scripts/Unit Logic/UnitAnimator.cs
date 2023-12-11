@@ -12,6 +12,12 @@ public class UnitAnimator : MonoBehaviour
     private void Awake()
     {
         healthSystem = GetComponent<HealthSystem>();
+
+        if(TryGetComponent<MoveAction>(out MoveAction moveAction))
+        {
+            moveAction.OnStartMoving += MoveAction_OnStartMoving;
+            moveAction.OnStopMoving +=MoveACtion_OnStopMoving;
+        }
     }
 
     private void Start()
@@ -87,5 +93,15 @@ public class UnitAnimator : MonoBehaviour
     {
         Debug.LogError("ZAUSTAVLJAM KORUTINE");
         StopAllCoroutines();
+    }
+
+    private void MoveAction_OnStartMoving(object sender, EventArgs e)
+    {
+
+    }
+
+    private void MoveACtion_OnStopMoving(object sender, EventArgs e)
+    {
+        
     }
 }
