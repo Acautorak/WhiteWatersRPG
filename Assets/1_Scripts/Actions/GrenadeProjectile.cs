@@ -11,7 +11,7 @@ public class GrenadeProjectile : MonoBehaviour
     [SerializeField] private TrailRenderer trailRenderer;
     private Vector3 targetPosition;
     private Action onGrenadeBehaviourComplete;
-    
+
 
     private void Update()
     {
@@ -20,15 +20,20 @@ public class GrenadeProjectile : MonoBehaviour
         transform.position += moveDir * moveSpeed * Time.deltaTime;
 
         float reachTargetDistance = 0.2f;
-        if (Vector3.Distance(transform.position, targetPosition)< reachTargetDistance)
+        if (Vector3.Distance(transform.position, targetPosition) < reachTargetDistance)
         {
             float damageRadius = 11f;
             Collider2D[] colliderArray = Physics2D.OverlapCircleAll(targetPosition, damageRadius);
-            foreach(Collider2D collider in colliderArray)
+            foreach (Collider2D collider in colliderArray)
             {
-                if(collider.TryGetComponent<Unit>(out Unit targetUnit))
+                if (collider.TryGetComponent<Unit>(out Unit targetUnit))
                 {
                     targetUnit.Damage(30);
+                }
+
+                if (collider.TryGetComponent<DestructibleCrate>(out DestructibleCrate destructibleCrate))
+                {
+                    destructibleCrate.Damage();
                 }
 
             }
