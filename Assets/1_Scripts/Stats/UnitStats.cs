@@ -11,7 +11,6 @@ public class UnitStats : MonoBehaviour
     [Space(5)]
 
     [Header("Core stats")]
-
     public int strength;
     public int inteligence;
     public int agility;
@@ -20,9 +19,14 @@ public class UnitStats : MonoBehaviour
     [Space(5)]
 
     [Header("---%---")]
+    public int hitchance = 80;
+    public int critChance = 5;
+    public int dodgeChance = 5;
+    [Space(5)]
 
-    public float hitchance = 0.8f;
-    public float critChance = 0.05f;
-    public float dodgeChance = 0.05f;
+    [Header("Misc")]
+    public int miscDef;
+    public int miscAttack;
+
 
 }

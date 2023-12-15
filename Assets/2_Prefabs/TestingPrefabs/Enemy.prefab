@@ -517,17 +517,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93d95b5cf58bfce48aa7987ded16f961, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  armor: 0
-  spellArmor: 0
-  elementalResistance: 0
-  strength: 0
-  inteligence: 0
-  agility: 0
+  armor: 3
+  spellArmor: 3
+  elementalResistance: 10
+  strength: 20
+  inteligence: 20
+  agility: 20
   perception: 0
   initiative: 0
-  hitchance: 0.8
-  critChance: 0.05
-  dodgeChance: 0.05
+  hitchance: 0
+  critChance: 0
+  dodgeChance: 0
+  miscDef: 0
+  miscAttack: 0
 --- !u!1 &7370563601163212587
 GameObject:
   m_ObjectHideFlags: 0

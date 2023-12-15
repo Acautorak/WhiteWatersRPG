@@ -29,6 +29,12 @@ public class UnitAnimator : MonoBehaviour
         {
             shootAction.OnShoot += ShootAction_OnShot;
         }
+
+        if(TryGetComponent<SwordAction>(out SwordAction swordAction))
+        {
+            swordAction.OnSwordActionStarted += SwordAction_OnSwordActionStarted;
+            swordAction.OnSwordActionCompleted += SwordAction_OnSwordActionCompleted;
+        }
     }
 
     private void Start()
@@ -132,6 +138,16 @@ public class UnitAnimator : MonoBehaviour
     public void HideIdleAnimator()
     {
         animator.SetBool("isSelected", false);
+    }
+
+    private void SwordAction_OnSwordActionStarted(object sender, EventArgs e)
+    {
+
+    }
+
+    private void SwordAction_OnSwordActionCompleted(object sender, EventArgs e)
+    {
+        
     }
 
 }

@@ -116,7 +116,7 @@ public class ShootAction : BaseAction
             targetUnit = targetUnit,
             shootingUnit = unit
         });
-        targetUnit.Damage(damage);
+        targetUnit.Damage(DamageManager.Instance.CalculateRangedDamage(unit, targetUnit, damage));
     }
 
     public override string GetActionName()

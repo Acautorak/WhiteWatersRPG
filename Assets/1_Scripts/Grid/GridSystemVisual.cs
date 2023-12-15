@@ -58,6 +58,7 @@ public class GridSystemVisual : MonoBehaviour
 
         UnitActionSystem.Instance.OnSelectedActionChanged += UnitActionSystem_OnSelectedActionChanged;
         LevelGrid.Instance.OnAnyUnitMovedGridPosition += LevelGrid_OnAnyUnitMovedGridPosition;
+        TurnSystem.Instance.OnTurnChanged += TurnSystem_OnTurnChanged;
         UpdateGridVisual();
         //UnitManager.Instance.AddUnitsToHashMap();
     }
@@ -100,6 +101,27 @@ public class GridSystemVisual : MonoBehaviour
 
         ShowGridPositionList(gridPositionList, gridVisualType);
     }
+
+    private void ShowGridPositionRangeSquare(GridPosition gridPosition, int range, GridVisualType gridVisualType)
+    {
+        List<GridPosition> gridPositionList = new List<GridPosition>();
+        for (int x = -range; x <= range; x++)
+        {
+            for (int y = -range; y <= range; y++)
+            {
+                GridPosition testGridPosition = gridPosition + new GridPosition(x, y);
+
+                if (!LevelGrid.Instance.IsValidGridPosition(testGridPosition))
+                {
+                    continue;
+                }
+
+                gridPositionList.Add(testGridPosition);
+            }
+        }
+
+        ShowGridPositionList(gridPositionList, gridVisualType);
+    }
     public void ShowGridPositionList(List<GridPosition> gridPositionList, GridVisualType gridVisualType)
     {
         foreach (GridPosition gridPosition in gridPositionList)
@@ -128,6 +150,15 @@ public class GridSystemVisual : MonoBehaviour
 
                 ShowGridPositionRange(selectedUnit.GetGridPosition(), shootAction.GetMaxShootDistance(), GridVisualType.RedSoft);
                 break;
+
+            case SwordAction swordAction:
+                gridVisualType = GridVisualType.Red;
+
+                ShowGridPositionRangeSquare(selectedUnit.GetGridPosition(), swordAction.GetMaxSwordDistance(), GridVisualType.RedSoft);
+                break;
+            case GrenadeAction grenadeAction:
+                gridVisualType = GridVisualType.Yellow;
+                break;
         }
         //ShowAllGridPositions();
         ShowGridPositionList(selectedAction.GetValidActionGridPositionList(), gridVisualType);
@@ -141,6 +172,12 @@ public class GridSystemVisual : MonoBehaviour
     private void LevelGrid_OnAnyUnitMovedGridPosition(object sender, EventArgs e)
     {
         UpdateGridVisual();
+        HideAllGridPositions();
+    }
+
+    public void TurnSystem_OnTurnChanged(object sender, EventArgs e)
+    {
+        HideAllGridPositions();
     }
 
     private Sprite GetGridVisualTypeSprite(GridVisualType gridVisualType)
