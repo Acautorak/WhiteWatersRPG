@@ -24,6 +24,7 @@ public class EnemyAI : MonoBehaviour
     private void Start()
     {
         TurnSystem.Instance.OnTurnChanged += TurnSystem_OnTurnChanged;
+        UnitActionSystem.Instance.OnEnemyUnitSelected += UnitActionSystem_OnEnemyUnitSelected;
     }
 
     private void Update()
@@ -44,7 +45,8 @@ public class EnemyAI : MonoBehaviour
                     if (TryTakeEnemyAIAction(SetStateTakingTurn))
                     {
                         state = State.Busy;
-                    } else
+                    }
+                    else
                     {
                         // No more enemies have actions they can take, end enemy turn
                         TurnSystem.Instance.NextTurn();
@@ -71,6 +73,22 @@ public class EnemyAI : MonoBehaviour
         }
     }
 
+    private bool TryTakeEnemyAIAction()
+    {
+        Unit enemyUnit = UnitActionSystem.Instance.GetSelectedUnit();
+        if (!enemyUnit.IsEnemy())
+        {
+            return false;
+        }
+        else
+        {
+            if (TryTakeEnemyAIAction(enemyUnit, SetStateTakingTurn))
+            {
+                return true;
+            }
+        }
+        return false;
+    }
     private bool TryTakeEnemyAIAction(Action onEnemyAIActionComplete)
     {
         foreach (Unit enemyUnit in UnitManager.Instance.GetEnemyUnitList())
@@ -79,7 +97,7 @@ public class EnemyAI : MonoBehaviour
             if (TryTakeEnemyAIAction(enemyUnit, onEnemyAIActionComplete))
             {
                 return true;
-                
+
 
             }
         }
@@ -125,6 +143,19 @@ public class EnemyAI : MonoBehaviour
         else
         {
             return false;
+        }
+    }
+
+    private void UnitActionSystem_OnEnemyUnitSelected(object sender, EventArgs e)
+    {
+        if (TryTakeEnemyAIAction())
+        {
+            state = State.Busy;
+        }
+        else
+        {
+            // No more enemies have actions they can take, end enemy turn
+            TurnSystem.Instance.NextTurn();
         }
     }
 

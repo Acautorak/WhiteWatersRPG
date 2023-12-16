@@ -61,6 +61,7 @@ public class GridSystemVisual : MonoBehaviour
         TurnSystem.Instance.OnTurnChanged += TurnSystem_OnTurnChanged;
         UpdateGridVisual();
         UnitManager.Instance.SortAllUnitsByInitiative();
+        UnitActionSystem.Instance.SetupSelectedUnit();
     }
 
     public void HideAllGridPositions()

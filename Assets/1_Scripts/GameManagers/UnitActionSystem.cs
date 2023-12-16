@@ -14,6 +14,8 @@ public class UnitActionSystem : MonoBehaviour
     public event EventHandler<bool> OnBusyChanged;
     public event EventHandler OnActionStarted;
 
+    public event EventHandler OnEnemyUnitSelected;
+
 
 
     [SerializeField] private Unit selectedUnit;
@@ -22,6 +24,7 @@ public class UnitActionSystem : MonoBehaviour
     [SerializeField] private BaseAction selectedAction;
 
     private bool isBusy;
+    private int selectedUnitIndex;
 
     private void Awake()
     {
@@ -61,7 +64,7 @@ public class UnitActionSystem : MonoBehaviour
         if (TryHandleUnitSelecetion())
         {
             return;
-        }
+        } 
 
         HandleSelectedAction();
     }
@@ -155,17 +158,43 @@ public class UnitActionSystem : MonoBehaviour
         return selectedAction;
     }
 
+    public void SelectNextUnit()
+    {
+        selectedUnitIndex++;
+        selectedUnit = UnitManager.Instance.GetUnitList()[selectedUnitIndex];
+
+        if (selectedUnit.IsEnemy())
+        {
+            //OnEnemyUnitSelected?.Invoke(this, EventArgs.Empty);
+            SelectNextUnit();
+        }
+
+        if (selectedUnitIndex > UnitManager.Instance.GetUnitList().Count)
+        {
+            selectedUnitIndex = 0;
+        }
+    }
+
+    public void SetupSelectedUnit()
+    {
+        selectedUnitIndex = 0;
+        selectedUnit = UnitManager.Instance.GetUnitList()[selectedUnitIndex];
+        SetSelectedUnit(selectedUnit);
+    }
+
     private void TurnSystem_OnTurnChanged(object sender, EventArgs e)
     {
-        if(selectedUnit.GetHealthNormalized() <=0)
+        if (selectedUnit.GetHealthNormalized() <= 0)
         {
             List<Unit> friendlyUnitList = UnitManager.Instance.GetFriendlyUnitList();
 
-            if(friendlyUnitList.Count >0)
+            if (friendlyUnitList.Count > 0)
             {
                 SetSelectedUnit(friendlyUnitList[0]);
             }
             else Debug.LogWarning("Game Over");
         }
+
+        //SelectNextUnit();
     }
 }
