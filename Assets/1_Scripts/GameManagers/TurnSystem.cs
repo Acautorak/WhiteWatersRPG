@@ -33,9 +33,9 @@ public class TurnSystem : MonoBehaviour
 
     public void NextRound()
     {
-        roundNumber ++;
+        roundNumber++;
         OnRoundChanged?.Invoke(this, EventArgs.Empty);
-        if(roundNumber > UnitManager.Instance.GetUnitList().Count)
+        if (roundNumber > UnitManager.Instance.GetUnitList().Count)
         {
             roundNumber = 1;
             NextTurn();

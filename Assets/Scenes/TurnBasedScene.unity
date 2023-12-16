@@ -621,7 +621,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4164640197842604115, guid: aa3a2e324e16dff4287718776ad8862c, type: 3}
       propertyPath: initiative
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 9182552608679820316, guid: aa3a2e324e16dff4287718776ad8862c, type: 3}
       propertyPath: m_RootOrder
@@ -1280,6 +1280,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6e764b34ecc4b94db594939ddaa3063, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  unitList: []
 --- !u!114 &797296464
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3483,7 +3484,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4164640197842604115, guid: aa3a2e324e16dff4287718776ad8862c, type: 3}
       propertyPath: initiative
-      value: 1
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 9182552608679820316, guid: aa3a2e324e16dff4287718776ad8862c, type: 3}
       propertyPath: m_RootOrder

@@ -60,7 +60,7 @@ public class GridSystemVisual : MonoBehaviour
         LevelGrid.Instance.OnAnyUnitMovedGridPosition += LevelGrid_OnAnyUnitMovedGridPosition;
         TurnSystem.Instance.OnTurnChanged += TurnSystem_OnTurnChanged;
         UpdateGridVisual();
-        //UnitManager.Instance.AddUnitsToHashMap();
+        UnitManager.Instance.SortAllUnitsByInitiative();
     }
 
     public void HideAllGridPositions()

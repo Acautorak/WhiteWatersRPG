@@ -18,11 +18,22 @@ public class UnitStats : MonoBehaviour
     public int initiative;
     [Space(5)]
 
+    [Header("Secondary")]
+
+    public int attackPower;
+    public int spellPower;
+    public int attackPenetration;
+    public int spellPenetration;
+    public int accuracy;
+
+    [Space(5)]
+    
     [Header("---%---")]
     public int hitchance = 80;
     public int critChance = 5;
     public int dodgeChance = 5;
     [Space(5)]
+
 
     [Header("Misc")]
     public int miscDef;
