@@ -21,13 +21,13 @@ public class UnitActionSystemUI : MonoBehaviour
 
     private void Start()
     {
-        UnitActionSystem.Instance.OnSelectedUnitChanged += UnitActionSystem_OnSlecetedUnitChanged;
-        UnitActionSystem.Instance.OnSelectedActionChanged += UnitActionSystem_OnSelectedActionChanged;
-        UnitActionSystem.Instance.OnActionStarted += UnitActionSystem_OnActionStarted;
-        TurnSystem.Instance.OnTurnChanged += TurnSystem_OnTurnChanged;
+        UnifiedActionManager.Instance.OnSelectedUnitChanged += UnitActionSystem_OnSlecetedUnitChanged;
+        UnifiedActionManager.Instance.OnSelectedActionChanged += UnitActionSystem_OnSelectedActionChanged;
+        UnifiedActionManager.Instance.OnActionStarted += UnitActionSystem_OnActionStarted;
+        UnifiedActionManager.Instance.OnTurnChanged += TurnSystem_OnTurnChanged;
         Unit.OnAnyActionPointsChanged += Unit_OnAnyActionPointsChanged;
 
-        CreateUnitActionButtons();
+        //CreateUnitActionButtons();
         UpdateSelectedVisual();
         UpdateActionPointsText();
     }
@@ -41,7 +41,8 @@ public class UnitActionSystemUI : MonoBehaviour
 
         actionButtonUIList.Clear();
 
-        Unit selectedUnit = UnitActionSystem.Instance.GetSelectedUnit();
+        //UnitActionSystem
+        Unit selectedUnit = UnifiedActionManager.Instance.GetSelectedUnit();
         foreach (BaseAction baseAction in selectedUnit.GetBaseActionArray())
         {
             Transform actionButtonTransform = Instantiate(actionButtonPrefab, actionButtonContainerTransform);
@@ -83,9 +84,10 @@ public class UnitActionSystemUI : MonoBehaviour
 
     private void UpdateActionPointsText()
     {
-        Unit selectedUnit = UnitActionSystem.Instance.GetSelectedUnit();
+        //UnitActionSystem
+        Unit selectedUnit = UnifiedActionManager.Instance.GetSelectedUnit();
 
-        actionPointsText.text = "Action points: " + selectedUnit.GetActionPoints();
+       // actionPointsText.text = "Action points: " + selectedUnit.GetActionPoints();
     }
 
     private void Unit_OnAnyActionPointsChanged(object sender, EventArgs e)

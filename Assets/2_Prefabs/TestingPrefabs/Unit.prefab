@@ -47,7 +47,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6139410149571142063
 Transform:
   m_ObjectHideFlags: 0
@@ -382,6 +382,11 @@ MonoBehaviour:
   agility: 30
   perception: 1
   initiative: 0
+  attackPower: 0
+  spellPower: 0
+  attackPenetration: 0
+  spellPenetration: 0
+  accuracy: 0
   hitchance: 0
   critChance: 0
   dodgeChance: 0

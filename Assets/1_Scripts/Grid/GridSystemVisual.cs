@@ -56,12 +56,14 @@ public class GridSystemVisual : MonoBehaviour
             }
         }
 
-        UnitActionSystem.Instance.OnSelectedActionChanged += UnitActionSystem_OnSelectedActionChanged;
+
+        // UnitActionSystem
+        UnifiedActionManager.Instance.OnSelectedActionChanged += UnitActionSystem_OnSelectedActionChanged;
         LevelGrid.Instance.OnAnyUnitMovedGridPosition += LevelGrid_OnAnyUnitMovedGridPosition;
-        TurnSystem.Instance.OnTurnChanged += TurnSystem_OnTurnChanged;
+        UnifiedActionManager.Instance.OnTurnChanged += TurnSystem_OnTurnChanged;
+        UnifiedActionManager.Instance.SortAllUnitsByInitiative();
+        UnifiedActionManager.Instance.SetupSelectedUnit();
         UpdateGridVisual();
-        UnitManager.Instance.SortAllUnitsByInitiative();
-        UnitActionSystem.Instance.SetupSelectedUnit();
     }
 
     public void HideAllGridPositions()
@@ -134,9 +136,9 @@ public class GridSystemVisual : MonoBehaviour
     private void UpdateGridVisual()
     {
         HideAllGridPositions();
-
-        BaseAction selectedAction = UnitActionSystem.Instance.GetSelectedAction();
-        Unit selectedUnit = UnitActionSystem.Instance.GetSelectedUnit();
+        //UnitActionSystem
+        BaseAction selectedAction = UnifiedActionManager.Instance.GetSelectedAction();
+        Unit selectedUnit = UnifiedActionManager.Instance.GetSelectedUnit();
 
         GridVisualType gridVisualType;
         switch (selectedAction)

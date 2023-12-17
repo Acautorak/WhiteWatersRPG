@@ -250,7 +250,7 @@ public class UnifiedActionManager : MonoBehaviour
     }
     private void TurnSystem_OnTurnChanged(object sender, EventArgs e)
     {
-        if (!TurnSystem.Instance.IsPlayerTurn())
+        if (!IsPlayerTurn())
         {
             state = State.TakingTurn;
             timer = 2f;
@@ -351,6 +351,7 @@ public class UnifiedActionManager : MonoBehaviour
         friendlyUnitList.Sort((a, b) => b.unitStats.initiative.CompareTo(a.unitStats.initiative));
         enemyUnitList.Sort((a, b) => b.unitStats.initiative.CompareTo(a.unitStats.initiative));
         Debug.LogError("uspeo sam da isortiram unite po inicijativi");
+        SetupSelectedUnit();
     }
     #endregion
 }

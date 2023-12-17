@@ -15,7 +15,8 @@ public class UnitSelectedVisual : MonoBehaviour
 
     private void Start()
     {
-        UnitActionSystem.Instance.OnSelectedUnitChanged += UnitActionSystem_OnSelectedUnitChanged;
+        UnifiedActionManager.Instance.OnSelectedUnitChanged += UnitActionSystem_OnSelectedUnitChanged;
+        //UnitActionSystem.Instance.OnSelectedUnitChanged += UnitActionSystem_OnSelectedUnitChanged;
 
         UpdateVisual();
     }
@@ -27,11 +28,11 @@ public class UnitSelectedVisual : MonoBehaviour
 
     private void UpdateVisual()
     {
-        if(UnitActionSystem.Instance.GetSelectedUnit() == unit)
+        if (UnifiedActionManager.Instance.GetSelectedUnit() == unit) // UnitActionSystem
         {
             spriteRenderer.enabled = true;
         }
-        else 
+        else
         {
             spriteRenderer.enabled = false;
         }
@@ -39,7 +40,9 @@ public class UnitSelectedVisual : MonoBehaviour
 
     private void OnDestroy()
     {
-        UnitActionSystem.Instance.OnSelectedUnitChanged -= UnitActionSystem_OnSelectedUnitChanged;
+        //UnitActionSystem.Instance.OnSelectedUnitChanged -= UnitActionSystem_OnSelectedUnitChanged;
+        UnifiedActionManager.Instance.OnSelectedUnitChanged -= UnitActionSystem_OnSelectedUnitChanged;
+        
     }
 
 }

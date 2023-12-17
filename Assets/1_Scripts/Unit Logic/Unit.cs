@@ -41,7 +41,8 @@ public class Unit : MonoBehaviour
         LevelGrid.Instance.AddUnitAtGridPosition(gridPosition, this);
         FixateUnitAtGridPosition();
 
-        TurnSystem.Instance.OnTurnChanged += TurnSystem_OnTurnChanged;
+        UnifiedActionManager.Instance.OnTurnChanged += TurnSystem_OnTurnChanged;
+        //TurnSystem.Instance.OnTurnChanged += TurnSystem_OnTurnChanged;
         healthSystem.OnDead += HealthSystem_OnDead;
         OnAnyUnitSpawned?.Invoke(this, EventArgs.Empty);
     }
@@ -126,7 +127,8 @@ public class Unit : MonoBehaviour
 
     private void TurnSystem_OnTurnChanged(object sender, EventArgs e)
     {
-        if ((IsEnemy() && !TurnSystem.Instance.IsPlayerTurn()) || (!IsEnemy() && TurnSystem.Instance.IsPlayerTurn()))
+        //TurnSysytem
+        if ((IsEnemy() && !UnifiedActionManager.Instance.IsPlayerTurn()) || (!IsEnemy() && UnifiedActionManager.Instance.IsPlayerTurn()))
         {
             actionPoints = ACTION_POINTS_MAX;
 
