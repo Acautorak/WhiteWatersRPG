@@ -24,7 +24,7 @@ public class EnemyAI : MonoBehaviour
     private void Start()
     {
         TurnSystem.Instance.OnTurnChanged += TurnSystem_OnTurnChanged;
-        UnitActionSystem.Instance.OnEnemyUnitSelected += UnitActionSystem_OnEnemyUnitSelected;
+        //UnitActionSystem.Instance.OnEnemyUnitSelected += UnitActionSystem_OnEnemyUnitSelected;
     }
 
     private void Update()
@@ -93,7 +93,7 @@ public class EnemyAI : MonoBehaviour
     {
         foreach (Unit enemyUnit in UnitManager.Instance.GetEnemyUnitList())
         {
-            Debug.LogError(enemyUnit.gameObject.ToString());
+//            Debug.LogError(enemyUnit.gameObject.ToString());
             if (TryTakeEnemyAIAction(enemyUnit, onEnemyAIActionComplete))
             {
                 return true;

@@ -450,7 +450,7 @@ GameObject:
   - component: {fileID: 261396992}
   - component: {fileID: 261396991}
   m_Layer: 5
-  m_Name: Canvas
+  m_Name: TurnBasedCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
