@@ -133,7 +133,7 @@ public class GridSystemVisual : MonoBehaviour
         }
     }
 
-    private void UpdateGridVisual()
+    public void UpdateGridVisual()
     {
         HideAllGridPositions();
         //UnitActionSystem
@@ -175,11 +175,12 @@ public class GridSystemVisual : MonoBehaviour
     private void LevelGrid_OnAnyUnitMovedGridPosition(object sender, EventArgs e)
     {
         UpdateGridVisual();
-        HideAllGridPositions();
+        //HideAllGridPositions();
     }
 
     public void TurnSystem_OnTurnChanged(object sender, EventArgs e)
     {
+        if(!UnifiedActionManager.Instance.IsPlayerTurn())
         HideAllGridPositions();
     }
 

@@ -98,7 +98,7 @@ public class UnitAnimator : MonoBehaviour
         PlayBlood();
         Debug.LogWarning("treba da umre");
         StartCoroutine("DieAfter");
-
+        GridSystemVisual.Instance.UpdateGridVisual();
     }
 
     private IEnumerator DieAfter()

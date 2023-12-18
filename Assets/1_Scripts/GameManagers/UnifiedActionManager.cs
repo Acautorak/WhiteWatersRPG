@@ -26,7 +26,7 @@ public class UnifiedActionManager : MonoBehaviour
 
     private int turnNumber = 0;
     private int roundNumber = 1;
-    private bool isPlayerTurn = true;
+    [SerializeField]private bool isPlayerTurn = true;
 
     //--------EnemyAi------------
 
@@ -108,7 +108,7 @@ public class UnifiedActionManager : MonoBehaviour
                         else
                         {
                             // No more enemies have actions they can take, end enemy turn
-                            NextTurn();
+                            EnemyNextTurn();
                         }
                     }
                     break;
@@ -180,6 +180,8 @@ public class UnifiedActionManager : MonoBehaviour
     public void SetupSelectedUnit()
     {
         selectedUnit = unitList[turnNumber];
+        if(selectedUnit.IsEnemy()) isPlayerTurn = false;
+        else isPlayerTurn = true;
         SetSelectedUnit(selectedUnit);
     }
 
@@ -188,11 +190,11 @@ public class UnifiedActionManager : MonoBehaviour
     {
         if (selectedUnit.GetHealthNormalized() <= 0)
         {
-            List<Unit> friendlyUnitList = UnitManager.Instance.GetFriendlyUnitList();
+            List<Unit> friendlyUnitList = GetFriendlyUnitList();
 
             if (friendlyUnitList.Count > 0)
             {
-                SetSelectedUnit(friendlyUnitList[0]);
+                SetSelectedUnit(GetUnitList()[0]);
             }
             else Debug.LogWarning("Game Over");
         }
@@ -269,7 +271,22 @@ public class UnifiedActionManager : MonoBehaviour
             NextRound();
         }
 
-        isPlayerTurn = !isPlayerTurn;
+        //isPlayerTurn = !isPlayerTurn;
+        isPlayerTurn = false;
+        SetupSelectedUnit();
+
+        OnTurnChanged?.Invoke(this, EventArgs.Empty);
+    }
+
+    public void EnemyNextTurn()
+    {
+        turnNumber++;
+        if (turnNumber < 0 || turnNumber > unitList.Count-1)
+        {
+            turnNumber = 0;
+            NextRound();
+        }
+        isPlayerTurn = true;
         SetupSelectedUnit();
 
         OnTurnChanged?.Invoke(this, EventArgs.Empty);

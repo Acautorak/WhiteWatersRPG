@@ -2,9 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
-using UnityEngine.UI;
 using TMPro;
-using Unity.VisualScripting;
 
 public class UnitActionSystemUI : MonoBehaviour
 {
@@ -73,6 +71,8 @@ public class UnitActionSystemUI : MonoBehaviour
     private void TurnSystem_OnTurnChanged(object sender, EventArgs e)
     {
         UpdateActionPointsText();
+        if(UnifiedActionManager.Instance.IsPlayerTurn()) actionButtonContainerTransform.gameObject.SetActive(true);
+        else actionButtonContainerTransform.gameObject.SetActive(false);
     }
     private void UpdateSelectedVisual()
     {
