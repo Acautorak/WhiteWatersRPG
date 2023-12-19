@@ -70,6 +70,9 @@ public class UnifiedActionManager : MonoBehaviour
         Unit.OnAnyUnitDead += Unit_OnAnyUnitDead;
         OnTurnChanged += TurnSystem_OnTurnChanged;
         OnTurnChanged += UnitActionSystem_OnTurnChanged;
+        unitList = new List<Unit>();
+        enemyUnitList = new List<Unit>();
+        friendlyUnitList = new List<Unit>();
     }
 
     private void Update()
@@ -116,7 +119,6 @@ public class UnifiedActionManager : MonoBehaviour
                     break;
             }
         }
-
     }
 
     #region ------------UnitActionSystemLogic--------------
@@ -344,6 +346,16 @@ public class UnifiedActionManager : MonoBehaviour
         else
         {
             friendlyUnitList.Remove(unit);
+        }
+
+        if(enemyUnitList.Count == 0)
+        {
+            Debug.LogWarning("Pobedio si!");
+        }
+
+        if(friendlyUnitList.Count == 0)
+        {
+            Debug.LogWarning("Izgubio si! ");
         }
     }
 

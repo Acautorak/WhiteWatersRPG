@@ -41,6 +41,7 @@ public class GridSystemVisual : MonoBehaviour
 
     private void Start()
     {
+        Unit.OnAnyUnitDead += Unit_OnAnyUnitDead;
 
         gridSystemVisualSingleArray = new GridSystemVisualSingle[LevelGrid.Instance.GetWidth(), LevelGrid.Instance.GetHeight()];
         for (int x = 0; x < LevelGrid.Instance.GetWidth(); x++)
@@ -207,5 +208,10 @@ public class GridSystemVisual : MonoBehaviour
                 gridSystemVisualSingleArray[x, y].Show();
             }
         }
+    }
+
+    private void Unit_OnAnyUnitDead(object sender, EventArgs e)
+    {
+        UpdateGridVisual();
     }
 }
