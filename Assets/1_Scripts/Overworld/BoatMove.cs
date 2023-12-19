@@ -11,7 +11,6 @@ public class BoatMove : MonoBehaviour
 
     private void Start()
     {
-        StartMovement();
     }
     public void StartMovement()
     {

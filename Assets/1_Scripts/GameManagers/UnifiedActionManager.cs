@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;
 
 public class UnifiedActionManager : MonoBehaviour
 {
@@ -26,7 +27,7 @@ public class UnifiedActionManager : MonoBehaviour
 
     private int turnNumber = 0;
     private int roundNumber = 1;
-    [SerializeField]private bool isPlayerTurn = true;
+    [SerializeField] private bool isPlayerTurn = true;
 
     //--------EnemyAi------------
 
@@ -182,7 +183,7 @@ public class UnifiedActionManager : MonoBehaviour
     public void SetupSelectedUnit()
     {
         selectedUnit = unitList[turnNumber];
-        if(selectedUnit.IsEnemy()) isPlayerTurn = false;
+        if (selectedUnit.IsEnemy()) isPlayerTurn = false;
         else isPlayerTurn = true;
         SetSelectedUnit(selectedUnit);
     }
@@ -283,7 +284,7 @@ public class UnifiedActionManager : MonoBehaviour
     public void EnemyNextTurn()
     {
         turnNumber++;
-        if (turnNumber < 0 || turnNumber > unitList.Count-1)
+        if (turnNumber < 0 || turnNumber > unitList.Count - 1)
         {
             turnNumber = 0;
             NextRound();
@@ -348,13 +349,15 @@ public class UnifiedActionManager : MonoBehaviour
             friendlyUnitList.Remove(unit);
         }
 
-        if(enemyUnitList.Count == 0)
+        if (enemyUnitList.Count == 0)
         {
+            SceneManager.LoadScene("BoatScene");
             Debug.LogWarning("Pobedio si!");
         }
 
-        if(friendlyUnitList.Count == 0)
+        if (friendlyUnitList.Count == 0)
         {
+            SceneManager.LoadScene("BoatScene");
             Debug.LogWarning("Izgubio si! ");
         }
     }
