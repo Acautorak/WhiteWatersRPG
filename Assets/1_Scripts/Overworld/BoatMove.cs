@@ -22,7 +22,7 @@ public class BoatMove : MonoBehaviour
         if (pathIndex < path.Length)
         {
             Vector2 targetPosition = path[pathIndex].transform.position;
-            //LeanTween.move(boat, targetPosition, moveTime).setEase(LeanTweenType.pingPong).setOnComplete(() => { pathIndex++; MoveToNextWaypoint(path); });
+            //LeanTween.move(boat, targetPosition, moveTime).setEase(LeanTweenType.pingPong).setOnComplete(()  => { pathIndex++; MoveToNextWaypoint(path); });
             LeanTween.rotateZ(boat, CalculateTargetRotation(targetPosition), rotationTime).setEase(LeanTweenType.easeInOutQuad).setOnComplete(() => 
             { pathIndex++; 
             StartMovement(); });
