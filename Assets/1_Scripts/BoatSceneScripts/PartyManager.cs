@@ -13,7 +13,7 @@ public class PartyManager : MonoBehaviour
     {
         if (Instance != null)
         {
-            Debug.LogError("Singleton PartyManger " + transform + " - " + Instance);
+            Debug.LogError("Singleton PartyManger: " + transform + " - " + Instance);
             Destroy(gameObject);
             return;
         }
