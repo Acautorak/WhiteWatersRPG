@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public class BoatUiManager : MonoBehaviour
 {
+    [SerializeField] RectTransform theSalon;
     [SerializeField] RectTransform mainMenu;
     [SerializeField] Button startButton, storeButton, optionsButton;
     [SerializeField] private BoatMove boatMove;
