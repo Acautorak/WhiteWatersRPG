@@ -8,16 +8,31 @@ public class BoatUiManager : MonoBehaviour
 {
     [SerializeField] RectTransform theSalon;
     [SerializeField] RectTransform mainMenu;
-    [SerializeField] Button startButton, storeButton, optionsButton;
+    [SerializeField] Button startButton, storeButton, optionsButton, hideUiButton, xButton;
     [SerializeField] private BoatMove boatMove;
 
     private void Start()
     {
-        startButton.onClick.AddListener(()=> 
+        startButton.onClick.AddListener(() =>
         {
             boatMove.StartMovement();
             IslandGenerator.Instance.SpawnRandomIsland();
             HideUiElemenets();
+        });
+
+        storeButton.onClick.AddListener(() =>
+        {
+            theSalon.gameObject.SetActive(true);
+        });
+
+        hideUiButton.onClick.AddListener(() =>
+        {
+            HideUiElemenets();
+        });
+
+        xButton.onClick.AddListener(() =>
+        {
+            HideShop();
         });
     }
 
@@ -25,9 +40,20 @@ public class BoatUiManager : MonoBehaviour
     {
         float moveDuration = 1f;
         float offset = -1000f;
-        LeanTween.moveX(mainMenu, offset, moveDuration).setEase(LeanTweenType.easeInOutQuad).setOnComplete(()=>
+        LeanTween.moveX(mainMenu, offset, moveDuration).setEase(LeanTweenType.easeInOutQuad).setOnComplete(() =>
         {
-        mainMenu.gameObject.SetActive(false);
+            mainMenu.gameObject.SetActive(false);
         });
+
+        if (!theSalon.gameObject.activeInHierarchy) return;
+        LeanTween.moveX(theSalon, 2*offset, moveDuration).setEase(LeanTweenType.easeInOutQuad).setOnComplete(() =>
+        {
+            theSalon.gameObject.SetActive(false);
+        });
+    }
+
+    private void HideShop()
+    {
+        theSalon.gameObject.SetActive(false);
     }
 }
