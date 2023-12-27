@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class BoatUiManager : MonoBehaviour
+// Happy new year folk :)
 {
     [SerializeField] RectTransform theSalon;
     [SerializeField] RectTransform mainMenu;
