@@ -1,6 +1,8 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -11,6 +13,7 @@ public class BoatUiManager : MonoBehaviour
     [SerializeField] RectTransform mainMenu;
     [SerializeField] Button startButton, storeButton, optionsButton, hideUiButton, xButton;
     [SerializeField] private BoatMove boatMove;
+    [SerializeField] private TextMeshProUGUI goldText, gemsText;
 
     private void Start()
     {
@@ -35,6 +38,10 @@ public class BoatUiManager : MonoBehaviour
         {
             HideShop();
         });
+
+        PartyManager.Instance.OnGoldChanged += PartyManager_OnGoldChanged;
+        goldText.text = PartyManager.Instance.gold.ToString();
+        gemsText.text = PartyManager.Instance.gems.ToString();
     }
 
     public void HideUiElemenets()
@@ -56,5 +63,10 @@ public class BoatUiManager : MonoBehaviour
     private void HideShop()
     {
         theSalon.gameObject.SetActive(false);
+    }
+
+    private void PartyManager_OnGoldChanged(object sender, EventArgs e)
+    {
+        goldText.text = PartyManager.Instance.gold.ToString();
     }
 }
