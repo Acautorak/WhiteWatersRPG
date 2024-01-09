@@ -351,13 +351,13 @@ public class UnifiedActionManager : MonoBehaviour
 
         if (enemyUnitList.Count == 0)
         {
-            SceneManager.LoadScene("BoatScene");
-            Debug.LogWarning("Pobedio si!");
+            WinSceneChange();
         }
 
         if (friendlyUnitList.Count == 0)
         {
-            SceneManager.LoadScene("BoatScene");
+            SceneManager.UnloadSceneAsync((int)SceneIndex.NEW_TURN_BASED_SCENE);
+            SceneManager.LoadSceneAsync("BoatScene", LoadSceneMode.Single);
             Debug.LogWarning("Izgubio si! ");
         }
     }
@@ -386,4 +386,12 @@ public class UnifiedActionManager : MonoBehaviour
         SetupSelectedUnit();
     }
     #endregion
+
+    public void WinSceneChange()
+    {
+        Debug.Log("22");
+        SceneManager.UnloadSceneAsync((int)SceneIndex.NEW_TURN_BASED_SCENE);
+        SceneManager.LoadSceneAsync("BoatScene", LoadSceneMode.Single);
+        Debug.LogWarning("Pobedio si!");
+    }
 }
