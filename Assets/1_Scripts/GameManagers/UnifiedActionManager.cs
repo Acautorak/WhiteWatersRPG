@@ -356,9 +356,7 @@ public class UnifiedActionManager : MonoBehaviour
 
         if (friendlyUnitList.Count == 0)
         {
-            SceneManager.UnloadSceneAsync((int)SceneIndex.NEW_TURN_BASED_SCENE);
-            SceneManager.LoadSceneAsync("BoatScene", LoadSceneMode.Single);
-            Debug.LogWarning("Izgubio si! ");
+            LoseSceneChange();
         }
     }
 
@@ -393,5 +391,12 @@ public class UnifiedActionManager : MonoBehaviour
         SceneManager.UnloadSceneAsync((int)SceneIndex.NEW_TURN_BASED_SCENE);
         SceneManager.LoadSceneAsync("BoatScene", LoadSceneMode.Single);
         Debug.LogWarning("Pobedio si!");
+    }
+
+    public void LoseSceneChange()
+    {
+        SceneManager.UnloadSceneAsync((int)SceneIndex.NEW_TURN_BASED_SCENE);
+        SceneManager.LoadSceneAsync("BoatScene", LoadSceneMode.Single);
+        Debug.LogWarning("Izgubio si! ");
     }
 }
