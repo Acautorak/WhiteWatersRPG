@@ -45,3 +45,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   clickSound: {fileID: 8300000, guid: 4286145b97cd3fd4a9697239d89d8220, type: 3}
+  waterBackgroundSound: {fileID: 8300000, guid: 292c47b912f932344b8a394b49b32415, type: 3}
+  audioMixer: {fileID: 24100000, guid: 3ee20d38c96332a4da6ae4617c1d4f89, type: 2}

@@ -76,6 +76,14 @@ public class UnifiedActionManager : MonoBehaviour
         friendlyUnitList = new List<Unit>();
     }
 
+    private void OnDestroy()
+    {
+        Unit.OnAnyUnitSpawned -= Unit_OnAnyUnitSpawned;
+        Unit.OnAnyUnitDead -= Unit_OnAnyUnitDead;
+        OnTurnChanged -= TurnSystem_OnTurnChanged;
+        OnTurnChanged -= UnitActionSystem_OnTurnChanged;
+    }
+
     private void Update()
     {
         if (IsPlayerTurn())
@@ -343,21 +351,28 @@ public class UnifiedActionManager : MonoBehaviour
         if (unit.IsEnemy())
         {
             enemyUnitList.Remove(unit);
+            if (enemyUnitList.Count == 0)
+            {
+                WinSceneChange();
+            }
+            SortAllUnitsByInitiative();
+            SetupSelectedUnit();
+
         }
         else
         {
             friendlyUnitList.Remove(unit);
+            if (friendlyUnitList.Count == 0)
+            {
+                LoseSceneChange();
+            }
+            SortAllUnitsByInitiative();
+            SetupSelectedUnit();
         }
 
-        if (enemyUnitList.Count == 0)
-        {
-            WinSceneChange();
-        }
 
-        if (friendlyUnitList.Count == 0)
-        {
-            LoseSceneChange();
-        }
+
+
     }
 
     public List<Unit> GetUnitList()
@@ -387,16 +402,11 @@ public class UnifiedActionManager : MonoBehaviour
 
     public void WinSceneChange()
     {
-        Debug.Log("22");
-        SceneManager.UnloadSceneAsync((int)SceneIndex.NEW_TURN_BASED_SCENE);
-        SceneManager.LoadSceneAsync("BoatScene", LoadSceneMode.Single);
-        Debug.LogWarning("Pobedio si!");
+        FirstManager.Instance.LoadSceneCustom(SceneIndex.BOAT_SCENE);
     }
 
     public void LoseSceneChange()
     {
-        SceneManager.UnloadSceneAsync((int)SceneIndex.NEW_TURN_BASED_SCENE);
-        SceneManager.LoadSceneAsync("BoatScene", LoadSceneMode.Single);
-        Debug.LogWarning("Izgubio si! ");
+        FirstManager.Instance.LoadSceneCustom(SceneIndex.BOAT_SCENE);
     }
 }

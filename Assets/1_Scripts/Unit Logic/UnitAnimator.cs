@@ -110,7 +110,7 @@ public class UnitAnimator : MonoBehaviour
     private void OnDestroy()
     {
         Debug.LogError("ZAUSTAVLJAM KORUTINE");
-        StopAllCoroutines();
+        StopCoroutine(DieAfter());
     }
 
     private void MoveAction_OnStartMoving(object sender, EventArgs e)
