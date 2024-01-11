@@ -10,7 +10,7 @@ public class GridSystemVisualSingle : MonoBehaviour
     {
         spriteRenderer.enabled = true;
         spriteRenderer.sprite = sprite;
-        //spriteRenderer.material = material;
+        //spriteRenderer.material = material; :D
     }
 
     public void Show()
