@@ -67,6 +67,13 @@ public class GridSystemVisual : MonoBehaviour
         UpdateGridVisual();
     }
 
+    private void OnDestroy()
+    {
+        UnifiedActionManager.Instance.OnSelectedActionChanged -= UnitActionSystem_OnSelectedActionChanged;
+        LevelGrid.Instance.OnAnyUnitMovedGridPosition -= LevelGrid_OnAnyUnitMovedGridPosition;
+        UnifiedActionManager.Instance.OnTurnChanged -= TurnSystem_OnTurnChanged;
+    }
+
     public void HideAllGridPositions()
     {
         for (int x = 0; x < LevelGrid.Instance.GetWidth(); x++)
@@ -181,8 +188,8 @@ public class GridSystemVisual : MonoBehaviour
 
     public void TurnSystem_OnTurnChanged(object sender, EventArgs e)
     {
-        if(!UnifiedActionManager.Instance.IsPlayerTurn())
-        HideAllGridPositions();
+        if (!UnifiedActionManager.Instance.IsPlayerTurn())
+            HideAllGridPositions();
     }
 
     private Sprite GetGridVisualTypeSprite(GridVisualType gridVisualType)

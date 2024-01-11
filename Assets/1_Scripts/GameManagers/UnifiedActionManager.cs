@@ -26,6 +26,8 @@ public class UnifiedActionManager : MonoBehaviour
     public event EventHandler OnRoundChanged;
 
     private int turnNumber = 0;
+    private int currentUnitIndex = 0;
+    private int turnsCompleted = 0;
     private int roundNumber = 1;
     [SerializeField] private bool isPlayerTurn = true;
 
@@ -190,7 +192,7 @@ public class UnifiedActionManager : MonoBehaviour
 
     public void SetupSelectedUnit()
     {
-        selectedUnit = unitList[turnNumber];
+        selectedUnit = unitList[currentUnitIndex];
         if (selectedUnit.IsEnemy()) isPlayerTurn = false;
         else isPlayerTurn = true;
         SetSelectedUnit(selectedUnit);
@@ -273,6 +275,34 @@ public class UnifiedActionManager : MonoBehaviour
     #endregion
 
     #region ---------TurnSystemLogic--------
+
+    private void StartRound()
+    {
+        turnsCompleted = 0;
+        //SortAllUnitsByInitiative();
+        StartNextTurn();
+    }
+
+    private void StartNextTurn()
+    {
+        if(turnsCompleted == unitList.Count)
+        {
+            EndRound();
+        }
+        else
+        {
+            SetupSelectedUnit();
+            currentUnitIndex = (currentUnitIndex + 1) % unitList.Count;
+            turnsCompleted++;
+        }
+    }
+
+    private void EndRound()
+    {
+        //Logika za kraj runde
+        StartRound();
+    }
+
     public void NextTurn()
     {
         turnNumber++;
@@ -282,10 +312,10 @@ public class UnifiedActionManager : MonoBehaviour
             NextRound();
         }
 
-        //isPlayerTurn = !isPlayerTurn;
         isPlayerTurn = false;
-        SetupSelectedUnit();
-
+        //isPlayerTurn = !isPlayerTurn;
+        //SetupSelectedUnit();
+        StartNextTurn();
         OnTurnChanged?.Invoke(this, EventArgs.Empty);
     }
 
@@ -298,7 +328,8 @@ public class UnifiedActionManager : MonoBehaviour
             NextRound();
         }
         isPlayerTurn = true;
-        SetupSelectedUnit();
+        StartNextTurn();
+        //SetupSelectedUnit();
 
         OnTurnChanged?.Invoke(this, EventArgs.Empty);
     }
@@ -338,15 +369,17 @@ public class UnifiedActionManager : MonoBehaviour
         else
         {
             friendlyUnitList.Add(unit);
+        }
 
+        if(unitList.Count == GetTotalUnitCount())
+        {
+            StartRound();
         }
     }
 
     private void Unit_OnAnyUnitDead(object sender, EventArgs e)
     {
         Unit unit = sender as Unit;
-
-        unitList.Remove(unit);
 
         if (unit.IsEnemy())
         {
@@ -355,8 +388,8 @@ public class UnifiedActionManager : MonoBehaviour
             {
                 WinSceneChange();
             }
-            SortAllUnitsByInitiative();
-            SetupSelectedUnit();
+            //SortAllUnitsByInitiative();
+            //SetupSelectedUnit();
 
         }
         else
@@ -366,13 +399,21 @@ public class UnifiedActionManager : MonoBehaviour
             {
                 LoseSceneChange();
             }
-            SortAllUnitsByInitiative();
-            SetupSelectedUnit();
+            //SortAllUnitsByInitiative();
+            //SetupSelectedUnit();
         }
 
+        unitList.Remove(unit);
+        if(currentUnitIndex >= unitList.Count)
+        {
+            currentUnitIndex = 0;
+        }
 
+    }
 
-
+    private int GetTotalUnitCount()
+    {
+        return 5;
     }
 
     public List<Unit> GetUnitList()
