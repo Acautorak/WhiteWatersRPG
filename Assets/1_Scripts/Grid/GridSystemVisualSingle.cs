@@ -6,6 +6,16 @@ public class GridSystemVisualSingle : MonoBehaviour
 {
     [SerializeField] private SpriteRenderer spriteRenderer;
 
+    private void Start()
+    {
+        spriteRenderer = GetComponent<SpriteRenderer>();
+    }
+
+    private void OnDestroy()
+    {
+        spriteRenderer = null;
+    }
+
     public void Show(Sprite sprite)
     {
         spriteRenderer.enabled = true;
@@ -15,11 +25,13 @@ public class GridSystemVisualSingle : MonoBehaviour
 
     public void Show()
     {
+        if(spriteRenderer != null)
         spriteRenderer.enabled = true;
     }
 
     public void Hide()
     {
+        if(spriteRenderer != null)
         spriteRenderer.enabled = false;
     }
 }

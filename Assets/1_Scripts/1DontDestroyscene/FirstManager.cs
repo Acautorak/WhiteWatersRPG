@@ -64,7 +64,7 @@ public class FirstManager : MonoBehaviour
 
                 totalSceneProgress = (totalSceneProgress / scenesLoading.Count) * 100f;
                 progressBar.fillAmount = Mathf.RoundToInt(totalSceneProgress);
-                yield return null;
+                yield return new WaitForSeconds(3);
             }
         }
 

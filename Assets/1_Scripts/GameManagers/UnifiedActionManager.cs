@@ -28,7 +28,7 @@ public class UnifiedActionManager : MonoBehaviour
     private int turnNumber = 0;
     private int currentUnitIndex = 0;
     private int turnsCompleted = 0;
-    private int roundNumber = 1;
+    private int roundNumber = 0;
     [SerializeField] private bool isPlayerTurn = true;
 
     //--------EnemyAi------------
@@ -433,11 +433,19 @@ public class UnifiedActionManager : MonoBehaviour
 
     public void SortAllUnitsByInitiative()
     {
+        if(roundNumber == 0)
+        {
+            Debug.Log("Smanjujem");
+            currentUnitIndex --;
+            Debug.LogWarning(currentUnitIndex);
+            roundNumber++;
+        }
         unitList.Sort((a, b) => b.unitStats.initiative.CompareTo(a.unitStats.initiative));
         friendlyUnitList.Sort((a, b) => b.unitStats.initiative.CompareTo(a.unitStats.initiative));
         enemyUnitList.Sort((a, b) => b.unitStats.initiative.CompareTo(a.unitStats.initiative));
         Debug.LogError("uspeo sam da isortiram unite po inicijativi");
-        SetupSelectedUnit();
+        Debug.Log(currentUnitIndex);
+
     }
     #endregion
 

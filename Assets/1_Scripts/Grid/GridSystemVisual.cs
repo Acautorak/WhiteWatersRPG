@@ -72,6 +72,12 @@ public class GridSystemVisual : MonoBehaviour
         UnifiedActionManager.Instance.OnSelectedActionChanged -= UnitActionSystem_OnSelectedActionChanged;
         LevelGrid.Instance.OnAnyUnitMovedGridPosition -= LevelGrid_OnAnyUnitMovedGridPosition;
         UnifiedActionManager.Instance.OnTurnChanged -= TurnSystem_OnTurnChanged;
+        DestroyAllGridPositions();
+    }
+
+    private void OnDisable()
+    {
+        DestroyAllGridPositions();
     }
 
     public void HideAllGridPositions()
@@ -81,6 +87,17 @@ public class GridSystemVisual : MonoBehaviour
             for (int y = 0; y < LevelGrid.Instance.GetHeight(); y++)
             {
                 gridSystemVisualSingleArray[x, y].Hide();
+            }
+        }
+
+    }
+    public void DestroyAllGridPositions()
+    {
+        for (int x = 0; x < LevelGrid.Instance.GetWidth(); x++)
+        {
+            for (int y = 0; y < LevelGrid.Instance.GetHeight(); y++)
+            {
+                Destroy(gridSystemVisualSingleArray[x, y]);
             }
         }
 
