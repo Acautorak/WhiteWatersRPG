@@ -336,6 +336,7 @@ GameObject:
   - component: {fileID: 2060344193}
   - component: {fileID: 2060344194}
   - component: {fileID: 2060344195}
+  - component: {fileID: 2060344196}
   m_Layer: 0
   m_Name: DontDestroyManagers
   m_TagString: Untagged
@@ -387,6 +388,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   loadingScreen: {fileID: 682467757}
   progressBar: {fileID: 1603031581}
+--- !u!114 &2060344196
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2060344192}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8449f659292e2fc4abfdf4e31b8bc363, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rewardsCanvasPrefab: {fileID: 224470970930508651}
+  closeRewardsButton: {fileID: 224470970930508650}
 --- !u!1001 &224470970930508649
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -492,3 +507,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1b21c8eea1433df458a01115fa31a778, type: 3}
+--- !u!114 &224470970930508650 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4126820911842651905, guid: 1b21c8eea1433df458a01115fa31a778, type: 3}
+  m_PrefabInstance: {fileID: 224470970930508649}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &224470970930508651 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4719661427562320643, guid: 1b21c8eea1433df458a01115fa31a778, type: 3}
+  m_PrefabInstance: {fileID: 224470970930508649}
+  m_PrefabAsset: {fileID: 0}

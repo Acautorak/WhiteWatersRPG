@@ -69,6 +69,7 @@ public class GridSystemVisual : MonoBehaviour
 
     private void OnDestroy()
     {
+        Unit.OnAnyUnitDead -= Unit_OnAnyUnitDead;
         UnifiedActionManager.Instance.OnSelectedActionChanged -= UnitActionSystem_OnSelectedActionChanged;
         LevelGrid.Instance.OnAnyUnitMovedGridPosition -= LevelGrid_OnAnyUnitMovedGridPosition;
         UnifiedActionManager.Instance.OnTurnChanged -= TurnSystem_OnTurnChanged;
@@ -150,6 +151,7 @@ public class GridSystemVisual : MonoBehaviour
 
         ShowGridPositionList(gridPositionList, gridVisualType);
     }
+
     public void ShowGridPositionList(List<GridPosition> gridPositionList, GridVisualType gridVisualType)
     {
         foreach (GridPosition gridPosition in gridPositionList)

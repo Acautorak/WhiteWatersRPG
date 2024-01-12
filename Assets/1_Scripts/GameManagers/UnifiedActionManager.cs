@@ -413,6 +413,7 @@ public class UnifiedActionManager : MonoBehaviour
 
     private int GetTotalUnitCount()
     {
+        // OVDE CE DA RADI INITIALIZATION MANAGER
         return 5;
     }
 
@@ -451,7 +452,7 @@ public class UnifiedActionManager : MonoBehaviour
 
     public void WinSceneChange()
     {
-        FirstManager.Instance.LoadSceneCustom(SceneIndex.BOAT_SCENE);
+        RewardsManagerUi.Instance.ShowRewardsTab();
     }
 
     public void LoseSceneChange()
