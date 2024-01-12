@@ -7,7 +7,7 @@ using UnityEngine.UI;
 
 public class FirstManager : MonoBehaviour
 {
-    public static FirstManager Instance { get; private set; }
+    public static FirstManager Instance { get; private set; } //Siuuuuuuu
 
     public GameObject loadingScreen;
     public Image progressBar;
