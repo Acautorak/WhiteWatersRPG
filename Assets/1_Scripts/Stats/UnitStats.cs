@@ -23,7 +23,7 @@ public class UnitStats : MonoBehaviour
     public int attackPower;
     public int spellPower;
     public int attackPenetration;
-    public int spellPenetration;
+    public int spellPenetration; 
     public int accuracy;
 
     [Space(5)]
