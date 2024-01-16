@@ -33,11 +33,11 @@ public class RewardsManagerUi : MonoBehaviour
             FirstManager.Instance.LoadSceneCustom(SceneIndex.BOAT_SCENE);
         });
 
-        DontDestroyOnLoad(rewardsCanvasPrefab);
     }
 
     public void ShowRewardsTab()
     {
+        FirstManager.Instance.loadingScreen.SetActive(true);
         rewardsCanvasPrefab.SetActive(true);
     }
 

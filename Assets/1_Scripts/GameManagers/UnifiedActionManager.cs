@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
@@ -26,9 +27,9 @@ public class UnifiedActionManager : MonoBehaviour
     public event EventHandler OnRoundChanged;
 
     private int turnNumber = 0;
-    private int currentUnitIndex = 0;
-    private int turnsCompleted = 0;
-    private int roundNumber = 0;
+    [SerializeField] private int currentUnitIndex = 0;
+    [SerializeField] private int turnsCompleted = 0;
+    [SerializeField] private int roundNumber = 0;
     [SerializeField] private bool isPlayerTurn = true;
 
     //--------EnemyAi------------
@@ -207,7 +208,7 @@ public class UnifiedActionManager : MonoBehaviour
 
             if (friendlyUnitList.Count > 0)
             {
-                SetSelectedUnit(GetUnitList()[0]);
+                //SetSelectedUnit(GetUnitList()[0]);
             }
             else Debug.LogWarning("Game Over");
         }
@@ -285,21 +286,25 @@ public class UnifiedActionManager : MonoBehaviour
 
     private void StartNextTurn()
     {
-        if(turnsCompleted == unitList.Count)
+        if (turnsCompleted == unitList.Count)
         {
             EndRound();
         }
         else
         {
-            SetupSelectedUnit();
             currentUnitIndex = (currentUnitIndex + 1) % unitList.Count;
-            turnsCompleted++;
+            SetupSelectedUnit();
+            if (roundNumber != 0)
+            {
+                turnsCompleted++;
+            }
         }
     }
 
     private void EndRound()
     {
         //Logika za kraj runde
+        roundNumber++;
         StartRound();
     }
 
@@ -322,11 +327,7 @@ public class UnifiedActionManager : MonoBehaviour
     public void EnemyNextTurn()
     {
         turnNumber++;
-        if (turnNumber < 0 || turnNumber > unitList.Count - 1)
-        {
-            turnNumber = 0;
-            NextRound();
-        }
+
         isPlayerTurn = true;
         StartNextTurn();
         //SetupSelectedUnit();
@@ -371,7 +372,7 @@ public class UnifiedActionManager : MonoBehaviour
             friendlyUnitList.Add(unit);
         }
 
-        if(unitList.Count == GetTotalUnitCount())
+        if (unitList.Count == GetTotalUnitCount())
         {
             StartRound();
         }
@@ -404,7 +405,7 @@ public class UnifiedActionManager : MonoBehaviour
         }
 
         unitList.Remove(unit);
-        if(currentUnitIndex >= unitList.Count)
+        if (currentUnitIndex >= unitList.Count)
         {
             currentUnitIndex = 0;
         }
@@ -434,10 +435,10 @@ public class UnifiedActionManager : MonoBehaviour
 
     public void SortAllUnitsByInitiative()
     {
-        if(roundNumber == 0)
+        if (roundNumber == 0)
         {
             Debug.Log("Smanjujem");
-            currentUnitIndex --;
+            currentUnitIndex--;
             Debug.LogWarning(currentUnitIndex);
             roundNumber++;
         }

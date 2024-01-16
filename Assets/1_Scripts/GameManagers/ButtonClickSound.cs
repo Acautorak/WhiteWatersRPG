@@ -43,7 +43,7 @@ public class ButtonClickSound : MonoBehaviour
         if (audioClip != null)
         {
             AudioSource.PlayClipAtPoint(waterBackgroundSound, Camera.main.transform.position);
-            audioMixer.SetFloat("Volume", volumeDB);
+            //audioMixer.SetFloat("Volume", volumeDB);
         }
     }
 
