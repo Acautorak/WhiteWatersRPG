@@ -233,7 +233,7 @@ public class UnifiedActionManager : MonoBehaviour
         {
             if (!enemyUnit.CanSpendActionPointsToTakeAction(baseAction))
             {
-                // Enemy cannot afford this action
+                // Enemy cannot afford this action 
                 continue;
             }
 
