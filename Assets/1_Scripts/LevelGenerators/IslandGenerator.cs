@@ -8,7 +8,7 @@ public class IslandGenerator : MonoBehaviour
     public static IslandGenerator Instance {get; private set;}
     [SerializeField] private IslandPrefabData levelIslands0;
     [SerializeField] private Transform islandSpawnPoint;
-
+// Are you there little wolf?
     private void Awake()
     {
         if (Instance != null)
