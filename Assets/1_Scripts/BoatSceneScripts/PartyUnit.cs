@@ -7,8 +7,8 @@ using UnityEngine;
 public class PartyUnit
 {
     public string unitName;
-    public string unitID;
-    public Sprite unitSprite;
+    public string unitID, partyImageID;
+    public int unitLevel, currentHealth;
     public int startingX, startingY;
     public int goldCost, gemsCost;
 }
