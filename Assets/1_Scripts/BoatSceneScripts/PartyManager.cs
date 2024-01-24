@@ -26,6 +26,11 @@ public class PartyManager : MonoBehaviour
 
     public void BuyUnitGold(PartyUnit partyUnit)
     {
+        if(partyUnitList.Count >= 4)
+        {
+            return;
+        }
+
         if (gold > partyUnit.goldCost)
         {
             Debug.LogWarning("Kupio sam " + partyUnit.unitName);
@@ -42,11 +47,16 @@ public class PartyManager : MonoBehaviour
 
     public void SaveUnitList()
     {
-        
+        SaveManager.SaveListJson("PartyUnitList", partyUnitList);
     }
 
     public void LoadSavedUnits()
     {
-        
+        List<PartyUnit> loadedPartyUnits = SaveManager.LoadListJson<PartyUnit>("PartyUnitList");
+        partyUnitList.Clear();
+        foreach(PartyUnit partyUnit in loadedPartyUnits)
+        {
+            partyUnitList.Add(partyUnit);
+        }
     }
 }
