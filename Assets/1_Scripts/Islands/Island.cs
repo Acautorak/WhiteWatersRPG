@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class Island : MonoBehaviour
 {
     [SerializeField] private float timeToArrive;
-    public string islandSceneName;
+    public SceneIndex sceneIndex;
     void Start()
     {
         Vector3 startPos = transform.position;
