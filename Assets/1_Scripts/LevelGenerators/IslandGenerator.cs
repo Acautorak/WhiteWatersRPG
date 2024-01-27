@@ -34,5 +34,6 @@ public class IslandGenerator : MonoBehaviour
     {
         int randomIndex = Random.Range(0, levelIslands0.islands.Length);
         GameObject islandGO = Instantiate(levelIslands0.islands[randomIndex].gameObject, islandSpawnPoint.position, Quaternion.identity);
+        Debug.LogError(islandGO.name);
     }
 }

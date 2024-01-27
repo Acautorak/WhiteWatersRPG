@@ -46,7 +46,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: abfb13a840c1e8b4f99dfffce1a0d1e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  explodeVfxPrefab: {fileID: 2064698044295081381, guid: 6ab1338d89b04b648a073f577460c94b, type: 3}
+  explodeVfxPrefab: {fileID: 1680279685184264789, guid: 1c263f8eae68a0340bef45f268909968, type: 3}
   trailRenderer: {fileID: 2545126580784116080}
 --- !u!1 &7736647504852216022
 GameObject:
