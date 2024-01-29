@@ -10,7 +10,7 @@ public class PartyManager : MonoBehaviour
     public static PartyManager Instance { get; private set; }
     [SerializeField] private List<PartyUnit> partyUnitList = new List<PartyUnit>();
 
-    public  event EventHandler OnGoldChanged;
+    public event EventHandler OnGoldChanged;
 
     private void Awake()
     {
@@ -26,7 +26,7 @@ public class PartyManager : MonoBehaviour
 
     public void BuyUnitGold(PartyUnit partyUnit)
     {
-        if(partyUnitList.Count >= 4)
+        if (partyUnitList.Count >= 4)
         {
             return;
         }
@@ -39,9 +39,9 @@ public class PartyManager : MonoBehaviour
             OnGoldChanged?.Invoke(this, EventArgs.Empty);
 
         }
-        else 
+        else
         {
-            Debug.LogError("Nisam kupio " +  partyUnit.unitName);
+            Debug.LogError("Nisam kupio " + partyUnit.unitName);
         }
     }
 
@@ -54,9 +54,11 @@ public class PartyManager : MonoBehaviour
     {
         List<PartyUnit> loadedPartyUnits = SaveManager.LoadListJson<PartyUnit>("PartyUnitList");
         partyUnitList.Clear();
-        foreach(PartyUnit partyUnit in loadedPartyUnits)
+        foreach (PartyUnit partyUnit in loadedPartyUnits)
         {
             partyUnitList.Add(partyUnit);
         }
+
+        Debug.Log("imamo " + partyUnitList.Count);
     }
 }
