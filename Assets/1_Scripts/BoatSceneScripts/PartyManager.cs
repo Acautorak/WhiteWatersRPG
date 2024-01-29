@@ -24,6 +24,11 @@ public class PartyManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
     }
 
+    private void Start()
+    {
+        LoadSavedUnits();
+    }
+
     public void BuyUnitGold(PartyUnit partyUnit)
     {
         if (partyUnitList.Count >= 4)
@@ -48,6 +53,7 @@ public class PartyManager : MonoBehaviour
     public void SaveUnitList()
     {
         SaveManager.SaveListJson("PartyUnitList", partyUnitList);
+        SaveManager.SaveGoldGems(gold, gems);
     }
 
     public void LoadSavedUnits()
@@ -59,6 +65,13 @@ public class PartyManager : MonoBehaviour
             partyUnitList.Add(partyUnit);
         }
 
-        Debug.Log("imamo " + partyUnitList.Count);
+        Debug.Log("imamo " + partyUnitList.Count + "unita");
+
+        SaveManager.LoadGoldGems();
+    }
+
+    private void OnApplicationQuit()
+    {
+        SaveUnitList();
     }
 }

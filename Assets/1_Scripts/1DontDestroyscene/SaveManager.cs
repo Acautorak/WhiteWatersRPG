@@ -12,6 +12,21 @@ public static class SaveManager
         PlayerPrefs.Save();
     }
 
+    public static void SaveGoldGems(int goldValue, int gemsValue)
+    {
+        PlayerPrefs.SetInt("gold", goldValue);
+        PlayerPrefs.SetInt("gems", gemsValue);
+        PlayerPrefs.Save();
+    }
+
+    public static void LoadGoldGems()
+    {
+        int gold = PlayerPrefs.GetInt("gold", 2000);
+        int gems = PlayerPrefs.GetInt("gems", 10);
+        PartyManager.Instance.gold = gold;
+        PartyManager.Instance.gems = gems;
+    }
+
     public static T LoadJson<T>(string key)
     {
         if (PlayerPrefs.HasKey(key))

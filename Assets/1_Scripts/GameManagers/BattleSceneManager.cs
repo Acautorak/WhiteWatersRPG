@@ -17,5 +17,10 @@ public class BattleSceneManager : MonoBehaviour
         Instance = this;
     }
 
+    public void SetupParty()
+    {
+        
+    }
+
     
 }
