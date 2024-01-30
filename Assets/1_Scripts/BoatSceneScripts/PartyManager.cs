@@ -74,4 +74,10 @@ public class PartyManager : MonoBehaviour
     {
         SaveUnitList();
     }
+
+    public List<PartyUnit> GetPartyUnitList()
+    {
+        return partyUnitList;
+    }
 }
+
