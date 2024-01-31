@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: UnitPrefabs
+  m_EditorClassIdentifier: 
+  m_GroupName: UnitPrefabs
+  m_Data:
+    m_SerializedData: []
+  m_GUID: 345e3358b2a63db4188d828be928ef66
+  m_SerializeEntries:
+  - m_GUID: 4fdfa1a0baf7ef44c9e6919f179d5017
+    m_Address: Assets/2_Prefabs/TestingPrefabs/Enemy.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 716296b7e88322546a0776ac5d611e9f
+    m_Address: Assets/2_Prefabs/TestingPrefabs/Enemy1.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: c06d305c30354f9429b9afcb4005feb7
+    m_Address: Assets/2_Prefabs/TestingPrefabs/Enemy2.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: 0d97160dd04f4664986711617a6246a5, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: 98122224689c5354fa13dc832bb6f678, type: 2}
+    - {fileID: 11400000, guid: cdd069f5baf9cab49ad035df7dc54dc1, type: 2}
