@@ -5,7 +5,7 @@ using UnityEngine.AddressableAssets;
 using UnityEngine.ResourceManagement.AsyncOperations;
 public class BattleSceneManager : MonoBehaviour
 {
-    public static BattleSceneManager Instance { get; private set; } 
+    public static BattleSceneManager Instance { get; private set; }  
 
     public GridPosition gridPosition1, gridPosition2, gridPosition3, gridPosition4;
 
