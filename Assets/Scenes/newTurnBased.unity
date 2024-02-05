@@ -3017,6 +3017,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3dc44d0005a9974da2b5ef6527ca183, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  addressableAssetGroup: {fileID: 11400000, guid: 0f830f4d94a907743832bab21f1623ff, type: 2}
+  assetLabelReference:
+    m_LabelString: test
   unitPrefabsAddressableKey: UnitPrefabs
   numberOfUnitsToInstantiate: 4
 --- !u!1 &1977149071

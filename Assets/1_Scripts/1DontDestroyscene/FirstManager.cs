@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using UnityEditor.AddressableAssets.Settings;
 
 public class FirstManager : MonoBehaviour
 {
@@ -13,6 +14,7 @@ public class FirstManager : MonoBehaviour
     public Image progressBar;
     List<AsyncOperation> scenesLoading = new List<AsyncOperation>();
     float totalSceneProgress;
+    public AddressableAssetGroup addressableAssetGroup;
 
     private void Awake()
     {

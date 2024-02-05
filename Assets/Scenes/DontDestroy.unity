@@ -388,6 +388,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   loadingScreen: {fileID: 682467757}
   progressBar: {fileID: 1603031581}
+  addressableAssetGroup: {fileID: 11400000, guid: 0f830f4d94a907743832bab21f1623ff, type: 2}
 --- !u!114 &2060344196
 MonoBehaviour:
   m_ObjectHideFlags: 0

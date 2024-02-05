@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.AddressableAssets.Settings;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.ResourceManagement.AsyncOperations;
@@ -8,8 +9,11 @@ public class BattleSceneManager : MonoBehaviour
     public static BattleSceneManager Instance { get; private set; }  
 
     public GridPosition gridPosition1, gridPosition2, gridPosition3, gridPosition4;
+    [SerializeField] AddressableAssetGroup addressableAssetGroup;
 
     private List<GridPosition> enemyGridPositionList;
+
+    public AssetLabelReference assetLabelReference;
 
     public string unitPrefabsAddressableKey = "UnitPrefabs";
     public int numberOfUnitsToInstantiate = 4;
@@ -32,6 +36,8 @@ public class BattleSceneManager : MonoBehaviour
         gridPosition3 = new GridPosition(5 - 1, 4);
         gridPosition4 = new GridPosition(5 - 1, 6);
 
+        addressableAssetGroup = FirstManager.Instance.addressableAssetGroup;
+
         enemyGridPositionList = new List<GridPosition>
         {
             gridPosition1, gridPosition2, gridPosition3, gridPosition4
@@ -40,9 +46,24 @@ public class BattleSceneManager : MonoBehaviour
         LoadUnitPrefabs();
     }
 
+    public void LoadAssetGroup()
+    {
+        Addressables.LoadAssetAsync<GameObject>(unitPrefabsAddressableKey).Completed += (asyncOperantioHandle) =>
+        {
+            if(asyncOperantioHandle.Status == AsyncOperationStatus.Succeeded)
+            {
+                Instantiate(asyncOperantioHandle.Result);
+            }
+            else
+            {
+                Debug.Log("failed to load!");
+            }
+        };
+    }
+
     void LoadUnitPrefabs()
     {
-        AsyncOperationHandle<IList<GameObject>> handle = Addressables.LoadAssetsAsync<GameObject>(unitPrefabsAddressableKey, null);
+        AsyncOperationHandle<IList<GameObject>> handle = Addressables.LoadAssetsAsync<GameObject>(assetLabelReference, null);
 
         handle.Completed += OnUnitPrefabsLoaded;
     }

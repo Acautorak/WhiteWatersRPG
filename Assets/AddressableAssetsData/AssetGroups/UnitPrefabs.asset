@@ -20,15 +20,18 @@ MonoBehaviour:
   - m_GUID: 4fdfa1a0baf7ef44c9e6919f179d5017
     m_Address: Assets/2_Prefabs/TestingPrefabs/Enemy.prefab
     m_ReadOnly: 0
-    m_SerializedLabels: []
+    m_SerializedLabels:
+    - test
   - m_GUID: 716296b7e88322546a0776ac5d611e9f
     m_Address: Assets/2_Prefabs/TestingPrefabs/Enemy1.prefab
     m_ReadOnly: 0
-    m_SerializedLabels: []
+    m_SerializedLabels:
+    - test
   - m_GUID: c06d305c30354f9429b9afcb4005feb7
     m_Address: Assets/2_Prefabs/TestingPrefabs/Enemy2.prefab
     m_ReadOnly: 0
-    m_SerializedLabels: []
+    m_SerializedLabels:
+    - test
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 0d97160dd04f4664986711617a6246a5, type: 2}
   m_SchemaSet:
