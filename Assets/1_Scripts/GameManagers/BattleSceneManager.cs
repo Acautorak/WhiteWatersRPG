@@ -78,9 +78,10 @@ public class BattleSceneManager : MonoBehaviour
             ShuffleUnitPrefabs(unitPrefabs);
 
             // Instantiate the first numberOfUnitsToInstantiate units
-            for (int i = 0; i < Mathf.Min(numberOfUnitsToInstantiate, unitPrefabs.Count); i++)
+            for (int i = 0; i <numberOfUnitsToInstantiate; i++)
             {
-                Instantiate(unitPrefabs[i], LevelGrid.Instance.GetWorldPosition(enemyGridPositionList[i]), Quaternion.identity);
+                Instantiate(unitPrefabs[0], LevelGrid.Instance.GetWorldPosition(enemyGridPositionList[i]), Quaternion.identity);
+                ShuffleUnitPrefabs(unitPrefabs);
             }
 
             // Unload unit prefabs when they are no longer needed

@@ -438,7 +438,7 @@ public class UnifiedActionManager : MonoBehaviour
         if (roundNumber == 0)
         {
             Debug.Log("Smanjujem");
-            currentUnitIndex--;
+            //currentUnitIndex--;
             Debug.LogWarning(currentUnitIndex);
             roundNumber++;
         }
