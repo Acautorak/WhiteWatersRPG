@@ -47,10 +47,11 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _FogSize: 149.11
+    - _Alpha: 1
+    - _FogSize: 100
     - _QueueControl: 0
     - _QueueOffset: 0
     m_Colors:
-    - _FogCOlor: {r: 0.47696677, g: 3.2830188, b: 2.3850822, a: 1}
-    - _FogSpeed: {r: 0, g: 0.01, b: 0, a: 0}
+    - _FogCOlor: {r: 0.65882355, g: 3.1058824, b: 2.3058825, a: 1}
+    - _FogSpeed: {r: 0, g: 0.005, b: 0, a: 0}
   m_BuildTextureStacks: []

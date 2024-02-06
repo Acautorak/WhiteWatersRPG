@@ -453,6 +453,7 @@ public class UnifiedActionManager : MonoBehaviour
 
     public void WinSceneChange()
     {
+
         RewardsManagerUi.Instance.ShowRewardsTab();
     }
 

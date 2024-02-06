@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -22,12 +23,12 @@ public class RewardsManagerUi : MonoBehaviour
 
     private void Start()
     {
-        if(rewardsCanvasPrefab.activeInHierarchy)
+        if (rewardsCanvasPrefab.activeInHierarchy)
         {
             rewardsCanvasPrefab.SetActive(false);
         }
 
-        closeRewardsButton.onClick.AddListener(() => 
+        closeRewardsButton.onClick.AddListener(() =>
         {
             rewardsCanvasPrefab.SetActive(false);
             FirstManager.Instance.LoadSceneCustom(SceneIndex.BOAT_SCENE);
@@ -39,6 +40,16 @@ public class RewardsManagerUi : MonoBehaviour
     {
         FirstManager.Instance.loadingScreen.SetActive(true);
         rewardsCanvasPrefab.SetActive(true);
+        LeanTween.value(rewardsCanvasPrefab.gameObject, UpdateAlpha, 0, 1f, 3f);
+    }
+
+
+
+    private void UpdateAlpha(float alpha)
+    {
+        Color newColor = rewardsCanvasPrefab.GetComponent<Image>().color;
+        newColor.a = alpha;
+        rewardsCanvasPrefab.GetComponent<Image>().color = newColor;
     }
 
 
