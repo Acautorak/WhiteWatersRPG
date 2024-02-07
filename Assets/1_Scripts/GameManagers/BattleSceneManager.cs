@@ -6,12 +6,16 @@ using UnityEngine.AddressableAssets;
 using UnityEngine.ResourceManagement.AsyncOperations;
 public class BattleSceneManager : MonoBehaviour
 {
-    public static BattleSceneManager Instance { get; private set; }  
+    public static BattleSceneManager Instance { get; private set; }
 
     public GridPosition gridPosition1, gridPosition2, gridPosition3, gridPosition4;
-    [SerializeField] AddressableAssetGroup addressableAssetGroup;
+    private GridPosition agridPosition1, agridPosition2, agridPosition3, agridPosition4;
+
 
     private List<GridPosition> enemyGridPositionList;
+    private List<GridPosition> aGridPositionList;
+
+    private List<string> partyUnitStringList;
 
     public AssetLabelReference assetLabelReference;
 
@@ -31,26 +35,47 @@ public class BattleSceneManager : MonoBehaviour
 
     private void Start()
     {
-        gridPosition1 = new GridPosition(5 - 1, 1);
-        gridPosition2 = new GridPosition(5 - 1, 3);
-        gridPosition3 = new GridPosition(5 - 1, 4);
-        gridPosition4 = new GridPosition(5 - 1, 6);
+        SetupStartingPositions();
+        LoadStartingParty();
+        LoadUnitPrefabs();
+    }
 
-        addressableAssetGroup = FirstManager.Instance.addressableAssetGroup;
+    private void SetupStartingPositions()
+    {
+        gridPosition1 = new GridPosition(8, 1);
+        gridPosition2 = new GridPosition(5, 3);
+        gridPosition3 = new GridPosition(4, 4);
+        gridPosition4 = new GridPosition(7, 6);
+
+        agridPosition1 = new GridPosition(1, 1);
+        agridPosition2 = new GridPosition(1, 3);
+        agridPosition3 = new GridPosition(1, 4);
+        agridPosition4 = new GridPosition(1, 6);
 
         enemyGridPositionList = new List<GridPosition>
         {
             gridPosition1, gridPosition2, gridPosition3, gridPosition4
         };
 
-        LoadUnitPrefabs();
+        aGridPositionList = new List<GridPosition>
+        {
+            agridPosition1, agridPosition2, agridPosition3,agridPosition4
+        };
     }
 
-    public void LoadAssetGroup()
+    private void LoadStartingParty()
     {
-        Addressables.LoadAssetAsync<GameObject>(unitPrefabsAddressableKey).Completed += (asyncOperantioHandle) =>
+        foreach (PartyUnit partyUnit in PartyManager.Instance.GetPartyUnitList())
         {
-            if(asyncOperantioHandle.Status == AsyncOperationStatus.Succeeded)
+            LoadAssetByKey(partyUnit.unitID);
+        }
+    }
+
+    public void LoadAssetByKey(string key)
+    {
+        Addressables.LoadAssetAsync<GameObject>(key).Completed += (asyncOperantioHandle) =>
+        {
+            if (asyncOperantioHandle.Status == AsyncOperationStatus.Succeeded)
             {
                 Instantiate(asyncOperantioHandle.Result);
             }
@@ -78,7 +103,7 @@ public class BattleSceneManager : MonoBehaviour
             ShuffleUnitPrefabs(unitPrefabs);
 
             // Instantiate the first numberOfUnitsToInstantiate units
-            for (int i = 0; i <numberOfUnitsToInstantiate; i++)
+            for (int i = 0; i < numberOfUnitsToInstantiate; i++)
             {
                 Instantiate(unitPrefabs[0], LevelGrid.Instance.GetWorldPosition(enemyGridPositionList[i]), Quaternion.identity);
                 ShuffleUnitPrefabs(unitPrefabs);
