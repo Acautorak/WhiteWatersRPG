@@ -81,7 +81,7 @@ public class BattleSceneManager : MonoBehaviour
             }
             else
             {
-                Debug.Log("failed to load!");
+                Debug.Log("failed to load");
             }
         };
     }
