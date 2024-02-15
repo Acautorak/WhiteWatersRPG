@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class UnitStats : MonoBehaviour
 {
+
+    public UnitType unitType;
+
     [Header("Defence")]
     public int armor;
     public int spellArmor;
@@ -23,11 +26,11 @@ public class UnitStats : MonoBehaviour
     public int attackPower;
     public int spellPower;
     public int attackPenetration;
-    public int spellPenetration; 
+    public int spellPenetration;
     public int accuracy;
 
     [Space(5)]
-    
+
     [Header("---%---")]
     public int hitchance = 80;
     public int critChance = 5;
@@ -39,5 +42,15 @@ public class UnitStats : MonoBehaviour
     public int miscDef;
     public int miscAttack;
 
+    public void CalculateSecondaryStats()
+    {
+    }
+}
 
+[System.Serializable]
+public enum UnitType
+{
+    strength,
+    agility,
+    inteligence
 }
