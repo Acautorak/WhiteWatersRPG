@@ -15,7 +15,7 @@ public class Island : MonoBehaviour
         LeanTween.move(gameObject, targetPos, timeToArrive).setEase(LeanTweenType.easeOutQuad).setOnComplete(()=> 
         {
             IslandGenerator.Instance.SpawnRandomIsland();
-            FirstManager.Instance.LoadSceneCustom(SceneIndex.NEW_TURN_BASED_SCENE);
+            FirstManager.Instance.LoadSceneCustom(sceneIndex);
             Destroy(gameObject);
         });
     }

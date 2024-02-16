@@ -65,7 +65,7 @@ public class BattleSceneManager : MonoBehaviour
 
     private void LoadStartingParty()
     {
-        foreach (PartyUnit partyUnit in PartyManager.Instance.GetPartyUnitList())
+        foreach (PartyUnitData partyUnit in PartyManager.Instance.GetPartyUnitList())
         {
             LoadAssetByKey(partyUnit.unitID);
         }

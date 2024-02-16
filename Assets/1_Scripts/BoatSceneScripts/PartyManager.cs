@@ -8,7 +8,7 @@ public class PartyManager : MonoBehaviour
     public int gold = 1500;
     public int gems = 50;
     public static PartyManager Instance { get; private set; }
-    [SerializeField] private List<PartyUnit> partyUnitList = new List<PartyUnit>();
+    [SerializeField] private List<PartyUnitData> partyUnitList = new List<PartyUnitData>();
 
     public event EventHandler OnGoldChanged;
 
@@ -29,7 +29,7 @@ public class PartyManager : MonoBehaviour
         LoadSavedUnits();
     }
 
-    public void BuyUnitGold(PartyUnit partyUnit)
+    public void BuyUnitGold(PartyUnitData partyUnit)
     {
         if (partyUnitList.Count >= 4)
         {
@@ -58,9 +58,9 @@ public class PartyManager : MonoBehaviour
 
     public void LoadSavedUnits()
     {
-        List<PartyUnit> loadedPartyUnits = SaveManager.LoadListJson<PartyUnit>("PartyUnitList");
+        List<PartyUnitData> loadedPartyUnits = SaveManager.LoadListJson<PartyUnitData>("PartyUnitList");
         partyUnitList.Clear();
-        foreach (PartyUnit partyUnit in loadedPartyUnits)
+        foreach (PartyUnitData partyUnit in loadedPartyUnits)
         {
             partyUnitList.Add(partyUnit);
         }
@@ -75,7 +75,7 @@ public class PartyManager : MonoBehaviour
         SaveUnitList();
     }
 
-    public List<PartyUnit> GetPartyUnitList()
+    public List<PartyUnitData> GetPartyUnitList()
     {
         return partyUnitList;
     }

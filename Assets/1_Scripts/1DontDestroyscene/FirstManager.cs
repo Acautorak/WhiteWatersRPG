@@ -80,5 +80,8 @@ public enum SceneIndex
 {
     DONT_DESTROY_SCENE = 0,
     BOAT_SCENE = 1,
-    NEW_TURN_BASED_SCENE = 2
+    NEW_TURN_BASED_SCENE = 2,
+    LEVEL_PARK_SCENE = 3,
+
+    
 }

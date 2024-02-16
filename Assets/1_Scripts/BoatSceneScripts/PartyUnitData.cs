@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [Serializable]
-public class PartyUnit
+public class PartyUnitData
 {
     public string unitName;
     public string unitID, partyImageID;
