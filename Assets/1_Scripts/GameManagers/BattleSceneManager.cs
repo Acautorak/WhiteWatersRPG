@@ -26,7 +26,7 @@ public class BattleSceneManager : MonoBehaviour
     {
         if (Instance != null)
         {
-            Debug.LogWarning("Puko ti je BattleSceneManager");
+            Debug.LogWarning("Puko ti je BattleSceneManager ");
             Destroy(gameObject);
             return;
         }
