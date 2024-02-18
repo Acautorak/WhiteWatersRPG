@@ -33,6 +33,7 @@ public class PartyManager : MonoBehaviour
     {
         if (partyUnitList.Count >= 4)
         {
+            Debug.Log("nisam kupio jer je party FULL");
             return;
         }
 
