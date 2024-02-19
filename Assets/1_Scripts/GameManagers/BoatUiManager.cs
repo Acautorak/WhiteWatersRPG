@@ -47,14 +47,14 @@ public class BoatUiManager : MonoBehaviour
     public void HideUiElemenets()
     {
         float moveDuration = 1f;
-        float offset = -1000f;
-        LeanTween.moveX(mainMenu, offset, moveDuration).setEase(LeanTweenType.easeInOutQuad).setOnComplete(() =>
+        float offset = 1000f;
+        LeanTween.moveY(mainMenu, offset, moveDuration).setEase(LeanTweenType.easeInOutQuad).setOnComplete(() =>
         {
             mainMenu.gameObject.SetActive(false);
         });
 
         if (!theSalon.gameObject.activeInHierarchy) return;
-        LeanTween.moveX(theSalon, 2*offset, moveDuration).setEase(LeanTweenType.easeInOutQuad).setOnComplete(() =>
+        LeanTween.moveY(theSalon, 2*offset, moveDuration).setEase(LeanTweenType.easeInOutQuad).setOnComplete(() =>
         {
             theSalon.gameObject.SetActive(false);
         });
