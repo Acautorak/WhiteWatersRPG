@@ -47,7 +47,7 @@ public class BoatUiManager : MonoBehaviour
     public void HideUiElemenets()
     {
         float moveDuration = 1f;
-        float offset = 1000f;
+        float offset = 1000f ;
         LeanTween.moveY(mainMenu, offset, moveDuration).setEase(LeanTweenType.easeInOutQuad).setOnComplete(() =>
         {
             mainMenu.gameObject.SetActive(false);
