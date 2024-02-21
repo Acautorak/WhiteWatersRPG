@@ -11,7 +11,7 @@ public class BoatUiManager : MonoBehaviour
 {
     [SerializeField] RectTransform theSalon;
     [SerializeField] RectTransform mainMenu;
-    [SerializeField] Button startButton, storeButton, optionsButton, hideUiButton, xButton;
+    [SerializeField] Button startButton, storeButton, optionsButton, xButton;
     [SerializeField] private BoatMove boatMove;
     [SerializeField] private TextMeshProUGUI goldText, gemsText;
 
@@ -27,11 +27,6 @@ public class BoatUiManager : MonoBehaviour
         storeButton.onClick.AddListener(() =>
         {
             theSalon.gameObject.SetActive(true);
-        });
-
-        hideUiButton.onClick.AddListener(() =>
-        {
-            HideUiElemenets();
         });
 
         xButton.onClick.AddListener(() =>
