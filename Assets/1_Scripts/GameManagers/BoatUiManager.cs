@@ -27,7 +27,7 @@ public class BoatUiManager : MonoBehaviour
         storeButton.onClick.AddListener(() =>
         {
             theSalon.gameObject.SetActive(true);
-        });
+        }); 
 
         xButton.onClick.AddListener(() =>
         {
