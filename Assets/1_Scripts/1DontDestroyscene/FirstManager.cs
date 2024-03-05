@@ -21,7 +21,7 @@ public class FirstManager : MonoBehaviour
         DontDestroyOnLoad(loadingScreen);
         if (Instance != null)
         {
-            Debug.LogError("Puko ti je FirstManager singleton and LOL");
+            Debug.LogError("Puko ti je FirstManager singleton and LO");
             Destroy(gameObject);
             return;
         }
