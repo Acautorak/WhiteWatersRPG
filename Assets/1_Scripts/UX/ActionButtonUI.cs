@@ -9,8 +9,11 @@ public class ActionButtonUI : MonoBehaviour
     [SerializeField] private TextMeshProUGUI textMeshPro;
     [SerializeField] private Button button;
     [SerializeField] private GameObject selectedGameObject;
+    [SerializeField] private Image cooldownImage;
+    [SerializeField] private TextMeshProUGUI cooldownTextMesh;
 
     private BaseAction baseAction;
+
 
     public void SetActionButton(BaseAction baseAction)
     {
@@ -18,12 +21,26 @@ public class ActionButtonUI : MonoBehaviour
 
         textMeshPro.text = baseAction.GetActionName().ToUpper();
         button.image.sprite = baseAction.GetActionImage();
+        SetCoolDownVisuals();
+
 
         button.onClick.AddListener(() =>
         {
             UnifiedActionManager.Instance.SetSelectedAction(baseAction);
         });
-//        button.onClick.AddListener(() => ButtonClickSound.Instance.PlayClickSound());
+    }
+
+    public void SetCoolDownVisuals()
+    {
+        if (baseAction.IsOnCooldown())
+        {
+            cooldownImage.gameObject.SetActive(true);
+            cooldownTextMesh.text = baseAction.GetCooldownCurrent().ToString().ToUpper();
+        }
+        else
+        {
+            cooldownImage.gameObject.SetActive(false);
+        }
     }
 
     public void UpdateSelectedVisual()

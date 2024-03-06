@@ -285,6 +285,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   image: {fileID: 21300000, guid: aefb57af6896b9f46a375c6ae8456b14, type: 3}
+  cooldownMax: 0
   maxMoveDistance: 2
 --- !u!114 &9182552608679820313
 MonoBehaviour:
@@ -315,6 +316,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   image: {fileID: 21300000, guid: ae626f8cb41b5c243b8f43b22313fa42, type: 3}
+  cooldownMax: 0
   obstaclesLayerMask:
     serializedVersion: 2
     m_Bits: 256
@@ -348,6 +350,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   image: {fileID: 21300000, guid: 293e0ebfe7f72bd42a412ee68c809230, type: 3}
+  cooldownMax: 3
   grenadeProjectilePrefab: {fileID: 7736647504481243085, guid: 066ae8930bf8bcd49a42179828a08a2f, type: 3}
 --- !u!114 &7668574414920136670
 MonoBehaviour:
@@ -362,6 +365,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   image: {fileID: 21300000, guid: 357ef9a33a866b44ba44f7de3403e442, type: 3}
+  cooldownMax: 0
 --- !u!114 &4164640197842604115
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -374,6 +378,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93d95b5cf58bfce48aa7987ded16f961, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  unitType: 0
   armor: 10
   spellArmor: 10
   elementalResistance: 10

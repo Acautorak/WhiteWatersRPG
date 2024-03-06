@@ -19,8 +19,9 @@ public class MoveAction : BaseAction
     [SerializeField] private int maxMoveDistance = 1;
 
 
-    private void Start()
+    protected override void Start()
     {
+        base.Start();
         originalRotation = transform.rotation;
     }
 

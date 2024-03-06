@@ -25,8 +25,9 @@ public class SwordAction : BaseAction
 
     }
 
-    private void Start()
+    protected override void Start()
     {
+        base.Start();
         originalRotation = transform.rotation;
     }
 

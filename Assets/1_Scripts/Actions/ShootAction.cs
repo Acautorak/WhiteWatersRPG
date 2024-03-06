@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class ShootAction : BaseAction
@@ -33,8 +34,9 @@ public class ShootAction : BaseAction
         CoolOff,
     }
 
-    private void Start()
+    protected override void Start()
     {
+        base.Start();
         originalRotation = transform.rotation;
     }
 

@@ -12,10 +12,17 @@ public abstract class BaseAction : MonoBehaviour
     protected bool isActive;
     protected Action onActionComplete;
     [SerializeField] private Sprite image;
+    [SerializeField] private int cooldownMax;
+    private int cooldownCurrent;
 
     protected virtual void Awake()
     {
         unit = GetComponent<Unit>();
+    }
+
+    protected virtual void Start()
+    {
+        UnifiedActionManager.Instance.OnRoundChanged += UnifiedActionManager_OnRoundChanged;
     }
 
 
@@ -36,6 +43,28 @@ public abstract class BaseAction : MonoBehaviour
         return 1;
     }
 
+    public virtual int GetCooldownCurrent()
+    {
+        return cooldownCurrent;
+    }
+
+    public virtual bool IsOnCooldown()
+    {
+        if (cooldownMax == 0) return false;
+
+        if (cooldownCurrent == 0) return false;
+
+        if (cooldownCurrent == cooldownMax)
+            return false;
+        else return true;
+    }
+
+    protected void ReduceCooldown()
+    {
+        if (cooldownCurrent == 0) return;
+        cooldownCurrent--;
+    }
+
     protected void ActionStart(Action onActionComplete)
     {
         isActive = true;
@@ -48,6 +77,7 @@ public abstract class BaseAction : MonoBehaviour
     {
         isActive = false;
         onActionComplete();
+        cooldownCurrent = cooldownMax;
 
         OnAnyActionCompleted?.Invoke(this, EventArgs.Empty);
     }
@@ -79,9 +109,9 @@ public abstract class BaseAction : MonoBehaviour
         {
             enemyAiActionList.Sort((EnemyAiAction a, EnemyAiAction b) => b.actionValue - a.actionValue);
             // return bestenemyAction[0]
-            foreach(EnemyAiAction enemyAiAction in enemyAiActionList)
+            foreach (EnemyAiAction enemyAiAction in enemyAiActionList)
             {
-                if(enemyAiAction.actionValue == enemyAiActionList[0].actionValue)
+                if (enemyAiAction.actionValue == enemyAiActionList[0].actionValue)
                 {
                     bestEnemyAiActionList.Add(enemyAiAction);
                 }
@@ -100,6 +130,11 @@ public abstract class BaseAction : MonoBehaviour
     }
 
     public abstract EnemyAiAction GetEnemyAiAction(GridPosition gridPosition);
+
+    protected virtual void UnifiedActionManager_OnRoundChanged(object sender, EventArgs e)
+    {
+        ReduceCooldown();
+    }
 
 
 }

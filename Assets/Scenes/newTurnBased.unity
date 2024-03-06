@@ -3017,7 +3017,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3dc44d0005a9974da2b5ef6527ca183, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  addressableAssetGroup: {fileID: 11400000, guid: 0f830f4d94a907743832bab21f1623ff, type: 2}
   assetLabelReference:
     m_LabelString: test
   unitPrefabsAddressableKey: UnitPrefabs
@@ -3443,6 +3442,10 @@ PrefabInstance:
       propertyPath: initiative
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6766970425536197545, guid: aa3a2e324e16dff4287718776ad8862c, type: 3}
+      propertyPath: cooldownMax
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 9182552608679820316, guid: aa3a2e324e16dff4287718776ad8862c, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -3572,6 +3575,14 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4164640197842604115, guid: aa3a2e324e16dff4287718776ad8862c, type: 3}
       propertyPath: initiative
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6766970425536197545, guid: aa3a2e324e16dff4287718776ad8862c, type: 3}
+      propertyPath: cooldownMax
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7668574414920136670, guid: aa3a2e324e16dff4287718776ad8862c, type: 3}
+      propertyPath: cooldownMax
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 9182552608679820316, guid: aa3a2e324e16dff4287718776ad8862c, type: 3}
