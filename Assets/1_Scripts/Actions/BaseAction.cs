@@ -108,7 +108,7 @@ public abstract class BaseAction : MonoBehaviour
         if (enemyAiActionList.Count > 0)
         {
             enemyAiActionList.Sort((EnemyAiAction a, EnemyAiAction b) => b.actionValue - a.actionValue);
-            // return bestenemyAction[0]
+            // return bestenemyAction[0] :)
             foreach (EnemyAiAction enemyAiAction in enemyAiActionList)
             {
                 if (enemyAiAction.actionValue == enemyAiActionList[0].actionValue)
