@@ -124,7 +124,7 @@ public abstract class BaseAction : MonoBehaviour
         }
         else
         {
-            // No possible action guess who's back!?
+            // No possible action guess who's back!? :)
             return null;
         }
     }
