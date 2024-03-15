@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class GrenadeAction : BaseAction
 {
-    // ovo gledaj da iskopiras za consumableItem
+    // ovo gledaj da iskopiras za consumableItem :)
     [SerializeField] private Transform grenadeProjectilePrefab;
     private int maxThrowDistance = 4;
 
