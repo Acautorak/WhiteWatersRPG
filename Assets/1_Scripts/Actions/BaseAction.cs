@@ -69,7 +69,8 @@ public abstract class BaseAction : MonoBehaviour
     {
         isActive = true;
         this.onActionComplete = onActionComplete;
-
+        // ovde gledaj da fixas CDs
+        
         OnAnyActionStarted?.Invoke(this, EventArgs.Empty);
     }
 
