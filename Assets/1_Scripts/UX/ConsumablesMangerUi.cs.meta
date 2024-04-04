@@ -3,7 +3,15 @@ guid: 819e75674ebda254d8b6fcfa02b972c3
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - consumableButton: {instanceID: 0}
+  - arrowButton: {instanceID: 0}
+  - swap1: {instanceID: 0}
+  - swap2: {instanceID: 0}
+  - swap3: {instanceID: 0}
+  - swap4: {instanceID: 0}
+  - arrowSprite: {fileID: 21300000, guid: a57f8cf35cdf53640988054f0273a7bf, type: 3}
+  - reverseArrowSprite: {fileID: 21300000, guid: 19c51f399b692974b999815bb6f3b204, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
