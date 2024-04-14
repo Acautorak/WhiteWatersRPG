@@ -11,6 +11,8 @@ public class TurnSystemUI : MonoBehaviour
     [SerializeField] private TextMeshProUGUI turnNumberText;
     [SerializeField] private GameObject enemyTurnVisualGameObject;
 
+    [SerializeField] private GameObject consumablesDropUpGameObject;
+
     private void Start()
     {
         endTurnButton.onClick.AddListener(() =>
@@ -48,5 +50,6 @@ public class TurnSystemUI : MonoBehaviour
     {
         //endTurnButton.gameObject.SetActive(TurnSystem.Instance.IsPlayerTurn());
         endTurnButton.gameObject.SetActive(UnifiedActionManager.Instance.IsPlayerTurn());
+        consumablesDropUpGameObject.SetActive(UnifiedActionManager.Instance.IsPlayerTurn());
     }
 }

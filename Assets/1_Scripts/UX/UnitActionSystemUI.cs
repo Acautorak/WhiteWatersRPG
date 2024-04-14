@@ -87,6 +87,10 @@ public class UnitActionSystemUI : MonoBehaviour
     {
         //UnitActionSystem
         Unit selectedUnit = UnifiedActionManager.Instance.GetSelectedUnit();
+        foreach (ActionButtonUI actionButtonUI in actionButtonUIList)
+        {
+            actionButtonUI.SetCoolDownVisuals();
+        }
 
        // actionPointsText.text = "Action points: " + selectedUnit.GetActionPoints();
     }

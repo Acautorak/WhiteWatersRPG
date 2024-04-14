@@ -337,6 +337,7 @@ MonoBehaviour:
   bloodVFX: {fileID: 6139524176600456839}
   bulletProjectilePrefab: {fileID: 5563327662557821448, guid: e411410b4425cc944898b87c16b8a6dc, type: 3}
   bulletOriginTransform: {fileID: 8029292321584005026}
+  damagePopupTransform: {fileID: 4243453076347323593, guid: e38e15116e306b64b8fbd87d6c736908, type: 3}
 --- !u!114 &6766970425536197545
 MonoBehaviour:
   m_ObjectHideFlags: 0

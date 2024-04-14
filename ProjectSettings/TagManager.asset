@@ -44,3 +44,6 @@ TagManager:
   - name: layer2
     uniqueID: 2431552413
     locked: 0
+  - name: DamagePopupSort
+    uniqueID: 971443609
+    locked: 0

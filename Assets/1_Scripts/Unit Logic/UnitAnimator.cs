@@ -9,6 +9,7 @@ public class UnitAnimator : MonoBehaviour
     [SerializeField] private VisualEffect bloodVFX;
     [SerializeField] private Transform bulletProjectilePrefab;
     [SerializeField] private Transform bulletOriginTransform;
+    [SerializeField] private Transform damagePopupTransform;
 
     private Animator animator;
     private Unit thisUnit;
@@ -49,10 +50,12 @@ public class UnitAnimator : MonoBehaviour
         bloodVFX.Play();
     }
 
-    private void HealthSystem_OnDamaged(object sender, EventArgs e)
+    private void HealthSystem_OnDamaged(object sender, IntEventArgs e)
     {
         RotateForDamage();
         PlayBlood();
+        DamagePopup damagePopup = Instantiate(damagePopupTransform, transform.position, Quaternion.identity).GetComponent<DamagePopup>();
+        damagePopup.SetUp(e.Value);
     }
 
     void RotateForDamage()

@@ -54,8 +54,8 @@ public abstract class BaseAction : MonoBehaviour
 
         if (cooldownCurrent == 0) return false;
 
-        if (cooldownCurrent == cooldownMax)
-            return false;
+        
+
         else return true;
     }
 
@@ -69,6 +69,7 @@ public abstract class BaseAction : MonoBehaviour
     {
         isActive = true;
         this.onActionComplete = onActionComplete;
+        cooldownCurrent = cooldownMax;
         // ovde gledaj da fixas CDs
         
         OnAnyActionStarted?.Invoke(this, EventArgs.Empty);
@@ -79,6 +80,7 @@ public abstract class BaseAction : MonoBehaviour
         isActive = false;
         onActionComplete();
         cooldownCurrent = cooldownMax;
+        
 
         OnAnyActionCompleted?.Invoke(this, EventArgs.Empty);
     }

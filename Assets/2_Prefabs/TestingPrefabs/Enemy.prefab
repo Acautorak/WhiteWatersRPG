@@ -455,6 +455,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   image: {fileID: 0}
+  cooldownMax: 0
   maxMoveDistance: 3
 --- !u!114 &7370563600594664989
 MonoBehaviour:
@@ -485,6 +486,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   image: {fileID: 0}
+  cooldownMax: 0
   obstaclesLayerMask:
     serializedVersion: 2
     m_Bits: 256
@@ -505,6 +507,7 @@ MonoBehaviour:
   bloodVFX: {fileID: 1920617444632649169}
   bulletProjectilePrefab: {fileID: 5563327662557821448, guid: e411410b4425cc944898b87c16b8a6dc, type: 3}
   bulletOriginTransform: {fileID: 7009631980509928606}
+  damagePopupTransform: {fileID: 4243453076347323593, guid: e38e15116e306b64b8fbd87d6c736908, type: 3}
 --- !u!114 &704619593655039621
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -517,6 +520,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93d95b5cf58bfce48aa7987ded16f961, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  unitType: 0
   armor: 3
   spellArmor: 3
   elementalResistance: 10
@@ -525,6 +529,11 @@ MonoBehaviour:
   agility: 20
   perception: 0
   initiative: 0
+  attackPower: 0
+  spellPower: 0
+  attackPenetration: 0
+  spellPenetration: 0
+  accuracy: 0
   hitchance: 0
   critChance: 0
   dodgeChance: 0
