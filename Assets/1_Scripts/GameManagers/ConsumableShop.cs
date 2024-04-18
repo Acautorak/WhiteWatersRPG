@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEditor.Rendering;
@@ -5,10 +6,11 @@ using UnityEngine;
 
 public class ConsumableShop : MonoBehaviour
 {
-    
-    public static ConsumableShop Instance { get; private set; }
 
+    public static ConsumableShop Instance { get; private set; }
+    [SerializeField]
     public Consumable slot1, slot2, slot3, slot4;
+    [SerializeField]
     private List<Consumable> allConsumables;
     private void Awake()
     {
@@ -24,4 +26,6 @@ public class ConsumableShop : MonoBehaviour
     }
 
     
+
+
 }
