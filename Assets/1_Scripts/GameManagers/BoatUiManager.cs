@@ -9,7 +9,7 @@ using UnityEngine.UI;
 public class BoatUiManager : MonoBehaviour
 // Happy new year folk :) GUEESS WHOS BACKKK!!
 {
-    [SerializeField] RectTransform theSalon;
+    [SerializeField] RectTransform consumableShopWinow, consumableListContainer;
     [SerializeField] RectTransform mainMenu;
     [SerializeField] Button startButton, storeButton, optionsButton, xButton;
     [SerializeField] private BoatMove boatMove;
@@ -26,7 +26,7 @@ public class BoatUiManager : MonoBehaviour
 
         storeButton.onClick.AddListener(() =>
         {
-            theSalon.gameObject.SetActive(true);
+            consumableShopWinow.gameObject.SetActive(true);
         }); 
 
         xButton.onClick.AddListener(() =>
@@ -48,20 +48,25 @@ public class BoatUiManager : MonoBehaviour
             mainMenu.gameObject.SetActive(false);
         });
 
-        if (!theSalon.gameObject.activeInHierarchy) return;
-        LeanTween.moveY(theSalon, 2*offset, moveDuration).setEase(LeanTweenType.easeInOutQuad).setOnComplete(() =>
+        if (!consumableShopWinow.gameObject.activeInHierarchy) return;
+        LeanTween.moveY(consumableShopWinow, 2*offset, moveDuration).setEase(LeanTweenType.easeInOutQuad).setOnComplete(() =>
         {
-            theSalon.gameObject.SetActive(false);
+            consumableShopWinow.gameObject.SetActive(false);
         });
     }
 
     private void HideShop()
     {
-        theSalon.gameObject.SetActive(false);
+        consumableShopWinow.gameObject.SetActive(false);
     }
 
     private void PartyManager_OnGoldChanged(object sender, EventArgs e)
     {
         goldText.text = PartyManager.Instance.gold.ToString();
+    }
+
+    public void PopulateShopWindow()
+    {
+        
     }
 }
