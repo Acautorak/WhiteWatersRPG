@@ -11,5 +11,5 @@ public class ConsumableSelectButton : MonoBehaviour
     public string consumableID;
     public GameObject consumableDescriptionGO;
     [SerializeField] private Button ShowConsumableButton;
-    [SerializeField] private TextMeshProUGUI itemName, itemCount;
+    [SerializeField] private TextMeshProUGUI itemName, itemCount; 
 }
