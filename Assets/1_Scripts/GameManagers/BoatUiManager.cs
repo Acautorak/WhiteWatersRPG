@@ -15,6 +15,10 @@ public class BoatUiManager : MonoBehaviour
     [SerializeField] private BoatMove boatMove;
     [SerializeField] private TextMeshProUGUI goldText, gemsText;
 
+    [SerializeField] private Image showItemDescriptionImage;
+
+    [SerializeField] private GameObject ConsumableSelectButtonPrefab;
+
     private void Start()
     {
         startButton.onClick.AddListener(() =>
@@ -27,12 +31,14 @@ public class BoatUiManager : MonoBehaviour
         storeButton.onClick.AddListener(() =>
         {
             consumableShopWinow.gameObject.SetActive(true);
-        }); 
+        });
 
         xButton.onClick.AddListener(() =>
         {
             HideShop();
         });
+
+        PopulateShopWindow();
 
         PartyManager.Instance.OnGoldChanged += PartyManager_OnGoldChanged;
         goldText.text = PartyManager.Instance.gold.ToString();
@@ -49,7 +55,7 @@ public class BoatUiManager : MonoBehaviour
         });
 
         if (!consumableShopWinow.gameObject.activeInHierarchy) return;
-        LeanTween.moveY(consumableShopWinow, 2*offset, moveDuration).setEase(LeanTweenType.easeInOutQuad).setOnComplete(() =>
+        LeanTween.moveY(consumableShopWinow, 2 * offset, moveDuration).setEase(LeanTweenType.easeInOutQuad).setOnComplete(() =>
         {
             consumableShopWinow.gameObject.SetActive(false);
         });
@@ -67,6 +73,22 @@ public class BoatUiManager : MonoBehaviour
 
     public void PopulateShopWindow()
     {
-        
+        ClearItemShop();
+
+        foreach (Consumable consumable in ConsumableShop.Instance.GetAllConsumableList())
+        {
+            ConsumableSelectButton consumableSelectButton =
+                Instantiate(ConsumableSelectButtonPrefab, consumableListContainer).GetComponent<ConsumableSelectButton>();
+
+            consumableSelectButton.Setup(consumable.name, consumable.count);
+        }
+    }
+
+    public void ClearItemShop()
+    {
+        for (int i = consumableListContainer.childCount - 1; i >= 0; i--)
+        {
+            Destroy(consumableListContainer.GetChild(i).gameObject);
+        }
     }
 }

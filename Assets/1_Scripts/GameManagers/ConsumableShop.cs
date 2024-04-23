@@ -25,7 +25,10 @@ public class ConsumableShop : MonoBehaviour
         DontDestroyOnLoad(gameObject);
     }
 
-    
+    public List<Consumable> GetAllConsumableList()
+    {
+        return allConsumables;
+    }
 
 
 }
