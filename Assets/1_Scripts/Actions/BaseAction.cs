@@ -6,8 +6,6 @@ using UnityEngine;
 
 public abstract class BaseAction : MonoBehaviour
 {
-    public static event EventHandler OnAnyActionStarted;
-    public static event EventHandler OnAnyActionCompleted;
     protected Unit unit;
     protected bool isActive;
     protected Action onActionComplete;
@@ -72,7 +70,7 @@ public abstract class BaseAction : MonoBehaviour
         cooldownCurrent = cooldownMax;
         // ovde gledaj da fixas CDs
         
-        OnAnyActionStarted?.Invoke(this, EventArgs.Empty);
+        Notifier.Instance.Notify(new AnyActionStartedMessage(this));
     }
 
     protected void ActionComplete()
@@ -82,7 +80,7 @@ public abstract class BaseAction : MonoBehaviour
         cooldownCurrent = cooldownMax;
         
 
-        OnAnyActionCompleted?.Invoke(this, EventArgs.Empty);
+        Notifier.Instance.Notify(new AnyActionCompletedMessage());
     }
 
     public Unit GetUnit()

@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,27 +5,14 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using UnityEditor.AddressableAssets.Settings;
 
-public class FirstManager : MonoBehaviour
+public class FirstManager : PersistentMonoSingleton<FirstManager>
 {
-    public static FirstManager Instance { get; private set; } 
-
     public GameObject loadingScreen;
     public Image progressBar;
     List<AsyncOperation> scenesLoading = new List<AsyncOperation>();
     float totalSceneProgress;
     public AddressableAssetGroup addressableAssetGroup;
 
-    private void Awake()
-    {
-        DontDestroyOnLoad(loadingScreen);
-        if (Instance != null)
-        {
-            Debug.LogError("Puko ti je FirstManager singleton and LO");
-            Destroy(gameObject);
-            return;
-        }
-        Instance = this;
-    }
     void Start()
     {
         if (SceneManager.GetActiveScene() == SceneManager.GetSceneByName("DontDestroy"))
