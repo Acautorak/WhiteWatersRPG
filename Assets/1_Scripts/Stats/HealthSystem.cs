@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
+// umesto cele papazjanije sa EventHandler<IntEventArgs>, prosto uradi public event Action<int>
 public class HealthSystem : MonoBehaviour
 {
      public event EventHandler OnDead;

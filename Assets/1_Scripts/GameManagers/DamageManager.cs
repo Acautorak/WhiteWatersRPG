@@ -18,6 +18,7 @@ public class DamageManager : MonoBehaviour
         Instance = this;
     }
 
+    // nikad nikad GetComponent na drugom game objektu
     public int CalculateMeleDamage(Unit attackingUnit, Unit defendingUnit, int abilityDamage)
     {
         int damageTaken = 0;
@@ -36,29 +37,18 @@ public class DamageManager : MonoBehaviour
             return damageTaken;
         }
 
+        // za mapiranje vrednosti, umesto switcha koristi dictionary
+        // takodje switch expression sintaksa je citkija za ovo :)
         int strDiff = attackingUnitStats.strength - defendingUnitStats.armor;
-        float strDiffCoef;
-        switch (strDiff)
+        float strDiffCoef = strDiff switch
         {
-            case < -30:
-                strDiffCoef = 0.1f;
-                break;
-            case < -10:
-                strDiffCoef = 0.5f;
-                break;
-            case <= 0:
-                strDiffCoef = 0.8f;
-                break;
-            case > 30:
-                strDiffCoef = 1.8f;
-                break;
-            case > 10:
-                strDiffCoef = 1.5f;
-                break;
-            default:
-                strDiffCoef = 1f;
-                break;
-        }
+            < -30 => 0.1f,
+            < -10 => 0.5f,
+            <= 0 => 0.8f,
+            > 30 => 1.8f,
+            > 10 => 1.5f,
+            _ => 1f
+        };
 
         damageTaken = Mathf.RoundToInt(strDiff * strDiffCoef) - defendingUnitStats.miscDef + abilityDamage;
 

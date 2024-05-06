@@ -6,6 +6,11 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using UnityEditor.AddressableAssets.Settings;
 
+// bolje ime je npr SceneLoader
+// ne reimplementiraj singleton, nego napravi i uvek koristi genericki singleton, dacu ti
+// sva serijalizovana polja sakrivaj kao [SerializeField] private
+// kad vec imas ovu klasu, pokusaj Unity-ev SceneManager da sakrijes da se u celom projektu samo koristi ovde
+// i taman usput napravi ovu klasu da koristi UVEK tvoj SceneIndex, a nikad ime ili broj scene
 public class FirstManager : MonoBehaviour
 {
     public static FirstManager Instance { get; private set; } 

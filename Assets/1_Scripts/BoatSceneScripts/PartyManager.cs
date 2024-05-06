@@ -3,6 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// ili public, ili serijalizovano polje, nikad oba - zbog spregnutosti
+// opet singleton pattern
 public class PartyManager : MonoBehaviour
 {
     public int gold = 1500;
@@ -31,6 +33,7 @@ public class PartyManager : MonoBehaviour
 
     public void BuyUnitGold(PartyUnitData partyUnit)
     {
+        // koristi ispratno log level - Log samo za debug info, LogError samo za probleme, LogWarning samo za blaze probleme
         if (partyUnitList.Count >= 4)
         {
             Debug.Log("nisam kupio jer je party FULL");
@@ -53,6 +56,7 @@ public class PartyManager : MonoBehaviour
 
     public void SaveUnitList()
     {
+        // API bloat - ako zoves dve metode na jednoj klasi, to znaci da to treba da bude jedan poziv jedne metode
         SaveManager.SaveListJson("PartyUnitList", partyUnitList);
         SaveManager.SaveGoldGems(gold, gems);
     }

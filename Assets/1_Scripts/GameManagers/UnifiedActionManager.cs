@@ -6,6 +6,10 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 
+// obicno ti ne treba event EventHandler klasa, samo koristi event Action, prostije je
+// sekcije kao ovo -----UnitAction----- itd obicno znace da to treba da budu komponovane klase, da je ova pre-narasla
+// a ova bas bas jeste prenarasla
+// ova klasa je frankenstajn :D
 public class UnifiedActionManager : MonoBehaviour
 {
     public static UnifiedActionManager Instance { get; private set; }

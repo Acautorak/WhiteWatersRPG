@@ -13,6 +13,8 @@ public class ConsumablesMangerUi : MonoBehaviour
 
     private bool arrowUP = true;
 
+    // uvek uradi RemoveAllListeners pre nego uradis AddListener
+    // ono sto je jos bolje je narpaviti SetListener extension metodu koja to radi iza kulisa
     private void Start()
     {
         arrowButton.onClick.AddListener(() => OnArrowClick());

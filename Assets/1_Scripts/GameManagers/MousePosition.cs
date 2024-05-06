@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// uvek brisi kod umesto sto komentarises
 public class MousePosition : MonoBehaviour
 {
     private static MousePosition Instance;

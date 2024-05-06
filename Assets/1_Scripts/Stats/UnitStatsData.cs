@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// unused code is deleted immediately
 public class UnitStatsData
 {
     public string unitID;

@@ -6,6 +6,8 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
+// kad god ti bilo sta ne mora da bude public, prebaci u private, npr ClearItemShop
+// zelis da imas sto manje public stvari svugde da bi smanjio spregnutost
 public class BoatUiManager : MonoBehaviour
 // Happy new year folk :) GUEESS WHOS BACKKK!!
 {

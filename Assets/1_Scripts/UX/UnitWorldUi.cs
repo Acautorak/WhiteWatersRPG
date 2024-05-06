@@ -12,6 +12,8 @@ public class UnitWorldUi : MonoBehaviour
     [SerializeField] private Image healthBarImage;
     [SerializeField] private HealthSystem healthSystem;
 
+    // kad god se na bilo sta subscribujes, uvek unsubscribe posle
+    // u ovom slucaju najbolje u OnDestroy
     private void Start()
     {
         Unit.OnAnyActionPointsChanged += Unit_OnAnyActionPointsChanged;

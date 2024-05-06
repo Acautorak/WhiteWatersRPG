@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// opet nekorisceni podaci
 [Serializable]
 public class PartyUnitData
 {

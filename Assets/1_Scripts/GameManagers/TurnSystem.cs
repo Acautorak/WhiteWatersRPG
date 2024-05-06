@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
+// bas pre previse singleton-a, umesto toga gledaj da imas par glavnih, i sve ostalo da bude u njima
+// ili jos bolje, da uvezes stvari u hijerarhije umesto da uopste budu potrebni singleton-i
 public class TurnSystem : MonoBehaviour
 {
     public static TurnSystem Instance { get; private set; }

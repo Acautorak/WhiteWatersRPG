@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Diagnostics.Tracing;
 using UnityEngine;
 
+// deluje kao too much imati i ovo, i camera manager, i screen shake manager, sve moze da bude jedna klasa
 public class ScreenShakeActions : MonoBehaviour
 {
     private void Start()

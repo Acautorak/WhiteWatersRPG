@@ -5,6 +5,8 @@ using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 using UnityEngine;
 
+// kad si vec narpavio i preko prefsa i binarno, bolje bi bilo da obe varijante imaju isti interfejs
+// pa da mozes da ih koristis interchangeably, kao razlicite strategije za save sistem
 public static class SaveManager
 {
     public static void SaveJson(string key, object data)

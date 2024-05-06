@@ -3,6 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// static event EventHandler izbaci iz price :) event delegati se ispravno koriste samo na ne-staticki nacin
+// ono sto zelis umesto toga je jedan Global Event Bus sistem, dacu ti
 public class DestructibleCrate : MonoBehaviour
 {
 

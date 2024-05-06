@@ -4,6 +4,8 @@ using UnityEditor.AddressableAssets.Settings;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.ResourceManagement.AsyncOperations;
+
+// organizacija u jedan "GameManagers" folder nije korisna, lakse bi ih nalazio da je svaki folderu svog "feature-a"
 public class BattleSceneManager : MonoBehaviour
 {
     public static BattleSceneManager Instance { get; private set; }

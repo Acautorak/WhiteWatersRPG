@@ -2,6 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Cinemachine;
+
+// opet singleton
+// GetComponent koristi sto redje, i kad god koristis GetComponent, koristi i RequireComponent uz to
 public class CameraShake : MonoBehaviour
 {
     public static CameraShake Instance {get; private set;}

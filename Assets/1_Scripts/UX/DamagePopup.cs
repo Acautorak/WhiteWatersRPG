@@ -4,6 +4,7 @@ using System;
 using UnityEngine;
 using TMPro;
 
+// sto vise serializedfield, sto manje getcomponent
 public class DamagePopup : MonoBehaviour
 {
     private float disappearTimer;

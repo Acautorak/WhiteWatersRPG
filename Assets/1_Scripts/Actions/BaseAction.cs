@@ -4,6 +4,11 @@ using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine;
 
+// action je malo neprirodan koncept za monobehaviour
+// zgodniji bi bili za koriscenje da je kompletna hijerarhija cisti c#
+// takodje uvek ispadne bolja prica kasnije kad koristis interfejse umesto klasnog nasledjivanja, bude cistije i lakse
+// u ovom slucaju bi imao neku obicnu klasu ActionExecutor koji u sebi ima IAction kao strategy pattern
+// i cilj ti je svugde u kodu gde sad koristis BaseAction da umesto toga koristis IAction
 public abstract class BaseAction : MonoBehaviour
 {
     public static event EventHandler OnAnyActionStarted;

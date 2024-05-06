@@ -2,6 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// headeri su obicno znak da treba potklase
+// takodje monobehaviour bez "zive" logike (start, update, etc) treba da bude scriptableobject
+// i onda Unit i Enemy treba samo da imaju referencu na taj SO
 public class UnitStats : MonoBehaviour
 {
 
