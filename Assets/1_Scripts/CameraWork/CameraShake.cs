@@ -1,21 +1,12 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using Cinemachine;
-public class CameraShake : MonoBehaviour
+public class CameraShake : MonoSingleton<CameraShake>, ISelfInstantiatingMonoSingleton
 {
-    public static CameraShake Instance {get; private set;}
     private CinemachineImpulseSource cinemachineImpulseSource;
 
-    private void Awake()
+    protected override void OnAwake()
     {
-        if(Instance != null)
-        {
-            Debug.LogError("puko je screen shake");
-            Destroy(gameObject);
-            return;
-        }
-        Instance = this;
+        base.OnAwake();
         cinemachineImpulseSource = GetComponent<CinemachineImpulseSource>();
     }
 
