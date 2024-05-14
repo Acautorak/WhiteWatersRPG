@@ -15,12 +15,12 @@ public class ConsumablesMangerUi : MonoBehaviour
 
     private void Start()
     {
-        arrowButton.onClick.AddListener(() => OnArrowClick());
-        consumableButton.onClick.AddListener(() => OnConsumeClicked());
-        swap1.onClick.AddListener(() => OnSwapClick1());
-        swap2.onClick.AddListener(() => OnSwapClick2());
-        swap3.onClick.AddListener(() => OnSwapClick3());
-        swap4.onClick.AddListener(() => OnSwapClick4());
+        arrowButton.onClick.SetListener(() => OnArrowClick());
+        consumableButton.onClick.SetListener(() => OnConsumeClicked());
+        swap1.onClick.SetListener(() => OnSwapClick1());
+        swap2.onClick.SetListener(() => OnSwapClick2());
+        swap3.onClick.SetListener(() => OnSwapClick3());
+        swap4.onClick.SetListener(() => OnSwapClick4());
     }
 
     public void OnArrowClick()

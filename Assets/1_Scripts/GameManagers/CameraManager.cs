@@ -11,8 +11,8 @@ public class CameraManager : MonoBehaviour
 
     private void Start()
     {
-        BaseAction.OnAnyActionStarted += BaseAction_OnAnyActionStarted;
-        BaseAction.OnAnyActionCompleted += BaseAction_OnAnyActionCompleted;
+        Notifier.Instance.Subscribe<AnyActionStartedMessage>(BaseAction_OnAnyActionStarted);
+        Notifier.Instance.Subscribe<AnyActionCompletedMessage>(BaseAction_OnAnyActionCompleted);
     }
     private void ShowActionCamera()
     {
@@ -24,9 +24,9 @@ public class CameraManager : MonoBehaviour
         actionCameraGameObject.SetActive(false);
     }
 
-    private void BaseAction_OnAnyActionStarted(object sender, EventArgs e)
+    private void BaseAction_OnAnyActionStarted(AnyActionStartedMessage message)
     {
-        switch (sender)
+        switch (message.action)
         {
             case ShootAction shootAction:
                 actionCameraGameObject.GetComponent<CinemachineVirtualCamera>().Follow = shootAction.GetTargetUnit().transform;
@@ -40,14 +40,15 @@ public class CameraManager : MonoBehaviour
         }
     }
 
-    private void BaseAction_OnAnyActionCompleted(object sender, EventArgs e)
+    private void BaseAction_OnAnyActionCompleted(AnyActionCompletedMessage message)
     {
         HideActionCamera();
     }
 
+    
     private void OnDestroy()
     {
-        BaseAction.OnAnyActionStarted -= BaseAction_OnAnyActionStarted;
-        BaseAction.OnAnyActionCompleted -= BaseAction_OnAnyActionCompleted;
+        Notifier.Instance.Unsubscribe<AnyActionStartedMessage>(BaseAction_OnAnyActionStarted);
+        Notifier.Instance.Unsubscribe<AnyActionCompletedMessage>(BaseAction_OnAnyActionCompleted);
     }
 }

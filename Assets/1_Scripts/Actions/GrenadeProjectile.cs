@@ -6,7 +6,6 @@ using UnityEngine;
 public class GrenadeProjectile : MonoBehaviour
 {
 
-    public static event EventHandler OnAnyGrenadeExploded;
     [SerializeField] private Transform explodeVfxPrefab;
     [SerializeField] private TrailRenderer trailRenderer;
     private Vector3 targetPosition;
@@ -37,7 +36,7 @@ public class GrenadeProjectile : MonoBehaviour
                 }
 
             }
-            OnAnyGrenadeExploded?.Invoke(this, EventArgs.Empty);
+            Notifier.Instance.Notify(new AnyGrenadeExplodedMessage());
 
             trailRenderer.transform.parent = null;
             Instantiate(explodeVfxPrefab, targetPosition, Quaternion.identity);

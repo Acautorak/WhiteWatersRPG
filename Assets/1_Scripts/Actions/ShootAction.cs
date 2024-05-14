@@ -8,7 +8,6 @@ public class ShootAction : BaseAction
 {
 
     public event EventHandler<OnShootEventArgs> OnShoot;
-    public static event EventHandler<OnShootEventArgs> OnAnyShoot;
 
 
     public class OnShootEventArgs : EventArgs
@@ -113,11 +112,7 @@ public class ShootAction : BaseAction
             targetUnit = targetUnit,
             shootingUnit = unit
         });
-        OnAnyShoot?.Invoke(this, new OnShootEventArgs
-        {
-            targetUnit = targetUnit,
-            shootingUnit = unit
-        });
+        Notifier.Instance.Notify(new AnyShootMessage(targetUnit));
         targetUnit.Damage(DamageManager.Instance.CalculateRangedDamage(unit, targetUnit, damage));
     }
 

@@ -8,16 +8,22 @@ public class ScreenShakeActions : MonoBehaviour
 {
     private void Start()
     {
-        ShootAction.OnAnyShoot += ShootAction_OnAnyShoot;  
-        GrenadeProjectile.OnAnyGrenadeExploded += GrenadeProjectile_OnAnyGrenadeExploded; 
+        Notifier.Instance.Subscribe<AnyShootMessage>(ShootAction_OnAnyShoot);
+        Notifier.Instance.Subscribe<AnyGrenadeExplodedMessage>(GrenadeProjectile_OnAnyGrenadeExploded);
     }
 
-    private void ShootAction_OnAnyShoot(object sender, ShootAction.OnShootEventArgs e)
+    private void OnDestroy()
+    {
+        Notifier.Instance.Unsubscribe<AnyShootMessage>(ShootAction_OnAnyShoot);
+        Notifier.Instance.Unsubscribe<AnyGrenadeExplodedMessage>(GrenadeProjectile_OnAnyGrenadeExploded);
+    }
+
+    private void ShootAction_OnAnyShoot(AnyShootMessage message)
     {
         CameraShake.Instance.Shake();
     }
 
-    private void GrenadeProjectile_OnAnyGrenadeExploded(object sender, EventArgs e)
+    private void GrenadeProjectile_OnAnyGrenadeExploded(AnyGrenadeExplodedMessage message)
     {
         CameraShake.Instance.Shake(5f);
     }
