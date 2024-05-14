@@ -8,16 +8,8 @@ using UnityEngine.UI;
 public class Consumable
 {
     public ConsumableType consumableType;
-    public string name;
     public int count;
-    public Sprite icon;
-    public string location;
-    public int descriptionID;
-
-    public virtual void Consume()
-    {
-
-    }
+    public string name;
 }
 
 public enum ConsumableType

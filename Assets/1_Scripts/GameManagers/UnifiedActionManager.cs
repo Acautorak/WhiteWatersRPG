@@ -459,6 +459,6 @@ public class UnifiedActionManager : MonoBehaviour
 
     public void LoseSceneChange()
     {
-        FirstManager.Instance.LoadSceneCustom(SceneIndex.BOAT_SCENE);
+        SceneLoader.Instance.LoadSceneCustom(SceneIndex.BOAT_SCENE);
     }
 }

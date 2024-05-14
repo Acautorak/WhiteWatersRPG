@@ -31,14 +31,14 @@ public class RewardsManagerUi : MonoBehaviour
         closeRewardsButton.onClick.AddListener(() =>
         {
             rewardsCanvasPrefab.SetActive(false);
-            FirstManager.Instance.LoadSceneCustom(SceneIndex.BOAT_SCENE);
+            SceneLoader.Instance.LoadSceneCustom(SceneIndex.BOAT_SCENE);
         });
 
     }
 
     public void ShowRewardsTab()
     {
-        FirstManager.Instance.loadingScreen.SetActive(true);
+        SceneLoader.Instance.loadingScreen.SetActive(true);
         rewardsCanvasPrefab.SetActive(true);
         LeanTween.value(rewardsCanvasPrefab.gameObject, UpdateAlpha, 0, 1f, 3f);
     }

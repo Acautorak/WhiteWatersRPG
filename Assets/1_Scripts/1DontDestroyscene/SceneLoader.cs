@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using UnityEditor.AddressableAssets.Settings;
 
-public class FirstManager : PersistentMonoSingleton<FirstManager>
+public class SceneLoader : PersistentMonoSingleton<SceneLoader>
 {
     public GameObject loadingScreen;
     public Image progressBar;
