@@ -14,10 +14,10 @@ public static class SaveManager
         PlayerPrefs.Save();
     }
 
-    public static void SaveGoldGems(int goldValue, int gemsValue)
+    public static void SaveGoldGems()
     {
-        PlayerPrefs.SetInt("gold", goldValue);
-        PlayerPrefs.SetInt("gems", gemsValue);
+        PlayerPrefs.SetInt("gold", PartyManager.Instance.gold);
+        PlayerPrefs.SetInt("gems", PartyManager.Instance.gems);
         PlayerPrefs.Save();
     }
 
@@ -48,6 +48,7 @@ public static class SaveManager
         string json = JsonUtility.ToJson(new Serialization<T>(dataList));
         PlayerPrefs.SetString(key, json);
         PlayerPrefs.Save();
+        SaveGoldGems();
     }
 
     public static List<T> LoadListJson<T>(string key)

@@ -19,6 +19,7 @@ public class SceneLoader : PersistentMonoSingleton<SceneLoader>
         {
             LoadSceneCustom();
         }
+        DontDestroyOnLoad(loadingScreen);
     }
 
     public void LoadSceneCustom()
