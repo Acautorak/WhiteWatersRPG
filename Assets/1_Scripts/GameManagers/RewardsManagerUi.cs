@@ -45,6 +45,7 @@ public class RewardsManagerUi : MonoBehaviour
 
 
 
+
     private void UpdateAlpha(float alpha)
     {
         Color newColor = rewardsCanvasPrefab.GetComponent<Image>().color;

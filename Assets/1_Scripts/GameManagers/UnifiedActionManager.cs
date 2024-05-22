@@ -139,7 +139,7 @@ public class UnifiedActionManager : MonoBehaviour
 
     private void HandleSelectedAction()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (InputManager.Instance.IsScreenTouchedOrClicked())
         {
             GridPosition mouseGridPosition = LevelGrid.Instance.GetGridPosition(MousePosition.GetMouseWorldPosition2D());
             if (!selectedAction.IsValidActionGridPosition(mouseGridPosition))
@@ -445,8 +445,7 @@ public class UnifiedActionManager : MonoBehaviour
         unitList.Sort((a, b) => b.unitStats.initiative.CompareTo(a.unitStats.initiative));
         friendlyUnitList.Sort((a, b) => b.unitStats.initiative.CompareTo(a.unitStats.initiative));
         enemyUnitList.Sort((a, b) => b.unitStats.initiative.CompareTo(a.unitStats.initiative));
-        Debug.LogError("uspeo sam da isortiram unite po inicijativi");
-        Debug.Log(currentUnitIndex);
+        Debug.Log("uspeo sam da isortiram unite po inicijativi");
 
     }
     #endregion

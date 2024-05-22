@@ -47,6 +47,7 @@ public class ActionButtonUI : MonoBehaviour
     {
         BaseAction selectedBaseAction = UnifiedActionManager.Instance.GetSelectedAction(); //UnitActionSystem
         selectedGameObject.SetActive(selectedBaseAction == baseAction);
+        SetCoolDownVisuals();
     }
 
     public void DestroyThisButton()

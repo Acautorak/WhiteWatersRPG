@@ -79,7 +79,6 @@ public class UnitActionSystemUI : MonoBehaviour
         foreach (ActionButtonUI actionButtonUI in actionButtonUIList)
         {
             actionButtonUI.UpdateSelectedVisual();
-            actionButtonUI.SetCoolDownVisuals();
         }
     }
 

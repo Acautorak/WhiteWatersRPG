@@ -18,7 +18,7 @@ public class MousePosition : MonoBehaviour
 
     public static Vector2 GetPosition()
     {
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        Ray ray = Camera.main.ScreenPointToRay(InputManager.Instance.GetMouseScreenPosition());
         Physics.Raycast(ray, out RaycastHit raycastHit, float.MaxValue, Instance.mouseLayerMask);
         Debug.LogError(raycastHit.point);
         return raycastHit.point;
@@ -26,7 +26,7 @@ public class MousePosition : MonoBehaviour
 
     private void HandleLeftMouseClick()
     {
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        Ray ray = Camera.main.ScreenPointToRay(InputManager.Instance.GetMouseScreenPosition());
         RaycastHit2D hit = Physics2D.Raycast(ray.origin, ray.direction, Mathf.Infinity, mouseLayerMask);
 
         if (hit.collider != null)
@@ -40,7 +40,7 @@ public class MousePosition : MonoBehaviour
     public static Vector2 GetMouseWorldPosition2D()
     {
         // Get the mouse position in screen coordinates
-        Vector3 mousePosition = Input.mousePosition;
+        Vector3 mousePosition = InputManager.Instance.GetMouseScreenPosition();
 
         // Set the Z-coordinate to the distance from the camera to the game world
         mousePosition.z = -Camera.main.transform.position.z;

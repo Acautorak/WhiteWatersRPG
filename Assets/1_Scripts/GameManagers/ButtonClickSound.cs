@@ -26,7 +26,7 @@ public class ButtonClickSound : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (InputManager.Instance.IsScreenTouchedOrClicked())
         {
             PlaySound(clickSound);
         }

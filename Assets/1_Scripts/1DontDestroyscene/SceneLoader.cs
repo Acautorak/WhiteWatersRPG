@@ -3,15 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
-using UnityEditor.AddressableAssets.Settings;
-
+using UnityEngine.AddressableAssets;
 public class SceneLoader : PersistentMonoSingleton<SceneLoader>
 {
     public GameObject loadingScreen;
     public Image progressBar;
     List<AsyncOperation> scenesLoading = new List<AsyncOperation>();
     float totalSceneProgress;
-    public AddressableAssetGroup addressableAssetGroup;
 
     void Start()
     {
