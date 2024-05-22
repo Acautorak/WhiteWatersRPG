@@ -16,7 +16,6 @@ public class Unit : MonoBehaviour
 
 
     [SerializeField] private bool isEnemy;
-    //[SerializeField] private bool canTakeTurn = false;
 
     private UnitAnimator unitAnimator;
 

@@ -21,8 +21,8 @@ public class DamageManager : MonoBehaviour
     public int CalculateMeleDamage(Unit attackingUnit, Unit defendingUnit, int abilityDamage)
     {
         int damageTaken = 0;
-        UnitStats attackingUnitStats = attackingUnit.gameObject.GetComponent<UnitStats>();
-        UnitStats defendingUnitStats = defendingUnit.gameObject.GetComponent<UnitStats>();
+        UnitStats attackingUnitStats = attackingUnit.unitStats;
+        UnitStats defendingUnitStats = defendingUnit.unitStats;
 
         if (!IsHit(attackingUnitStats, defendingUnitStats))
         {

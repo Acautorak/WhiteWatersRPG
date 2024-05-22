@@ -1,13 +1,13 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Mono.Cecil.Cil;
 using UnityEngine;
 using UnityEngine.UI;
 
 [Serializable]
-public class Consumable
+public  class Consumable
 {
-    public ConsumableType consumableType;
     public int count;
     public string name;
 }
@@ -20,3 +20,9 @@ public enum ConsumableType
     purifyingSalt,
 
 }
+
+public interface IConsumable
+{
+    public void Consume();
+}
+

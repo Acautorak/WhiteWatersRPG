@@ -7,12 +7,17 @@ public class PathfindingUpdater : MonoBehaviour
 {
     void Start()
     {
-        DestructibleCrate.OnAnyDestroy += DestructibleCrate_OnAnyDestroy;
+        Notifier.Instance.Subscribe<AnyDestructibleDestroyedMessage>(DestructibleCrate_OnAnyDestroy);
     }
 
-    private void DestructibleCrate_OnAnyDestroy(object sender, EventArgs e)
+    void OnDestroy()
     {
-        DestructibleCrate destructibleCrate = sender as DestructibleCrate;
+        Notifier.Instance.Unsubscribe<AnyDestructibleDestroyedMessage>(DestructibleCrate_OnAnyDestroy);
+    }
+
+    private void DestructibleCrate_OnAnyDestroy(AnyDestructibleDestroyedMessage anyDestructibleDestroyedMessage)
+    {
+        DestructibleCrate destructibleCrate = anyDestructibleDestroyedMessage.destructibleCrate;
         Pathfinding.Instance.SetIsWalkableGridPosition(destructibleCrate.GetGridPosition(), true);
     }
 }

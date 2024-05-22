@@ -5,9 +5,6 @@ using UnityEngine;
 
 public class DestructibleCrate : MonoBehaviour
 {
-
-    public static event EventHandler OnAnyDestroy;
-
     private GridPosition gridPosition;
 
     private void Start()
@@ -17,7 +14,7 @@ public class DestructibleCrate : MonoBehaviour
     public void Damage()
     {
         Destroy(gameObject);
-        OnAnyDestroy?.Invoke(this, EventArgs.Empty);
+        Notifier.Instance.Notify(new AnyDestructibleDestroyedMessage(this));
     }
 
     public GridPosition GetGridPosition()

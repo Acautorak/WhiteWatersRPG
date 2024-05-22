@@ -84,7 +84,7 @@ public class BoatUiManager : MonoBehaviour
         }
     }
 
-    public void ClearItemShop()
+    private void ClearItemShop()
     {
         for (int i = consumableListContainer.childCount - 1; i >= 0; i--)
         {

@@ -522,6 +522,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20e5ed524a2c5e9428d1a2f4e7049fe8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cinemachineImpulseSource: {fileID: 8760352933737402691}
 --- !u!114 &8760352933737402701
 MonoBehaviour:
   m_ObjectHideFlags: 0
