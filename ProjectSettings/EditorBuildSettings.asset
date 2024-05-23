@@ -18,4 +18,7 @@ EditorBuildSettings:
     path: Assets/Scenes/levlePark.unity
     guid: 9990fd10bc6edda48b48b4bd108dd1c2
   m_configObjects:
+    com.unity.adaptiveperformance.loader_settings: {fileID: 11400000, guid: f40c97211cdc55e4a9d83998645b3f06, type: 2}
+    com.unity.adaptiveperformance.samsung.android.provider_settings: {fileID: 11400000, guid: f2bfe8bbac155214aa105808494a9013, type: 2}
+    com.unity.adaptiveperformance.simulator.provider_settings: {fileID: 11400000, guid: ace63cddf0720334989a17ccbd378891, type: 2}
     com.unity.addressableassets: {fileID: 11400000, guid: c1397c11d04267e4897a611d8c0baa1b, type: 2}

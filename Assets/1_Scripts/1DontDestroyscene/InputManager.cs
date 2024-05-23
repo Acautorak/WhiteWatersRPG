@@ -24,17 +24,17 @@ public class InputManager : MonoSingleton<InputManager>, IPersistentMonoSingleto
                 return Touchscreen.current.primaryTouch.position.ReadValue();
             }
         }
-        return Mouse.current.position.ReadValue();
+        return Touchscreen.current.primaryTouch.position.ReadValue()
 #else
         return Input.mousePosition;
 #endif
-    }
+    ;}
 
     public bool IsScreenTouchedOrClicked()
     {
 #if USE_NEW_INPUT_SYSTEM
 
-        return playerInputActions.Player.Click.WasPressedThisFrame();
+        return playerInputActions.Player.Tap.WasPressedThisFrame();
 #else
         return Input.GetMouseButtonDown(0);
 #endif
