@@ -14,12 +14,10 @@ public class ButtonClickSound : MonoBehaviour
     {
         if (SceneManager.GetActiveScene().buildIndex == (int)SceneIndex.BOAT_SCENE)
         {
-            Debug.Log("Oustio sam kurac!!");
             PlaySound(waterBackgroundSound, -20f);
         }
         else
         {
-            Debug.Log("Ugasio sam kurac");
             // Ovde ga izbaci i ugasi
         }
     }

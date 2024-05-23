@@ -452,7 +452,7 @@ public class UnifiedActionManager : MonoBehaviour
 
     public void WinSceneChange()
     {
-
+        SceneLoader.Instance.LoadSceneCustom(SceneIndex.BOAT_SCENE);
         RewardsManagerUi.Instance.ShowRewardsTab();
     }
 

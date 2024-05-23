@@ -7,6 +7,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 6548363270659563275, guid: 460814bd632e7a24abec61f56a862846, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.80130607
+      objectReference: {fileID: 0}
+    - target: {fileID: 6548363270659563275, guid: 460814bd632e7a24abec61f56a862846, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.5982546
+      objectReference: {fileID: 0}
+    - target: {fileID: 6548363270659563275, guid: 460814bd632e7a24abec61f56a862846, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 73.49
+      objectReference: {fileID: 0}
+    - target: {fileID: 6548363270659563508, guid: 460814bd632e7a24abec61f56a862846, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 287eb27060c496e45a12119f61e25358, type: 3}
     - target: {fileID: 6548363271222297061, guid: 460814bd632e7a24abec61f56a862846, type: 3}
       propertyPath: m_RootOrder
       value: 0

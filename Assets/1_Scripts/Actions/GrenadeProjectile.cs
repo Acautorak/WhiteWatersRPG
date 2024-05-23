@@ -8,6 +8,7 @@ public class GrenadeProjectile : MonoBehaviour
 
     [SerializeField] private Transform explodeVfxPrefab;
     [SerializeField] private TrailRenderer trailRenderer;
+    [SerializeField] private int grenadeDamage = 30;
     private Vector3 targetPosition;
     private Action onGrenadeBehaviourComplete;
 
@@ -27,7 +28,7 @@ public class GrenadeProjectile : MonoBehaviour
             {
                 if (collider.TryGetComponent<Unit>(out Unit targetUnit))
                 {
-                    targetUnit.Damage(100);
+                    targetUnit.Damage(grenadeDamage);
                 }
 
                 if (collider.TryGetComponent<DestructibleCrate>(out DestructibleCrate destructibleCrate))

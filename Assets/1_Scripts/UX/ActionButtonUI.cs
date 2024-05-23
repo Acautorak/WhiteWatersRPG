@@ -32,14 +32,18 @@ public class ActionButtonUI : MonoBehaviour
 
     public void SetCoolDownVisuals()
     {
-        if (baseAction.IsOnCooldown())
+        if (cooldownImage != null)
         {
-            cooldownImage.gameObject.SetActive(true);
-            cooldownTextMesh.text = baseAction.GetCooldownCurrent().ToString().ToUpper();
-        }
-        else
-        {
-            cooldownImage.gameObject.SetActive(false);
+
+            if (baseAction.IsOnCooldown())
+            {
+                cooldownImage.gameObject.SetActive(true);
+                cooldownTextMesh.text = baseAction.GetCooldownCurrent().ToString().ToUpper();
+            }
+            else
+            {
+                cooldownImage.gameObject.SetActive(false);
+            }
         }
     }
 

@@ -286,7 +286,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   image: {fileID: 21300000, guid: aefb57af6896b9f46a375c6ae8456b14, type: 3}
   cooldownMax: 0
-  maxMoveDistance: 2
+  maxMoveDistance: 3
 --- !u!114 &9182552608679820313
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -366,7 +366,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   image: {fileID: 21300000, guid: 357ef9a33a866b44ba44f7de3403e442, type: 3}
-  cooldownMax: 0
+  cooldownMax: 2
 --- !u!114 &4164640197842604115
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -471,7 +471,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 10
-  m_Sprite: {fileID: 21300000, guid: 19b126cec8564cb46a719fc03de27398, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 8a211d12167e5a045acd2a951671118f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

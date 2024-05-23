@@ -22,7 +22,6 @@ public class ConsumableShop : MonoBehaviour
         }
         Instance = this;
 
-        DontDestroyOnLoad(gameObject);
     }
 
     public List<Consumable> GetAllConsumableList()
