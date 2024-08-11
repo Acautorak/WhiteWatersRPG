@@ -18,7 +18,7 @@ public class ButtonClickSound : MonoBehaviour
         }
         else
         {
-            // Ovde ga izbaci i ugasi :)
+            // Ovde ga izbaci i ugasi 
         }
     }
 
