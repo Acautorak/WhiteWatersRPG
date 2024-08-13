@@ -84,4 +84,11 @@ public class GridSystem<TGridObject>
         return cellSize;
     }
 
+    Vector2 CalculateIsoPosition(int x, int y)
+    {
+        float isoX = (x - y) * width / 2;
+        float isoY = (x + y) * height / 2;
+        return new Vector2(isoX, isoY);
+    }
+
 }
