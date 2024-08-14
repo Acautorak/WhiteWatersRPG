@@ -7,7 +7,7 @@ public class LevelGrid : MonoBehaviour
 {
     public static LevelGrid Instance { get; private set; }
 
-    public event EventHandler OnAnyUnitMovedGridPosition;
+    public event EventHandler OnAnyUnitMovedGridPosition; 
 
     [SerializeField] private int width, height;
     public float cellSize;
