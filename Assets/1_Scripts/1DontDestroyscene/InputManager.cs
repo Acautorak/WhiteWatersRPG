@@ -1,4 +1,4 @@
-#define USE_NEW_INPUT_SYSTEM
+//#define USE_NEW_INPUT_SYSTEM
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;

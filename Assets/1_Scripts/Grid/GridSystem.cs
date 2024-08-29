@@ -22,10 +22,12 @@ public class GridSystem<TGridObject>
         {
             for (int y = 0; y < height; y++)
             {
-                GridPosition gridPosition = new GridPosition(x, y);
+                GridPosition gridPosition = new GridPosition(x,y);
                 gridObjectArray[x, y] = createGridObject(this, gridPosition);
             }
         }
+
+        
     }
 
     public Vector2 GetWorldPosition(GridPosition gridPosition)
