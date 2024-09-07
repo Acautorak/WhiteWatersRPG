@@ -161,19 +161,5 @@ public class Unit : MonoBehaviour
         transform.position = LevelGrid.Instance.GetWorldPosition(gridPosition);
     }
 
-    public void PlayBlood()
-    {
-        unitAnimator.PlayBlood();
-    }
-
-    public void SetIdleAnimator()
-    {
-        unitAnimator.SetIdleAnimator();
-    }
-
-    public void HideIdleAnimator()
-    {
-        unitAnimator.HideIdleAnimator();
-    }
 
 }

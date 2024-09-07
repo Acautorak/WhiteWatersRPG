@@ -11,7 +11,7 @@ public class UnitAnimator : MonoBehaviour
     [SerializeField] private Transform bulletOriginTransform;
     [SerializeField] private Transform damagePopupTransform;
 
-    private Animator animator;
+    [SerializeField] private Animator animator;
     private Unit thisUnit;
     private HealthSystem healthSystem;
 
@@ -31,7 +31,7 @@ public class UnitAnimator : MonoBehaviour
             shootAction.OnShoot += ShootAction_OnShot;
         }
 
-        if(TryGetComponent<SwordAction>(out SwordAction swordAction))
+        if (TryGetComponent<SwordAction>(out SwordAction swordAction))
         {
             swordAction.OnSwordActionStarted += SwordAction_OnSwordActionStarted;
             swordAction.OnSwordActionCompleted += SwordAction_OnSwordActionCompleted;
@@ -112,18 +112,18 @@ public class UnitAnimator : MonoBehaviour
 
     private void OnDestroy()
     {
-        
+
         StopCoroutine(DieAfter());
     }
 
     private void MoveAction_OnStartMoving(object sender, EventArgs e)
     {
-
+        ShouldWalk(true);
     }
 
     private void MoveAction_OnStopMoving(object sender, EventArgs e)
     {
-
+        ShouldWalk(false);
     }
 
     private void ShootAction_OnShot(object sender, ShootAction.OnShootEventArgs e)
@@ -133,14 +133,9 @@ public class UnitAnimator : MonoBehaviour
         bulletProjectile.Setup(e.targetUnit.GetWorldPosition());
     }
 
-    public void SetIdleAnimator()
+    public void ShouldWalk(bool param)
     {
-        animator.SetBool("isSelected", true);
-    }
-
-    public void HideIdleAnimator()
-    {
-        animator.SetBool("isSelected", false);
+        animator.SetBool("ShouldWalk", param);
     }
 
     private void SwordAction_OnSwordActionStarted(object sender, EventArgs e)
@@ -150,7 +145,7 @@ public class UnitAnimator : MonoBehaviour
 
     private void SwordAction_OnSwordActionCompleted(object sender, EventArgs e)
     {
-        
+
     }
 
 }
