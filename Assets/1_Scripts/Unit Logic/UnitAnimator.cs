@@ -135,6 +135,7 @@ public class UnitAnimator : MonoBehaviour
 
     public void ShouldWalk(bool param)
     {
+        if(animator != null)
         animator.SetBool("ShouldWalk", param);
     }
 

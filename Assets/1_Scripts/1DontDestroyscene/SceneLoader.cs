@@ -10,17 +10,18 @@ public class SceneLoader : PersistentMonoSingleton<SceneLoader>
     public Image progressBar;
     List<AsyncOperation> scenesLoading = new List<AsyncOperation>();
     float totalSceneProgress;
+    float sceneTimer;
 
     void Start()
     {
         if (SceneManager.GetActiveScene() == SceneManager.GetSceneByName("DontDestroy"))
         {
-            LoadSceneCustom();
+            LoadStartingScene();
         }
         DontDestroyOnLoad(loadingScreen);
     }
 
-    public void LoadSceneCustom()
+    public void LoadStartingScene()
     {
         loadingScreen.gameObject.SetActive(true);
         scenesLoading.Add(SceneManager.LoadSceneAsync((int)SceneIndex.BOAT_SCENE, LoadSceneMode.Single));
@@ -49,7 +50,7 @@ public class SceneLoader : PersistentMonoSingleton<SceneLoader>
                     totalSceneProgress += operation.progress;
                 }
 
-                totalSceneProgress = (totalSceneProgress / scenesLoading.Count) * 100f;
+                totalSceneProgress = totalSceneProgress / scenesLoading.Count * 100f;
                 progressBar.fillAmount = Mathf.RoundToInt(totalSceneProgress);
                 yield return new WaitForSeconds(3);
             }
