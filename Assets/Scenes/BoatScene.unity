@@ -3053,7 +3053,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Inventory
+  m_text: Main menu
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: d8eca96b9c3103e4480dc98f07e70875, type: 2}
   m_sharedMaterial: {fileID: -8835684544388760232, guid: d8eca96b9c3103e4480dc98f07e70875, type: 2}
