@@ -439,7 +439,7 @@ public class UnifiedActionManager : MonoBehaviour
         {
             Debug.Log("Smanjujem");
             //currentUnitIndex--;
-            Debug.LogWarning(currentUnitIndex);
+            Debug.Log("trenutni unit index je: " + currentUnitIndex);
             roundNumber++;
         }
         unitList.Sort((a, b) => b.unitStats.initiative.CompareTo(a.unitStats.initiative));
