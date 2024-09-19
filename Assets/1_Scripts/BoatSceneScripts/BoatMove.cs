@@ -21,7 +21,7 @@ public class BoatMove : MonoBehaviour
     {
         if (pathIndex < path.Length)
         {
-            Vector2 targetPosition = path[pathIndex].transform.position;
+            Vector2 targetPosition = path[pathIndex].transform.position; 
             LeanTween.rotateZ(boat, CalculateTargetRotation(targetPosition), rotationTime).setEase(LeanTweenType.easeInOutQuad).setOnComplete(() => 
             { pathIndex++; 
             StartMovement(); });
