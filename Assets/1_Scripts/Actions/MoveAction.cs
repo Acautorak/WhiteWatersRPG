@@ -31,7 +31,6 @@ public class MoveAction : BaseAction
         {
             return;
         }
-
         float stoppingDistance = .1f;
 
         Vector2 targetPosition = targetPositionList[currentPositionIndex];

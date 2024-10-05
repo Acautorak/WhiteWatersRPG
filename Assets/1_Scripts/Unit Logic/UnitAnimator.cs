@@ -112,7 +112,6 @@ public class UnitAnimator : MonoBehaviour
 
     private void OnDestroy()
     {
-
         StopCoroutine(DieAfter());
     }
 
@@ -123,6 +122,7 @@ public class UnitAnimator : MonoBehaviour
 
     private void MoveAction_OnStopMoving(object sender, EventArgs e)
     {
+        animator.SetLayerWeight(1, 1);
         ShouldWalk(false);
     }
 
