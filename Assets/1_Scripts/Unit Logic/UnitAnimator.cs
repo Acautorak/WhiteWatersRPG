@@ -118,12 +118,13 @@ public class UnitAnimator : MonoBehaviour
     private void MoveAction_OnStartMoving(object sender, EventArgs e)
     {
         ShouldWalk(true);
+        Debug.Log("da pokrenuo sam shouldwalk");
     }
 
     private void MoveAction_OnStopMoving(object sender, EventArgs e)
     {
-        animator.SetLayerWeight(1, 1);
         ShouldWalk(false);
+        Debug.Log("da ugasio sam shouldwalk");
     }
 
     private void ShootAction_OnShot(object sender, ShootAction.OnShootEventArgs e)
