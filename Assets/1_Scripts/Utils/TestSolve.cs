@@ -19,7 +19,9 @@ public class TestSolve : MonoBehaviour
     }
 
     public int [][] times = new int[][] {new int[] {1,2}, new int[] {2,3}};
-    public Dictionary<int, Friend> friends = new Dictionary<int, Friend>();
+
+    public Dictionary<int, Friend> friendsMap = new Dictionary<int, Friend>();
+    public Queue<int> chairsQueue = new Queue<int>();
 
     public int SmallestChair(int[][] times, int targetFriend)
     {
@@ -30,32 +32,52 @@ public class TestSolve : MonoBehaviour
                // Debug.Log($"Element at times[{i},{j}] = {times[i][j]}");
             }
         }
-        MapChairs(times);
-        CreateMapFriends(friends);
+        CreateMapFriends(friendsMap);
         return 0;
     }
 
-    public Dictionary<int, int> MapChairs(int [][] times)
-    {
-        Dictionary<int, int> map = new Dictionary<int,int>();
-
-        for (int i = 0; i < times.Length; i++)  
-        {   
-            map[i] = -1;       
-        }
-
-        foreach (KeyValuePair<int,int> kvp in map)
-        {
-           // Debug.Log($"Key: {kvp.Key}: Value {kvp.Value}");
-        }
-
-        return map;
-    }
+   
 
     public int ReturnTargetChair(int targetFriend)
     {
-        return friends[targetFriend].chair;
+        return friendsMap[targetFriend].chair;
     }
+
+
+    public List<int> FindSmallestLargerTime(Dictionary<int, Friend> friends, int pomTime)
+    {
+        List<int> smallestLargerFriend = new List<int>(); 
+        int smallestTime = int.MaxValue;     
+
+        foreach (KeyValuePair<int, Friend> kvp in friends)
+        {
+            if (kvp.Value.arrival > pomTime && kvp.Value.arrival <= smallestTime)
+            {
+                smallestLargerFriend.Add(kvp.Key);
+                smallestTime = kvp.Value.arrival;
+            }
+
+            if (kvp.Value.leaving > pomTime && kvp.Value.leaving <= smallestTime)
+            {
+                smallestLargerFriend.Add(kvp.Key);
+                smallestTime = kvp.Value.leaving;
+            }
+        }
+
+        return smallestLargerFriend;
+    }
+
+   /*  public void ChangeChairsInMapFriends(List<int> smallestLargerFriend, int time)
+    {
+        int freeChair = 0;
+        int pomTime = ;
+
+        foreach (int element in smallestLargerFriend)
+        {
+            if(friendsMap(element).Value
+        }
+    } */
+
 
     public void CreateMapFriends(Dictionary<int,Friend> friends)
     {
