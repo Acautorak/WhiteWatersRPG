@@ -6,46 +6,63 @@ using UnityEngine.Assertions.Must;
 public class TestSolve : MonoBehaviour
 {
 
-    ListNode CreateTestListWithCycle()
+    ListNode CreateTestList1()
     {
         // Create nodes
         ListNode node1 = new ListNode(1);
         ListNode node2 = new ListNode(2);
+        ListNode node3 = new ListNode(4);
 
         node1.next = node2;
-        node2.next = node1;
+        node2.next = node3;
 
+        return node1;
+    }
+    ListNode CreateTestList2()
+    {
+        ListNode node1 = new ListNode(1);
+        ListNode node2 = new ListNode(3);
+        ListNode node3 = new ListNode(4);
 
+        node1.next = node2;
+        node2.next = node3;
 
-        // Return the head of the list
         return node1;
     }
 
-    public bool HasCycle(ListNode head)
+    public ListNode MergeTwoLists(ListNode list1, ListNode list2) 
     {
-        if(head == null || head.next == null)
-        return false;
+        ListNode start = new ListNode(-1);
+        ListNode pom = start;
 
-        ListNode pom1 = head;
-        ListNode pom2 = head.next;
-
-        while(pom2.next != null)
+        while(list1 != null && list2 != null)
         {
-            pom1 = pom1.next;
-            pom2 = pom2.next.next;
-
-            if(pom1 == pom2)
+            if(list1.val <= list2.val)
             {
-                return true;
+                
+                pom.next = list1;
+                list1 = list1.next;
             }
-        }
-        return false;
+            else
+            {
+                pom.next = list2;
+                list2 = list2.next;
+            }
+
+            pom = pom.next;
+        }   
+
+        pom.next = list1 ?? list2;
+
+        return start.next;   
     }
-   
+
 
     void Start()
     {
-        Debug.Log($"{HasCycle(CreateTestListWithCycle())}");
+        ListNode list1 = CreateTestList1();
+        ListNode list2 = CreateTestList2();
+        Debug.Log($"{MergeTwoLists(list1, list2)}");
     }
 }
 
