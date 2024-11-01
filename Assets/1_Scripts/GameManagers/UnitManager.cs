@@ -90,13 +90,12 @@ public class UnitManager : MonoBehaviour
         {
             if (friendlyUnitList[i] != null)
             {
-                //turnOrderList.Add(friendlyUnitList[i]);
+                
                 Debug.LogError("dodao sam friendly: " + friendlyUnitList[i].gameObject.name);
             }
 
             if (enemyUnitList[i] != null)
             {
-                //turnOrderList.Add(enemyUnitList[i]);
                 Debug.LogWarning("dodao sam enemy: " + enemyUnitList[i].gameObject.name);
 
             }

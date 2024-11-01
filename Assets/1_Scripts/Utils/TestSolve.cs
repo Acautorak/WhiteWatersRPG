@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using UnityEditor.Build.Pipeline;
 using UnityEngine;
 using UnityEngine.Assertions.Must;
 
@@ -30,31 +31,29 @@ public class TestSolve : MonoBehaviour
         return node1;
     }
 
-    public ListNode MergeTwoLists(ListNode list1, ListNode list2) 
+    public ListNode GetIntersectionNode(ListNode list1, ListNode list2)
     {
-        ListNode start = new ListNode(-1);
-        ListNode pom = start;
+        ListNode pom1 = list1;
+        ListNode pom2 = list2;
 
-        while(list1 != null && list2 != null)
+        if (list1 == null || list2 == null)
+            return null;
+
+
+
+        while (pom1 != pom2)
         {
-            if(list1.val <= list2.val)
-            {
-                
-                pom.next = list1;
-                list1 = list1.next;
-            }
-            else
-            {
-                pom.next = list2;
-                list2 = list2.next;
-            }
+            if (pom1 == pom2)
+                return pom1;
 
-            pom = pom.next;
-        }   
+            pom1 = (pom1.next == null) ? list2 : pom1.next;
+            pom2 = (pom2.next == null) ? list1 : pom2.next;
+        }
 
-        pom.next = list1 ?? list2;
 
-        return start.next;   
+        return pom1;
+
+
     }
 
 
@@ -62,7 +61,7 @@ public class TestSolve : MonoBehaviour
     {
         ListNode list1 = CreateTestList1();
         ListNode list2 = CreateTestList2();
-        Debug.Log($"{MergeTwoLists(list1, list2)}");
+        Debug.Log($"{GetIntersectionNode(list1, list2)}");
     }
 }
 
