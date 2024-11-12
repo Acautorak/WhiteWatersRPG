@@ -1,67 +1,43 @@
 using System;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using UnityEditor.Build.Pipeline;
 using UnityEngine;
 using UnityEngine.Assertions.Must;
 
 public class TestSolve : MonoBehaviour
 {
+    string numString = "";
+    int suma;
 
-    ListNode CreateTestList1()
+    private int GetLucky(string s, int k)
     {
-        // Create nodes
-        ListNode node1 = new ListNode(1);
-        ListNode node2 = new ListNode(2);
-        ListNode node3 = new ListNode(4);
-
-        node1.next = node2;
-        node2.next = node3;
-
-        return node1;
-    }
-    ListNode CreateTestList2()
-    {
-        ListNode node1 = new ListNode(1);
-        ListNode node2 = new ListNode(3);
-        ListNode node3 = new ListNode(4);
-
-        node1.next = node2;
-        node2.next = node3;
-
-        return node1;
-    }
-
-    public ListNode GetIntersectionNode(ListNode list1, ListNode list2)
-    {
-        ListNode pom1 = list1;
-        ListNode pom2 = list2;
-
-        if (list1 == null || list2 == null)
-            return null;
-
-
-
-        while (pom1 != pom2)
+        foreach (char c in s)
         {
-            if (pom1 == pom2)
-                return pom1;
+            int num = c - 96;
+            numString += num.ToString();
+        }
+        
 
-            pom1 = (pom1.next == null) ? list2 : pom1.next;
-            pom2 = (pom2.next == null) ? list1 : pom2.next;
+        
+        foreach(char c in numString)
+        {
+            suma += (c - '0');
         }
 
+        for (int i = 0; i<k; i++)
+        {
 
-        return pom1;
+        }
 
-
+        return suma;
     }
 
 
-    void Start()
+
+    private void Start()
     {
-        ListNode list1 = CreateTestList1();
-        ListNode list2 = CreateTestList2();
-        Debug.Log($"{GetIntersectionNode(list1, list2)}");
+        Debug.Log(GetLucky("aa", 1));
     }
 }
 
