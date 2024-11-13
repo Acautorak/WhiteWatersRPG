@@ -31,7 +31,7 @@ public class TestSolve : MonoBehaviour
         }
 
         return suma;
-    }
+    } //Resen je "_+
 
 
 
