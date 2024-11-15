@@ -1,14 +1,12 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Cinemachine;
 using UnityEngine;
-using Cinemachine;
 
 public class CameraManager : MonoBehaviour
 {
     [SerializeField] private GameObject actionCameraGameObject;
-
-
     private void Start()
     {
         Notifier.Instance.Subscribe<AnyActionStartedMessage>(BaseAction_OnAnyActionStarted);
@@ -29,12 +27,12 @@ public class CameraManager : MonoBehaviour
         switch (message.action)
         {
             case ShootAction shootAction:
-                actionCameraGameObject.GetComponent<CinemachineVirtualCamera>().Follow = shootAction.GetTargetUnit().transform;
+                actionCameraGameObject.GetComponent<CinemachineCamera>().Follow = shootAction.GetTargetUnit().transform;
                 ShowActionCamera();
                 break;
 
             case MoveAction moveAction:
-                actionCameraGameObject.GetComponent<CinemachineVirtualCamera>().Follow = moveAction.GetUnit().transform;
+                actionCameraGameObject.GetComponent<CinemachineCamera>().Follow = moveAction.GetUnit().transform;
                 ShowActionCamera();
                 break;
         }

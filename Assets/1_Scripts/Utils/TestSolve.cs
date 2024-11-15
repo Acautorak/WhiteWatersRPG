@@ -1,45 +1,69 @@
 using System;
-using System.Collections.Generic;
-using System.Runtime.CompilerServices;
-using UnityEditor.Build.Pipeline;
 using UnityEngine;
-using UnityEngine.Assertions.Must;
 
 public class TestSolve : MonoBehaviour
 {
     string numString = "";
     int suma;
 
-    private int GetLucky(string s, int k)
+
+    public int Devide(int devidend, int devisor)
     {
-        foreach (char c in s)
+        int k = 0;
+        int pomocna = devidend;
+
+        if (Math.Sign(devidend) == Math.Sign(devisor))
         {
-            int num = c - 96;
-            numString += num.ToString();
+            if (devidend > 0)
+            {
+                while (pomocna > 0)
+                {
+                    pomocna -= devisor;
+                    k++;
+                }
+                k--;
+            }
+            else
+            {
+                while (pomocna < 0)
+                {
+                    pomocna -= devisor;
+                    k++;
+                }
+                k--;
+            }
         }
-        
-
-        
-        foreach(char c in numString)
+        else
         {
-            suma += (c - '0');
+            if (devidend < 0)
+            {
+                while (pomocna < 0)
+                {
+                    pomocna += devisor;
+                    k--;
+                }
+                k++;
+            }
+            else
+            {
+                while (pomocna > 0)
+                {
+                    pomocna += devisor;
+                    k--;
+                }
+                k++;
+            }
         }
-
-        for (int i = 0; i<k; i++)
-        {
-
-        }
-
-        return suma;
-    } //Resen je "_+
-
-
+        return k;
+    }
 
     private void Start()
     {
-        Debug.Log(GetLucky("aa", 1));
+        Debug.Log(Devide(7, 3).ToString());
     }
+
 }
+
 
 public class ListNode
 {

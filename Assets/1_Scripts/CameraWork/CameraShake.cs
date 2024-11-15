@@ -1,5 +1,6 @@
+using Unity.Cinemachine;
 using UnityEngine;
-using Cinemachine;
+
 public class CameraShake : MonoSingleton<CameraShake>, ISelfInstantiatingMonoSingleton
 {
     [SerializeField]private CinemachineImpulseSource cinemachineImpulseSource;
