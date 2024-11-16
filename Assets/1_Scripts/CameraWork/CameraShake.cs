@@ -10,6 +10,8 @@ public class CameraShake : MonoSingleton<CameraShake>, ISelfInstantiatingMonoSin
         base.OnAwake();
     }
 
+    //now it works :)
+
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.R))
