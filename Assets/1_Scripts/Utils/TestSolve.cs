@@ -3,63 +3,34 @@ using UnityEngine;
 
 public class TestSolve : MonoBehaviour
 {
-    string numString = "";
-    int suma;
 
-
-    public int Devide(int devidend, int devisor)
+    public int Search(int[] nums, int target)
     {
-        int k = 0;
-        int pomocna = devidend;
+        int leftIndex = 0;
+        int rightIndex = nums.Length - 1;
+        int midIndex = 0;
 
-        if (Math.Sign(devidend) == Math.Sign(devisor))
+        while (leftIndex <= rightIndex)
         {
-            if (devidend > 0)
-            {
-                while (pomocna > 0)
-                {
-                    pomocna -= devisor;
-                    k++;
-                }
-                k--;
-            }
-            else
-            {
-                while (pomocna < 0)
-                {
-                    pomocna -= devisor;
-                    k++;
-                }
-                k--;
-            }
+            midIndex = (leftIndex + (rightIndex - leftIndex)) / 2;
+
+            if(nums[midIndex] == target) return midIndex;
+
+            if(nums[leftIndex] <= nums[midIndex])
+            return target;
+
         }
-        else
-        {
-            if (devidend < 0)
-            {
-                while (pomocna < 0)
-                {
-                    pomocna += devisor;
-                    k--;
-                }
-                k++;
-            }
-            else
-            {
-                while (pomocna > 0)
-                {
-                    pomocna += devisor;
-                    k--;
-                }
-                k++;
-            }
-        }
-        return k;
+
+            return midIndex;
     }
+
+
+
 
     private void Start()
     {
-        Debug.Log(Devide(7, 3).ToString());
+        int[] nums = { };
+        Debug.Log(Search(nums, 1).ToString());
     }
 
 }
